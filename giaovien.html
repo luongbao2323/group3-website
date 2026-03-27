@@ -6,62 +6,83 @@
     <title>Giáo viên - 12A2</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    
     <style>
-        /* CSS bổ sung để tạo hiệu ứng hình tròn (avatar) */
-        .avatar-container {
-            width: 150px; 
-            height: 150px;
-            border-radius: 50%; 
-            overflow: hidden; 
-            margin: 0 auto 20px; 
-            border: 4px solid #fff; 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+        /* ======================================================
+           CSS Bổ Sung: Định dạng ảnh đại diện thành hình tròn
+           ====================================================== */
+        
+        /* Container bọc bên ngoài ảnh đại diện */
+        .avatar-wrapper {
+            width: 150px;           /* Chiều rộng của khung tròn */
+            height: 150px;          /* Chiều cao của khung tròn (phải bằng chiều rộng) */
+            border-radius: 50%;     /* Bo tròn 50% để tạo thành hình tròn */
+            overflow: hidden;       /* Ẩn các phần của ảnh bị thừa ra ngoài khung tròn */
+            margin: 0 auto 20px;    /* Căn giữa khung tròn và tạo khoảng cách phía dưới */
+            border: 5px solid #fff; /* Thêm viền trắng (tùy chọn) */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Thêm đổ bóng nhẹ (tùy chọn) */
+            display: flex;          /* Sử dụng Flexbox để căn giữa ảnh */
+            justify-content: center;/* Căn giữa ảnh theo chiều ngang */
+            align-items: center;    /* Căn giữa ảnh theo chiều dọc */
+            background-color: #eee; /* Màu nền khi ảnh chưa tải xong */
         }
 
+        /* Định dạng cho bản thân hình ảnh */
         .avatar-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; 
-            display: block; 
+            width: 100%;            /* Chiều rộng ảnh chiếm 100% khung */
+            height: 100%;           /* Chiều cao ảnh chiếm 100% khung */
+            object-fit: cover;      /* Giữ nguyên tỷ lệ ảnh, tự cắt tỉa để lấp đầy khung mà không bị méo */
+            display: block;         /* Hiển thị dạng khối */
         }
 
-        /* Tùy chỉnh thêm cho các thẻ giáo viên */
+        /* ======================================================
+           CSS Bổ Sung: Định dạng chung cho thẻ giáo viên
+           ====================================================== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
         .gallery-item {
             background: #fff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            text-align: center; /* Căn giữa nội dung trong thẻ */
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .gallery-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
         }
 
         .teacher-name {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: #333;
             margin-bottom: 5px;
+            font-weight: 700;
         }
 
         .teacher-role {
             font-family: 'Poppins', sans-serif;
-            color: var(--primary); /* Giả sử bạn có biến --primary */
+            color: #007bff; /* Bạn có thể thay đổi màu chính ở đây */
             font-weight: 600;
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .teacher-desc {
             font-family: 'Poppins', sans-serif;
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: #666;
             line-height: 1.8;
+            margin: 0;
         }
     </style>
 </head>
@@ -80,16 +101,17 @@
         </div>
     </nav>
 
-    <section style="padding-top: 120px; padding-bottom: 80px; min-height: 100vh; background: #f0f9ff;">
-        <div class="container">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 60px;">Giáo viên chủ nhiệm & Bộ môn</h2>
+    <section style="padding-top: 150px; padding-bottom: 80px; min-height: 100vh; background: #f0f9ff;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 60px; font-family: 'Playfair Display', serif; font-size: 2.8rem; color: #333;">Giáo viên chủ nhiệm & Bộ môn</h2>
             
-            <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            <div class="gallery-grid">
                 
                 <div class="gallery-item">
-                    <div class="avatar-container">
+                    <div class="avatar-wrapper">
                         <img src="path/to/image-thay-sang.jpg" alt="Thầy Nguyễn Trọng Sang" class="avatar-img">
                     </div>
+                    
                     <div class="teacher-name">Thầy Nguyễn Trọng Sang</div>
                     <div class="teacher-role">Chủ nhiệm lớp 12A2</div>
                     <p class="teacher-desc">
