@@ -2,25 +2,77 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thành viên 12A2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body style="background: #ebf5fb;">
-    <h2 class="section-title">Thành viên lớp</h2>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand"><img src="logo_gen.png" alt="Logo"></a>
+            <ul class="nav-menu">
+                <li><a class="nav-link" href="index.html">Trang chủ</a></li>
+                <li><a class="nav-link" style="border-bottom: 2px solid white;" href="thanh-vien.html">Thành viên</a></li>
+                <li><a class="nav-link" href="giao-vien.html">Giáo viên</a></li>
+                <li><a class="nav-link" href="anh.html">Ảnh</a></li>
+                <li><a class="nav-link" href="lien-he.html">Liên hệ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <h2 class="section-title">Danh sách Thành viên 12A2</h2>
     <div class="gallery-grid" id="membersGrid"></div>
 
     <script>
         const members = [
             { name: 'Đỗ Quỳnh Anh', birth: '17/11/2008', emoji: '👩' },
+            { name: 'Đỗ Ngọc Ánh', birth: '04/05/2008', emoji: '👩' },
             { name: 'Lương Gia Bảo', birth: '05/05/2008', emoji: '👦' },
-            // ... Bạn hãy nhập tiếp các bạn còn lại vào đây giống file gốc nhé
+            { name: 'Đoàn Thị Bảo Châu', birth: '25/06/2008', emoji: '👩' },
+            { name: 'Phạm Trí Dũng', birth: '04/04/2008', emoji: '👦' },
+            { name: 'Trần Thanh Duy', birth: '22/08/2008', emoji: '👦' },
+            { name: 'Nguyễn Thị Duyên', birth: '07/06/2008', emoji: '👩' },
+            { name: 'Nguyễn Tiến Đạt', birth: '28/04/2007', emoji: '👦' },
+            { name: 'Võ Thiên Đông', birth: '04/09/2008', emoji: '👦' },
+            { name: 'Hướng Trường Giang', birth: '20/02/2008', emoji: '👦' },
+            { name: 'Đào Hữu Trung Hiếu', birth: '24/11/2008', emoji: '👦' },
+            { name: 'Lê Sỹ Hoàng', birth: '22/05/2008', emoji: '👦' },
+            { name: 'Nguyễn Minh Hoàng', birth: '27/07/2008', emoji: '👦' },
+            { name: 'Lê Văn Huy', birth: '26/04/2008', emoji: '👦' },
+            { name: 'Nguyễn Tuấn Hưng', birth: '26/09/2008', emoji: '👦' },
+            { name: 'Nguyễn Duy Luân', birth: '04/04/2008', emoji: '👦' },
+            { name: 'Nguyễn Xuân Mai', birth: '09/01/2008', emoji: '👩' },
+            { name: 'Nguyễn Trọng Đức Minh', birth: '15/10/2008', emoji: '👦' },
+            { name: 'Bùi Nguyễn Khánh Ngọc', birth: '15/03/2008', emoji: '👩' },
+            { name: 'Trần Nguyễn', birth: '28/12/2008', emoji: '👦' },
+            { name: 'Đỗ Nguyễn Thiện Nhân', birth: '22/05/2007', emoji: '👦' },
+            { name: 'Ngô Thị Yến Nhi', birth: '28/02/2007', emoji: '👩' },
+            { name: 'Nguyễn Thị Bảo Nhi', birth: '08/10/2008', emoji: '👩' },
+            { name: 'Hà Thị Huỳnh Như', birth: '13/12/2008', emoji: '👩' },
+            { name: 'Nguyễn Thạch Huỳnh Như', birth: '17/12/2008', emoji: '👩' },
+            { name: 'Trần Hồng Sơn', birth: '28/09/2008', emoji: '👦' },
+            { name: 'Mạch Lê Minh Tâm', birth: '22/10/2008', emoji: '👩' },
+            { name: 'Đỗ Thị Thanh', birth: '11/01/2008', emoji: '👩' },
+            { name: 'Mai Thùy Huyền Thanh', birth: '05/09/2008', emoji: '👩' },
+            { name: 'Phạm Hoàng Mai Thanh', birth: '04/12/2007', emoji: '👩' },
+            { name: 'Lê Ngọc Phương Thảo', birth: '17/02/2008', emoji: '👩' },
+            { name: 'Lê Thị Thùy Trang', birth: '17/01/2008', emoji: '👩' },
+            { name: 'Trịnh Minh Trâm', birth: '12/02/2008', emoji: '👩' },
+            { name: 'Nguyễn Xuân Tuyền', birth: '26/10/2008', emoji: '👩' },
+            { name: 'Đinh Nguyễn Ánh Tuyết', birth: '13/04/2008', emoji: '👩' },
+            { name: 'Lê Thị Thanh Vy', birth: '24/09/2008', emoji: '👩' }
         ];
-        document.getElementById('membersGrid').innerHTML = members.map(m => `
+
+        const grid = document.getElementById('membersGrid');
+        grid.innerHTML = members.map(m => `
             <div class="gallery-item">
                 <div class="gallery-img-container">${m.emoji}</div>
-                <div style="font-weight:bold">${m.name}</div>
-                <div style="color:#3498db">${m.birth}</div>
-            </div>`).join('');
+                <div style="font-weight:bold; font-size: 1.1rem;">${m.name}</div>
+                <div style="color:var(--primary); font-size: 0.9rem;">${m.birth}</div>
+            </div>
+        `).join('');
     </script>
 </body>
 </html>
