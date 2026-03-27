@@ -209,4 +209,35 @@ body {
     .hero h1 { font-size: 2.5rem; }
     .brand-text { font-size: 1.2rem; }
     .navbar { padding: 0.5rem 1rem; }
+}/* NAVBAR */
+.navbar { 
+    position: fixed; top: 0; width: 100%; 
+    background: rgba(52, 152, 219, 0.95); 
+    backdrop-filter: blur(10px);
+    padding: 0.7rem 2rem; z-index: 1000; 
+}
+
+.nav-brand { 
+    display: flex !important; 
+    align-items: center !important; 
+    gap: 12px; 
+    text-decoration: none; 
+}
+
+/* ÉP HIỂN THỊ LOGO */
+.logo-img {
+    display: block !important;
+    height: 45px !important;
+    width: auto !important;
+    min-width: 45px; /* Tạo khung vuông nếu ảnh chưa load */
+    min-height: 45px;
+    object-fit: contain;
+    background-color: rgba(255,255,255,0.1); /* Hiện khung mờ để biết ảnh nằm đâu */
+}
+
+.brand-text { 
+    color: white; 
+    font-size: 1.5rem; 
+    font-weight: 700; 
+    font-family: 'Playfair Display', serif; 
 }
