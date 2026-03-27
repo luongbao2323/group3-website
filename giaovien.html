@@ -3,57 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chèn Ảnh Đại Diện Hình Tròn</title>
+    <title>Avatar Thầy Nguyễn Trọng Sang</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #f4f4f4;
+            background-color: #f0f4f8; /* Màu nền nhẹ nhàng hơn */
         }
 
         .avatar-container {
-            /* Kích thước của khung tròn */
             width: 200px;
             height: 200px;
-            
-            /* Tạo hình tròn */
             border-radius: 50%;
-            
-            /* Ẩn phần hình ảnh thừa ra ngoài khung tròn */
             overflow: hidden;
-            
-            /* Viền trắng và đổ bóng cho khung (tùy chỉnh) */
             border: 5px solid white;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-            
-            /* Căn chỉnh ảnh bên trong */
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15); /* Đổ bóng mịn hơn */
             display: flex;
             justify-content: center;
             align-items: center;
+            background-color: #fff;
         }
 
         .avatar-img {
-            /* Hình ảnh sẽ tự động điều chỉnh để lấp đầy khung tròn */
             width: 100%;
             height: 100%;
-            
-            /* Giữ nguyên tỷ lệ ảnh, tự cắt tỉa để lấp đầy khung tròn */
             object-fit: cover; 
-            
-            /* Vị trí cắt ảnh (giả sử muốn tập trung vào người) */
-            object-position: center top; 
+            /* Tỉ lệ 20% giúp căn khung hình tập trung vào phần đầu và vai 
+               thay vì bị cắt mất mặt do ảnh gốc quá dài.
+            */
+            object-position: center 20%; 
         }
     </style>
 </head>
 <body>
 
     <div class="avatar-container">
-        <img src="https://i.ibb.co/Xz9tM0q/image.png" alt="Ảnh Đại Diện" class="avatar-img">
+        <img src="sangjr.jpg" alt="Thầy Nguyễn Trọng Sang" class="avatar-img">
     </div>
 
 </body>
