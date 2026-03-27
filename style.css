@@ -22,3 +22,25 @@ body { font-family: 'Poppins', sans-serif; color: var(--text); background: var(-
 .gallery-img-container { width: 100px; height: 100px; background: var(--light1); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
 .btn { padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-block; margin: 10px; }
 .btn-primary { background: var(--white); color: var(--primary); }
+/* Căn chỉnh cho logo và chữ nằm ngang hàng */
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Khoảng cách giữa hình và chữ */
+    text-decoration: none;
+}
+
+/* Chỉnh kích thước logo */
+.logo-img {
+    height: 45px; /* Độ cao vừa vặn với thanh nav */
+    width: auto;
+    object-fit: contain;
+}
+
+/* Chỉnh kiểu chữ cho tên lớp cạnh logo */
+.brand-text {
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+}
