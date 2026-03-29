@@ -148,3 +148,38 @@ body {
     display: block; /* Ép hiển thị */
 }
 }
+/* ĐỊNH DẠNG LOGO GIF */
+.logo-img {
+    height: 50px; /* Tăng kích thước logo cho rõ */
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease-out; /* Phóng to nhẹ khi hover */
+}
+
+/* HIỆU ỨNG KHI ĐƯA CHUỘT VÀO LOGO (HOVER) */
+.nav-brand:hover .logo-img {
+    transform: scale(1.1); /* Phóng to logo lên 10% */
+}
+
+/* HIỆU ỨNG LỬA CHÁY */
+.logo-img .fire-group {
+    display: none; /* Ẩn lửa ở chế độ tĩnh */
+}
+
+.nav-brand:hover .logo-img .fire-group {
+    display: block; /* Hiện lửa khi di chuột vào */
+    animation: fire-flicker 0.1s infinite; /* Tạo hiệu ứng nhấp nháy liên tục */
+}
+
+@keyframes fire-flicker {
+    0%   { opacity: 0.8; transform: translateY(0) scaleY(1); }
+    50%  { opacity: 1; transform: translateY(-2px) scaleY(1.05); }
+    100% { opacity: 0.9; transform: translateY(1px) scaleY(0.98); }
+}
+
+/* XÓA NỀN TRẮNG CỦA CẢ THANH NAV */
+.navbar {
+    background: transparent !important; /* Xóa nền nav */
+    backdrop-filter: blur(10px); /* Vẫn giữ hiệu ứng mờ kính */
+    -webkit-backdrop-filter: blur(10px);
+}
