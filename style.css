@@ -138,3 +138,16 @@ body {
     .navbar { height: 65px; padding: 0 1rem; }
     .logo-img { height: 45px !important; width: 45px !important; }
 }
+.navbar { 
+    position: fixed; 
+    top: 35px;
+    left: 0;
+    width: 100%; 
+    background: #3498db !important; /* Phải có màu này mới không bị trắng trang */
+    padding: 0 2rem; 
+    z-index: 1000; 
+    height: 75px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
