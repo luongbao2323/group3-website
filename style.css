@@ -145,3 +145,31 @@ body {
     .navbar { height: 65px; padding: 0 1rem; }
     .logo-img { height: 45px !important; }
 }
+/* TỐI ƯU HIỂN THỊ LOGO */
+.logo-img {
+    height: 50px !important;
+    width: 50px !important;
+    object-fit: cover;
+    border-radius: 50%; /* Bo tròn logo để xóa nền trắng ở góc */
+    transition: all 0.3s ease-in-out;
+    display: block !important;
+    border: 2px solid rgba(255,255,255,0.2);
+}
+
+/* HIỆU ỨNG CHÁY RỰC KHI RÊ CHUỘT VÀO */
+.nav-brand:hover .logo-img {
+    transform: scale(1.2) rotate(5deg);
+    /* Tạo hiệu ứng quầng lửa đa lớp */
+    filter: brightness(1.2);
+    box-shadow: 0 0 15px #ff4d00, 
+                0 0 30px #ffae00, 
+                0 -5px 20px #ff4d00;
+    animation: fire-move 0.1s infinite;
+}
+
+/* Hiệu ứng rung bập bùng như lửa */
+@keyframes fire-move {
+    0% { transform: scale(1.2) translate(0,0); }
+    50% { transform: scale(1.22) translate(-1px, -1px); }
+    100% { transform: scale(1.2) translate(1px, 0.5px); }
+}
