@@ -237,101 +237,25 @@
             <img src="IMG_20260321_183935.jpg" alt="Kỉ niệm 10">
         </div>
     </section>
-        <h2 id="ki-uc-vui" style="text-align: left; margin: 40px 0 20px 0; color: #4ea8de;">🎉 Kí ức những ngày vui</h2>
-        <div class="card-group">
-            <div class="card" onclick="openModal('photoModal')">
-                <img src="IMG_20260321.jpg">
-                <div class="layer"></div>
-                <div class="info"><h1>20/10 Đáng Nhớ</h1><p>Bấm để xem album ✨</p></div>
-            </div>
-            <div class="card" onclick="openModal('modal2011')">
-                <img src="Bản sao của IMG_3722.jpg">
-                <div class="layer"></div>
-                <div class="info"><h1>Tri Ân 20/11</h1><p>Bấm để xem tri ân thầy cô 💐</p></div>
-            </div>
-            <div class="card">
-                <img src="đà lạt 01.jpg">
-                <div class="layer"></div>
-                <div class="info"><h1>Vi vu Đà Lạt</h1><p>Thanh xuân rực rỡ 💙</p></div>
-            </div>
-        </div>
 
-        <h2 id="thanh-tuu" style="text-align: left; margin: 40px 0 20px 0; color: #4ea8de;">🏆 Thành tựu nho nhỏ</h2>
-        <div class="other-info" style="padding: 20px 0; background: transparent; border: none;">
-            <div class="card-standard" onclick="openModal('album-thanh-tuu')">
-                <h3>🏅 Xem bảng vàng thành tích</h3>
-                <p>Một chút nỗ lực của cả tập thể 12A2 ✨</p>
-            </div>
-            <div class="card-standard">
-                
-                <p>Mãi là gia đình! 💙</p>
-            </div>
-        </div>
+    <div class="other-info">
+        <div class="card-standard"><h3>🍰 Tiệc sinh nhật</h3></div>
+        <div class="card-standard"><h3>✍️ Giờ học căng thẳng</h3></div>
     </div>
 
-    <div id="photoModal" class="modal" onclick="closeModalOnOut(event, 'photoModal')">
-        <span class="close-btn" onclick="closeModal('photoModal')">&times;</span>
-        <h2 style="color: white; text-align: center; margin-bottom: 30px;">Kỉ niệm 20/10 💙</h2>
-        <div class="modal-content">
-            <img src="IMG_20-10-01.jpg"> <img src="IMG_20-10-02.jpg">
-            <video controls><source src="VIDEO_DOWNLOAD_1760696753202_1774093986695 - Copy (2).mp4" type="video/mp4"></video>
-        </div>
-    </div>
+    <button class="scroll-down-btn" onclick="scrollToBottom()">
+        <div class="chevron"></div>
+    </button>
 
-    <div id="modal2011" class="modal" onclick="closeModalOnOut(event, 'modal2011')">
-        <span class="close-btn" onclick="closeModal('modal2011')">&times;</span>
-        <h2 style="color: white; text-align: center; margin-bottom: 30px;">Tri Ân 20/11 💐</h2>
-        <div class="modal-content">
-            <img src="IMG_20-11-01.jpg"> <img src="IMG_20-11-02.jpg"> <img src="IMG_20-11-03.jpg">
-        </div>
-    </div>
-
-    <div id="album-thanh-tuu" class="modal" onclick="closeModalOnOut(event, 'album-thanh-tuu')">
-        <span class="close-btn" onclick="closeModal('album-thanh-tuu')">&times;</span>
-        <h2 style="color: white; text-align: center; margin-bottom: 20px;">🏆 Thành tựu nho nhỏ</h2>
-        <div class="modal-content">
-            <p class="featured-caption">Một chút nỗ lực, một chút cố gắng vs hôm nay tụi mình đã có kết quả 💙</p>
-            <img src="image_3.png"><img src="image_12.png"><img src="image_4.png"><img src="image_5.png">
-            <img src="image_6.png"><img src="image_7.png"><img src="image_8.png"><img src="image_9.png">
-            <img src="image_10.png"><img src="image_11.png">
-        </div>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.min.js"></script>
     <script>
-        // Điều hướng Slider
-        const container = document.getElementById('bookContainer');
-        function nextPage() { container.scrollBy({ left: container.offsetWidth, behavior: 'smooth' }); }
-        function prevPage() { container.scrollBy({ left: -container.offsetWidth, behavior: 'smooth' }); }
-
-        // Quản lý Modal
-        const viewers = {};
-        function openModal(id) {
-            const modal = document.getElementById(id);
-            modal.style.display = "block";
-            document.body.style.overflow = "hidden";
-            
-            // Kích hoạt zoom ảnh nếu chưa có
-            if (!viewers[id]) {
-                const gallery = modal.querySelector('.modal-content');
-                viewers[id] = new Viewer(gallery, { navbar: true, title: false, toolbar: true });
-            }
+        // Hàm cuộn xuống cuối trang mượt mà
+        function scrollToBottom() {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
         }
-
-        function closeModal(id) {
-            const modal = document.getElementById(id);
-            modal.style.display = "none";
-            document.body.style.overflow = "auto";
-            const video = modal.querySelector('video');
-            if(video) video.pause();
-        }
-
-        function closeModalOnOut(e, id) { if (e.target.id === id) closeModal(id); }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === "Escape") {
-                ['photoModal', 'modal2011', 'album-thanh-tuu'].forEach(closeModal);
-            }
-        });
     </script>
+
 </body>
+</html>
