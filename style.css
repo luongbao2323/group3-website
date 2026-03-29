@@ -173,3 +173,40 @@ body {
     50% { transform: scale(1.22) translate(-1px, -1px); }
     100% { transform: scale(1.2) translate(1px, 0.5px); }
 }
+/* ĐỊNH DẠNG LOGO TĨNH */
+.logo-img {
+    height: 55px !important;
+    width: 55px !important;
+    object-fit: cover;
+    border-radius: 50%; /* Bo tròn logo để xóa nền trắng ở góc */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: block !important;
+}
+
+/* HIỆU ỨNG RỰC LỬA CHUYỂN ĐỘNG KHI RÊ CHUỘT VÀO (HOVER) */
+.nav-brand:hover .logo-img {
+    transform: scale(1.2) rotate(-5deg); /* Phóng to và nghiêng nhẹ */
+    
+    /* Tạo vầng sáng màu lửa đa lớp rực rỡ */
+    filter: brightness(1.2);
+    box-shadow: 
+        0 0 15px #ff4d00, 
+        0 0 30px #ffae00, 
+        0 -10px 20px #ff4d00;
+    
+    /* Tạo hiệu ứng rung bập bùng như ngọn lửa đang cháy */
+    animation: flame-burn 0.1s infinite;
+}
+
+@keyframes flame-burn {
+    0% { transform: scale(1.2) rotate(-5deg) translate(0, 0); }
+    50% { transform: scale(1.21) rotate(-4deg) translate(-1px, -1px); }
+    100% { transform: scale(1.2) rotate(-5deg) translate(1px, 0.5px); }
+}
+
+/* XÓA NỀN NAVBAR ĐỂ LOGO NỔI BẬT */
+.navbar {
+    background: transparent !important; /* Xóa nền nav */
+    backdrop-filter: blur(10px); /* Vẫn giữ hiệu ứng mờ kính */
+    -webkit-backdrop-filter: blur(10px);
+}
