@@ -241,3 +241,45 @@ body {
     font-weight: 700; 
     font-family: 'Playfair Display', serif; 
 }
+/* DÒNG CHỮ CHẠY TOP BAR */
+.top-bar {
+    background: #ffffff; /* Nền trắng */
+    color: #000000;    /* Chữ đen */
+    height: 35px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1001; /* Phải cao hơn navbar */
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #eee;
+}
+
+.marquee {
+    display: flex;
+    white-space: nowrap;
+    animation: moveLeft 15s linear infinite; /* Chỉnh 15s để chạy nhanh/chậm */
+}
+
+.marquee span {
+    padding-right: 2rem; /* Khoảng cách giữa các cụm chữ */
+}
+
+@keyframes moveLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* ĐIỀU CHỈNH NAVBAR ĐỂ KHÔNG BỊ CHỒNG LÊN TOP BAR */
+.navbar {
+    top: 35px !important; /* Đẩy navbar xuống dưới top-bar */
+}
+
+/* Đẩy nội dung chính xuống thêm để không bị che */
+.hero, section {
+    padding-top: calc(80px + 35px) !important;
+}
