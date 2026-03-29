@@ -8,26 +8,19 @@
 :root {
     --primary: #3498db; 
     --secondary: #2980b9; 
-    --accent: #00d2d3; 
-    --light1: #ebf5fb; 
-    --dark: #2c3e50; 
-    --text: #34495e; 
     --white: #ffffff;
-    --gradient1: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    --fire-color: #ff4d00;
+    --fire-light: #ffae00;
 }
 
 body { 
     font-family: 'Poppins', sans-serif; 
-    color: var(--text); 
-    background: var(--white); 
-    line-height: 1.6; 
     overflow-x: hidden;
 }
 
-/* 1. DÒNG CHỮ CHẠY (TOP BAR) - NẰM Ở TRÊN CÙNG */
+/* 1. DÒNG CHỮ CHẠY (TOP BAR) */
 .top-bar {
     background: #ffffff; 
-    color: #000000;    
     height: 35px;
     display: flex;
     align-items: center;
@@ -36,10 +29,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 2000; /* Cao nhất để luôn nổi trên cùng */
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 1px;
+    z-index: 2000;
     border-bottom: 1px solid #eee;
 }
 
@@ -49,30 +39,26 @@ body {
     animation: moveLeft 15s linear infinite;
 }
 
-.marquee span {
-    padding-right: 2rem;
-}
-
 @keyframes moveLeft {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
 
-/* 2. THANH MENU (NAVBAR) - NẰM DƯỚI TOP BAR */
+/* 2. THANH MENU (NAVBAR) - XÓA NỀN TRẮNG */
 .navbar { 
     position: fixed; 
-    top: 35px; /* Đẩy xuống đúng bằng chiều cao top-bar */
+    top: 35px;
     left: 0;
     width: 100%; 
-    background: rgba(52, 152, 219, 0.95); 
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 0.7rem 2rem; 
+    background: rgba(0, 0, 0, 0.2) !important; /* Tạo nền tối mờ để logo rực lửa nổi bật */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 0 2rem; 
     z-index: 1000; 
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    height: 70px;
+    height: 75px;
     display: flex;
     align-items: center;
+    transition: all 0.3s ease;
 }
 
 .nav-container { 
@@ -84,22 +70,40 @@ body {
     align-items: center; 
 }
 
-/* 3. ĐỊNH DẠNG LOGO VÀ TÊN LỚP */
+/* 3. LOGO VÀ HIỆU ỨNG RỰC LỬA */
 .nav-brand {
-    display: flex !important;
-    align-items: center !important;
+    display: flex;
+    align-items: center;
     gap: 12px;
     text-decoration: none;
 }
 
 .logo-img {
-    height: 50px !important; /* Độ cao lớn hơn một chút để dễ nhìn */
+    height: 55px !important;
     width: auto !important;
-    display: block !important;
     object-fit: contain;
-    /* Hiện khung mờ nếu ảnh lỗi để bạn dễ kiểm tra vị trí */
-    background-color: rgba(255,255,255,0.05); 
-    min-width: 50px;
+    display: block !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(0 0 0px transparent);
+}
+
+/* KHI DI CHUỘT VÀO LOGO */
+.nav-brand:hover .logo-img {
+    transform: scale(1.2) rotate(-5deg); /* Phóng to và nghiêng */
+    
+    /* Tạo vầng sáng màu lửa bao quanh logo */
+    filter: drop-shadow(0 0 10px var(--fire-color)) 
+            drop-shadow(0 0 20px var(--fire-light)) 
+            brightness(1.2);
+    
+    /* Hiệu ứng rung nhẹ như ngọn lửa đang cháy */
+    animation: flame-vibration 0.1s infinite;
+}
+
+@keyframes flame-vibration {
+    0% { transform: scale(1.2) rotate(-5deg) translate(0, 0); }
+    50% { transform: scale(1.21) rotate(-4deg) translate(-1px, -1px); }
+    100% { transform: scale(1.2) rotate(-5deg) translate(1px, 0.5px); }
 }
 
 .brand-text {
@@ -107,79 +111,37 @@ body {
     font-size: 1.5rem;
     font-weight: 700;
     font-family: 'Playfair Display', serif;
+    transition: 0.3s;
 }
 
-/* MENU ĐIỀU HƯỚNG */
+.nav-brand:hover .brand-text {
+    color: var(--fire-light);
+    text-shadow: 0 0 10px var(--fire-color);
+}
+
+/* 4. MENU ĐIỀU HƯỚNG */
 .nav-menu { display: flex; list-style: none; gap: 2rem; }
 .nav-link { color: white; text-decoration: none; font-weight: 600; transition: 0.3s; }
-.nav-link:hover { opacity: 0.8; }
+.nav-link:hover { color: var(--fire-light); }
 
-/* 4. HERO SECTION - ĐẨY NỘI DUNG XUỐNG ĐỂ KHÔNG BỊ CHE */
+/* 5. HERO SECTION */
 .hero { 
     min-height: 100vh; 
-    background: var(--gradient1); 
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); 
     display: flex; 
     align-items: center; 
     justify-content: center; 
     text-align: center; 
     color: var(--white); 
-    padding-top: 105px; /* 35px top-bar + 70px navbar */
+    padding-top: 110px;
 }
 
-/* Các phần khác (nút, gallery) giữ nguyên như cũ của bạn */
-.hero h1 { font-size: 4rem; font-family: 'Playfair Display', serif; margin-bottom: 1rem; }
-.btn { padding: 0.9rem 2.2rem; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-block; margin: 10px; transition: 0.3s; }
-.btn-primary { background: var(--white); color: var(--primary); }
+.hero h1 { font-size: 4rem; margin-bottom: 1rem; }
 
+/* RESPONSIVE CHO ĐIỆN THOẠI */
 @media (max-width: 768px) {
     .nav-menu { display: none; }
     .hero h1 { font-size: 2.5rem; }
-    .navbar { top: 35px; padding: 0.5rem 1rem; }
-	.nav-brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.logo-img {
-    height: 45px; /* Chỉnh độ cao logo cho vừa vặn thanh menu */
-    width: auto;
-    object-fit: contain;
-    display: block; /* Ép hiển thị */
-}
-}
-/* ĐỊNH DẠNG LOGO GIF */
-.logo-img {
-    height: 50px; /* Tăng kích thước logo cho rõ */
-    width: auto;
-    object-fit: contain;
-    transition: transform 0.3s ease-out; /* Phóng to nhẹ khi hover */
-}
-
-/* HIỆU ỨNG KHI ĐƯA CHUỘT VÀO LOGO (HOVER) */
-.nav-brand:hover .logo-img {
-    transform: scale(1.1); /* Phóng to logo lên 10% */
-}
-
-/* HIỆU ỨNG LỬA CHÁY */
-.logo-img .fire-group {
-    display: none; /* Ẩn lửa ở chế độ tĩnh */
-}
-
-.nav-brand:hover .logo-img .fire-group {
-    display: block; /* Hiện lửa khi di chuột vào */
-    animation: fire-flicker 0.1s infinite; /* Tạo hiệu ứng nhấp nháy liên tục */
-}
-
-@keyframes fire-flicker {
-    0%   { opacity: 0.8; transform: translateY(0) scaleY(1); }
-    50%  { opacity: 1; transform: translateY(-2px) scaleY(1.05); }
-    100% { opacity: 0.9; transform: translateY(1px) scaleY(0.98); }
-}
-
-/* XÓA NỀN TRẮNG CỦA CẢ THANH NAV */
-.navbar {
-    background: transparent !important; /* Xóa nền nav */
-    backdrop-filter: blur(10px); /* Vẫn giữ hiệu ứng mờ kính */
-    -webkit-backdrop-filter: blur(10px);
+    .navbar { height: 65px; padding: 0 1rem; }
+    .logo-img { height: 45px !important; }
 }
