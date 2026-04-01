@@ -48,24 +48,41 @@
             position: relative; cursor: pointer; box-shadow: 0 15px 35px rgba(0,0,0,0.1); transition: 0.4s; 
         }
         .card img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; }
-		/* Hiệu ứng ẩn chữ mặc định */
-        .info-click { 
-            width: 100%; position: absolute; bottom: 0; left: 0; padding: 25px; 
-            color: white; text-align: center; background: rgba(0, 0, 0, 0.8);
-            transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 5;
-        }
-        /* Khi click vào thẻ card (thêm class active bằng JS) */
-        .card.active .info-click { transform: translateY(0); }
-        .card.active img { transform: scale(1.1); }
-        
-        /* Overlay đen mờ khi click */
-        .card .overlay-fade { 
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0); transition: 0.4s; z-index: 2; 
-        }
-        .card.active .overlay-fade { background: rgba(0,0,0,0.3); }
+		/* 1. Trạng thái chữ nằm ẩn ở dưới đáy hình */
+.info-click { 
+    width: 100%; 
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    padding: 25px; 
+    color: white; 
+    text-align: center; 
+    background: rgba(0, 0, 0, 0.8);
+    transform: translateY(101%); /* Giấu chữ xuống dưới */
+    transition: transform 0.4s ease-out; /* Hiệu ứng trượt hiện chữ */
+    z-index: 5;
+}
 
+/* 2. HIỆU ỨNG DI CHUỘT (Chỉ hiện chữ, KHÔNG phóng to ảnh) */
+@media (hover: hover) {
+    .card:hover .info-click {
+        transform: translateY(0); /* Đẩy chữ lên vị trí cũ để hiện ra */
+    }
+    
+    .card:hover .overlay-fade {
+        background: rgba(0, 0, 0, 0.4); /* Chỉ làm tối nền cho dễ đọc chữ */
+    }
+
+    /* Đảm bảo ảnh đứng yên, ko nhảy hay phóng to */
+    .card:hover img {
+        transform: none !important; 
+    }
+}
+
+/* 3. HIỆU ỨNG KHI CLICK (Dành cho điện thoại) */
+.card.active .info-click {
+    transform: translateY(0);
+}
         /* --- SLIDER --- */
         .book-wrapper { position: relative; max-width: 950px; margin: 40px auto; padding: 0 20px; }
         .book-container { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; border-radius: 25px; }
@@ -85,12 +102,12 @@
         .other-info { display: flex; justify-content: center; gap: 30px; padding: 60px 10%; background: #fff; border-top: 1px solid #eee; }
         .card-standard { background: #f8f9fa; padding: 40px; border-radius: 20px; text-align: center; flex: 1; border: 1px solid #eee; cursor: pointer; transition: 0.3s; }
         .card-standard:hover { transform: translateY(-5px); border-color: #4ea8de; }
-
-        @media (max-width: 768px) { .card-group { flex-direction: column; } .nav-btn { display: none; } .other-info { flex-direction: column; } }
+		@media (max-width: 768px) { .card-group { flex-direction: column; } .nav-btn { display: none; } .other-info { flex-direction: column; } }
     </style>
 </head>
 <body>
-	<button class="scroll-up-btn" id="scrollUpBtn" onclick="scrollToTop()">
+
+    <button class="scroll-up-btn" id="scrollUpBtn" onclick="scrollToTop()">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 15l-6-6-6 6"/>
         </svg>
@@ -119,7 +136,7 @@
         
         <div class="card-group">
             <div class="card" onclick="toggleCardInfo(this)">
-                <img src="images/z7667308936761_b7af7e1b323a2d44bc8ade38f54932e4.jpg">
+                <img src="z7667308936761_b7af7e1b323a2d44bc8ade38f54932e4.jpg">
                 <div class="overlay-fade"></div>
                 <div class="info-click">
                     <h1>Đội nữ 12A2</h1>
@@ -127,7 +144,7 @@
                 </div>
             </div>
             <div class="card" onclick="toggleCardInfo(this)">
-                <img src="images/IMG_1774077029424_1774083044722.jpg">
+                <img src="IMG_1774077029424_1774083044722.jpg">
                 <div class="overlay-fade"></div>
                 <div class="info-click">
                     <h1>Đội nam 12A2</h1>
@@ -146,9 +163,9 @@
 
         <h2 id="thuoc-anh" style="text-align: left; margin: 40px 0 20px 0; color: #4ea8de;">🎞️ Thước ảnh kỉ niệm</h2>
         <div class="book-wrapper">
-            <button class="nav-btn prev-btn" onclick="prevPage()">❮</button>
+			<button class="nav-btn prev-btn" onclick="prevPage()">❮</button>
             <div class="book-container" id="bookContainer">
-				<div class="book-page"><img src="z7667308936761_b7af7e1b323a2d44bc8ade38f54932e4.jpg"></div>
+                <div class="book-page"><img src="z7667308936761_b7af7e1b323a2d44bc8ade38f54932e4.jpg"></div>
                 <div class="book-page"><img src="IMG_1774077029424_1774083044722.jpg"></div>
                 <div class="book-page"><img src="đà lạt 01.jpg"></div>
             </div>
@@ -172,7 +189,7 @@
                 </div>
             </div>
             <div class="card">
-                <img src="đà lạt 01.jpg">
+                <img src="da-lat-01.jpg">
                 <div style="background: rgba(0,0,0,0.3); position: absolute; top:0; left:0; width:100%; height:100%;"></div>
                 <div style="position: absolute; bottom: 25px; width: 100%; color: white; z-index: 10;">
                     <h1>Vi vu Đà Lạt</h1><p>Thanh xuân rực rỡ 💙</p>
@@ -196,10 +213,11 @@
         <div class="modal-content">
             <h2 class="featured-caption">Kỉ niệm 20/10 💙</h2>
             <img src="IMG_20-10-01.jpg"> <img src="IMG_20-10-02.jpg">
-            <video controls><source src="VIDEO_DOWNLOAD_1760696753202_1774093986695 - Copy (2).mp4" type="video/mp4"></video>
+			<video controls><source src="VIDEO_DOWNLOAD_1760696753202_1774093986695 - Copy (2).mp4" type="video/mp4"></video>
         </div>
     </div>
-	<div id="modal2011" class="modal" onclick="closeModalOnOut(event, 'modal2011')">
+
+    <div id="modal2011" class="modal" onclick="closeModalOnOut(event, 'modal2011')">
         <span class="close-btn" onclick="closeModal('modal2011')">&times;</span>
         <div class="modal-content">
             <h2 class="featured-caption">Tri Ân 20/11 💐</h2>
@@ -258,9 +276,9 @@
         function closeModal(id) {
             const modal = document.getElementById(id);
             if(modal) {
-                modal.style.display = "none";
+				modal.style.display = "none";
                 document.body.style.overflow = "auto";
-				const video = modal.querySelector('video');
+                const video = modal.querySelector('video');
                 if(video) video.pause();
             }
         }
