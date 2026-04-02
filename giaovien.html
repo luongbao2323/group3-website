@@ -2,6 +2,175 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin Giáo viên - 12A2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #3498db;
+            --text-dark: #333;
+            --text-gray: #666;
+            --bg-light: #f4f7f9;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        /* Thanh tiêu đề xanh trên cùng */
+        .top-banner {
+            background-color: var(--primary-blue);
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* Tiêu đề chính */
+        .main-title {
+            color: var(--primary-blue);
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+        }
+
+        /* Bố cục lưới cho các thẻ */
+        .teacher-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        /* Thẻ giáo viên (Card) */
+        .teacher-link {
+            text-decoration: none; /* Bỏ gạch chân link */
+            color: inherit;
+            display: block;
+            flex: 1;
+            max-width: 450px;
+            min-width: 300px;
+        }
+
+        .teacher-card {
+            background: white;
+            border-radius: 30px; /* Bo góc lớn giống hình mẫu */
+            padding: 50px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Hiệu ứng khi di chuột vào thẻ */
+        .teacher-link:hover .teacher-card {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Vòng tròn chứa ảnh */
+        .image-circle {
+            width: 160px;
+            height: 160px;
+            border: 4px solid var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+        .image-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Tên giáo viên */
+        .name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+
+        /* Chức vụ (Màu xanh) */
+        .role {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        /* Mô tả ngắn */
+        .description {
+            color: var(--text-gray);
+            line-height: 1.6;
+            font-size: 1rem;
+            max-width: 320px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-banner">
+        Hội đồng sư phạm
+    </div>
+
+    <div class="container">
+        <h1 class="main-title">Thông tin Giáo viên</h1>
+
+        <div class="teacher-grid">
+            <a href="sang-info.html" class="teacher-link">
+                <div class="teacher-card">
+                    <div class="image-circle">
+                        <img src="sangjr.jpg" alt="Nguyễn Trọng Sang">
+                    </div>
+                    <div class="name">Nguyễn Trọng Sang</div>
+                    <div class="role">Giáo viên Chủ nhiệm</div>
+                    <p class="description">
+                        Người thầy tận tâm, luôn dìu dắt và định hướng cho tập thể 12A2 trên con đường học vấn.
+                    </p>
+                </div>
+            </a>
+
+            <a href="trong-info.html" class="teacher-link">
+                <div class="teacher-card">
+                    <div class="image-circle">
+                        <img src="trong.jpg" alt="Nguyễn Văn Trọng">
+                    </div>
+                    <div class="name">Nguyễn Văn Trọng</div>
+                    <div class="role">Giáo viên Bộ môn</div>
+                    <p class="description">
+                        Thầy mang đến kiến thức sâu rộng và những giờ học đầy hứng khởi cho các thành viên trong lớp.
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
     <title>Tiểu sử Thầy Nguyễn Trọng Sang</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
