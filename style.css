@@ -1,193 +1,112 @@
-/* 1. RESET & CẤU HÌNH CHUNG */
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
-
+/* RESET CHUNG */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
     --primary: #3498db; 
     --secondary: #2980b9; 
     --white: #ffffff;
-    --fire-color: #ff4d00;
-    --fire-light: #ffae00;
 }
+body { font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
-body { 
-    font-family: 'Poppins', sans-serif; 
-    overflow-x: hidden;
-    background-color: #f4f4f4;
-    line-height: 1.6;
-}
-
-/* 2. DÒNG CHỮ CHẠY (TOP BAR) */
+/* DÒNG CHỮ CHẠY (TOP BAR) */
 .top-bar {
     background: #ffffff; 
-    height: 35px;
-    display: flex;
+    height: 35px; 
+    display: flex; 
     align-items: center;
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    left: 0;
+    overflow: hidden; 
+    position: fixed; /* Giữ cố định trên cùng */
+    top: 0; 
+    left: 0; 
     width: 100%;
-    z-index: 2000;
+    z-index: 2000; 
     border-bottom: 1px solid #eee;
 }
 
-.marquee {
-    display: flex;
-    white-space: nowrap;
-    animation: moveLeft 15s linear infinite;
+.marquee { 
+    display: flex; 
+    white-space: nowrap; 
+    animation: moveLeft 15s linear infinite; 
 }
 
 .marquee span { 
     padding-right: 2rem; 
     font-weight: bold; 
-    color: var(--secondary);
+    color: var(--secondary); 
+    font-size: 14px;
 }
 
-@keyframes moveLeft {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+@keyframes moveLeft { 
+    0% { transform: translateX(0); } 
+    100% { transform: translateX(-50%); } 
 }
 
-/* 3. THANH MENU (NAVBAR) */
+/* THANH MENU (NAVBAR) */
 .navbar { 
     position: fixed; 
-    top: 35px;
-    left: 0;
+    top: 35px; /* Nằm ngay dưới dòng chữ chạy */
+    left: 0; 
     width: 100%; 
-    background: var(--primary) !important;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background: var(--primary) !important; 
     padding: 0 2rem; 
     z-index: 1000; 
-    height: 75px;
-    display: flex;
+    height: 75px; 
+    display: flex; 
     align-items: center;
 }
 
 .nav-container { 
     max-width: 1200px; 
     margin: 0 auto; 
-    width: 100%;
+    width: 100%; 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
 }
 
-/* 4. LOGO & HIỆU ỨNG RỰC LỬA */
-.nav-brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-}
+.nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 
 .logo-img {
-    height: 55px !important;
+    height: 55px !important; 
     width: 55px !important;
-    object-fit: cover;
+    object-fit: cover; 
     border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.5);
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid rgba(255,255,255,0.8);
+    background-color: #fff;
 }
 
-.nav-brand:hover .logo-img {
-    transform: scale(1.25) rotate(-5deg);
-    box-shadow: 0 0 15px var(--fire-color), 0 0 30px var(--fire-light);
-    animation: flame-vibrate 0.1s infinite;
+.brand-text { 
+    color: white; 
+    font-size: 1.6rem; 
+    font-weight: 700; 
+    font-family: 'Playfair Display', serif; 
 }
 
-@keyframes flame-vibrate {
-    0% { transform: translate(0, 0); }
-    50% { transform: translate(-1px, 1px); }
-    100% { transform: translate(1px, -0.5px); }
-}
-
-.brand-text {
-    color: white;
-    font-size: 1.6rem;
-    font-weight: 700;
-    font-family: 'Playfair Display', serif; /* Đồng bộ font chữ lớp */
-}
-
-/* 5. MENU ĐIỀU HƯỚNG */
 .nav-menu { display: flex; list-style: none; gap: 2rem; }
 .nav-link { 
     color: white; 
     text-decoration: none; 
     font-weight: 600; 
-    position: relative;
-    transition: 0.3s;
+    transition: 0.3s; 
 }
+.nav-link:hover { color: #ffae00; }
 
-.nav-link:hover { color: var(--fire-light); }
-.nav-link::after {
-    content: ''; position: absolute; width: 0; height: 2px;
-    bottom: -5px; left: 0; background: var(--fire-light); transition: 0.3s;
-}
-.nav-link:hover::after { width: 100%; }
-
-/* 6. HERO SECTION - SỬA LỖI LỆCH NÚT */
+/* HIỆU ỨNG NỀN TRANG CHỦ (Chỉ dành cho trang index) */
 .hero { 
+    position: relative; 
     min-height: 100vh; 
-    background: linear-gradient(135deg, #3498db 0%, #1e6091 100%); 
+    background: url('anhlop.jpg') no-repeat center center/cover; 
     display: flex; 
-    flex-direction: column;
     align-items: center; 
     justify-content: center; 
     text-align: center; 
     color: var(--white); 
-    padding: 110px 20px 20px 20px; /* Thêm padding để không bị dính lề */
+    padding: 110px 20px 20px 20px;
 }
-
-.hero-content {
-    width: 100%;
-    max-width: 900px;
+.hero-overlay {
+    position: absolute; 
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(44, 62, 80, 0.7); 
+    backdrop-filter: blur(8px) grayscale(60%); 
+    z-index: 1;
 }
-
-.hero h1 { 
-    font-size: clamp(2.5rem, 8vw, 4.5rem); /* Chữ tự co giãn đều nhau */
-    margin-bottom: 1.5rem; 
-    font-family: 'Playfair Display', serif;
-    text-shadow: 3px 3px 15px rgba(0,0,0,0.3);
-}
-
-/* 7. NÚT BẤM - CĂN GIỮA CHUẨN */
-.hero-buttons { 
-    display: flex; 
-    gap: 1.5rem; 
-    justify-content: center; 
-    flex-wrap: wrap; /* Tự xuống dòng khi màn hình nhỏ */
-}
-
-.btn {
-    padding: 0.8rem 2.5rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 700;
-    transition: 0.4s;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    min-width: 180px; /* Đảm bảo 2 nút bằng kích thước nhau */
-}
-
-.btn-primary { background: white; color: var(--primary); border: 2px solid white; }
-.btn-primary:hover { 
-    transform: translateY(-5px); 
-    background: var(--fire-light);
-    border-color: var(--fire-light);
-    color: white;
-}
-
-.btn-secondary { border: 2px solid white; color: white; }
-.btn-secondary:hover { background: white; color: var(--primary); }
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .nav-menu { display: none; } /* Có thể thay bằng menu burger sau */
-    .navbar { height: 65px; padding: 0 1rem; }
-    .hero-buttons { flex-direction: column; align-items: center; }
-    .btn { width: 100%; max-width: 250px; }
-}
+.hero-content { position: relative; z-index: 2; }
