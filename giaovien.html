@@ -3,37 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giáo viên - 12A2</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Tiểu sử Thầy Nguyễn Trọng Sang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #f4f7f9; margin: 0; padding-top: 100px; }
+        
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        
+        .back-btn { display: inline-block; margin-bottom: 20px; text-decoration: none; color: #3498db; font-weight: 600; }
+        
+        .profile-header { display: flex; align-items: center; gap: 30px; border-bottom: 2px solid #f0f0f0; padding-bottom: 30px; margin-bottom: 30px; }
+        
+        .profile-img { width: 200px; height: 200px; border-radius: 15px; object-fit: cover; border: 4px solid #3498db; }
+        
+        .profile-info h1 { margin: 0; color: #333; font-size: 2rem; }
+        
+        .profile-role { color: #3498db; font-weight: 600; font-size: 1.2rem; }
+        
+        .bio-content { line-height: 1.8; color: #555; }
+        
+        .bio-content h3 { color: #333; border-left: 4px solid #3498db; padding-left: 15px; margin-top: 25px; }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-brand"><img src="logo_gen.png" alt="Logo"></a>
-            <ul class="nav-menu">
-                <li><a class="nav-link" href="index.html">Trang chủ</a></li>
-                <li><a class="nav-link" href="thanhvien.html">Thành viên</a></li>
-                <li><a class="nav-link active" href="giaovien.html">Giáo viên</a></li>
-                <li><a class="nav-link" href="anh.html">Ảnh</a></li>
-                <li><a class="nav-link" href="lien-he.html">Liên hệ</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <section style="padding-top: 120px; min-height: 100vh; background: #f0f9ff;">
-        <h2 class="section-title">Giáo viên chủ nhiệm</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <div class="gallery-img-container">👨‍🏫</div>
-                <div style="font-weight:bold; font-size: 1.2rem; margin-bottom: 5px;">Thầy Nguyễn Trọng Sang</div>
-                <div style="color:var(--primary); font-weight:600;">Chủ nhiệm lớp 12A2</div>
-                <p style="margin-top: 15px; font-size: 0.95rem; color: #555; line-height: 1.8;">
-                    Thầy là người dẫn dắt lớp 12A2 với tâm huyết và sự tận tụy. <br>
-                    Tốt nghiệp Đại học Sư phạm TP.HCM.
-                </p>
+    <div class="container">
+        <a href="giaovien.html" class="back-btn">← Quay lại danh sách</a>
+        
+        <div class="profile-header">
+            <img src="sangjr.jpg" alt="Thầy Nguyễn Trọng Sang" class="profile-img">
+            <div class="profile-info">
+                <h1>Nguyễn Trọng Sang</h1>
+                <p class="profile-role">Giáo viên Chủ nhiệm lớp 12A2</p>
             </div>
         </div>
-    </section>
+
+        <div class="bio-content">
+            <h3>Thông tin chung</h3>
+            <p>
+                Thầy là người dẫn dắt lớp 12A2 với tâm huyết và sự tận tụy. 
+                Với nhiều năm kinh nghiệm trong ngành giáo dục, thầy luôn là chỗ dựa vững chắc cho các học sinh.
+            </p>
+
+            <h3>Học vấn</h3>
+            <ul>
+                <li>Tốt nghiệp Đại học Sư phạm TP.HCM.</li>
+                <li>Chuyên ngành: Sư phạm Toán học (ví dụ).</li>
+            </ul>
+
+            <h3>Châm ngôn giảng dạy</h3>
+            <p><i>"Giáo dục không phải là việc đổ đầy một cái xô, mà là thắp sáng một ngọn lửa."</i></p>
+        </div>
+    </div>
 </body>
 </html>
