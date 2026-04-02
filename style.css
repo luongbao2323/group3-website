@@ -1,4 +1,4 @@
-/* 1. RESET & BIẾN (VARIABLES) */
+]/* --- RESET & CẤU HÌNH CHUNG --- */
 * { 
     margin: 0; 
     padding: 0; 
@@ -7,21 +7,19 @@
 
 :root {
     --primary: #3498db; 
-    --secondary: #2c3e50; /* Màu xám xanh đậm chuyên nghiệp */
-    --accent: #ffae00;    /* Màu vàng cam nhấn nhá */
+    --secondary: #2c3e50;
+    --accent: #ffae00;
     --white: #ffffff;
-    --bg-light: #f0f9ff;
-    --fire-shadow: 0 0 20px #ff4d00, 0 0 40px #ffae00;
+    --text-color: #f1f1f1; /* Màu chữ sáng hơn cho phần Hero */
 }
 
 body { 
-    font-family: 'Poppins', sans-serif; 
+    font-family: 'Poppins', sans-serif; /* Phông chữ mặc định */
     overflow-x: hidden; 
     line-height: 1.6;
-    background-color: var(--bg-light);
 }
 
-/* 2. DÒNG CHỮ CHẠY (TOP BAR) */
+/* --- DÒNG CHỮ CHẠY (TOP BAR) --- */
 .top-bar {
     background: #ffffff; 
     height: 35px; 
@@ -55,7 +53,7 @@ body {
     100% { transform: translateX(-50%); } 
 }
 
-/* 3. THANH MENU (NAVBAR) */
+/* --- THANH MENU (NAVBAR) --- */
 .navbar { 
     position: fixed; 
     top: 35px; 
@@ -67,7 +65,7 @@ body {
     height: 75px; 
     display: flex; 
     align-items: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .nav-container { 
@@ -79,34 +77,22 @@ body {
     align-items: center; 
 }
 
-.nav-brand { 
-    display: flex; 
-    align-items: center; 
-    gap: 12px; 
-    text-decoration: none; 
-}
+.nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 
 .logo-img {
-    height: 55px !important; 
-    width: 55px !important;
+    height: 55px; 
+    width: 55px;
     object-fit: cover; 
     border-radius: 50%;
     border: 2px solid var(--white);
     background-color: var(--white);
-    transition: 0.5s;
-}
-
-/* Hiệu ứng rực cháy khi hover vào logo */
-.nav-brand:hover .logo-img {
-    transform: scale(1.1) rotate(-5deg);
-    box-shadow: var(--fire-shadow);
 }
 
 .brand-text { 
     color: var(--white); 
     font-size: 1.6rem; 
     font-weight: 700; 
-    font-family: 'Playfair Display', serif; 
+    font-family: 'EB Garamond', serif; /* Phông vintage cho thương hiệu */
 }
 
 .nav-menu { display: flex; list-style: none; gap: 2rem; }
@@ -122,7 +108,7 @@ body {
     color: var(--accent); 
 }
 
-/* 4. TRANG CHỦ (HERO SECTION) */
+/* --- HERO SECTION - HIỆU ỨNG POPUP VÀ PHÔNG VINTAGE --- */
 .hero { 
     position: relative; 
     min-height: 100vh; 
@@ -131,103 +117,124 @@ body {
     align-items: center; 
     justify-content: center; 
     text-align: center; 
-    color: var(--white); 
+    color: var(--text-color); 
     padding-top: 110px;
+    overflow: hidden; /* Ngăn scroll bar khi popup chạy */
 }
 
 .hero-overlay {
     position: absolute; 
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(44, 62, 80, 0.75); /* Tông xám xanh đậm */
-    backdrop-filter: blur(6px) grayscale(50%); /* Mờ ảo và bớt rực màu */
+    background: rgba(0, 0, 0, 0.65); /* Lớp phủ tối hơn để chữ nổi */
     z-index: 1;
 }
 
-.hero-content { position: relative; z-index: 2; }
+.hero-content { position: relative; z-index: 2; width: 100%; max-width: 800px; }
 
+/* Phông vintage cho tiêu đề chính */
 .hero h1 { 
-    font-size: clamp(3rem, 10vw, 5rem); 
-    font-family: 'Playfair Display', serif;
-    text-shadow: 3px 3px 20px rgba(0,0,0,0.4);
-    margin-bottom: 1rem;
+    font-size: clamp(3.5rem, 10vw, 6rem); 
+    font-family: 'EB Garamond', serif; 
+    font-weight: 700;
+    text-shadow: 2px 2px 15px rgba(0,0,0,0.6);
+    margin-bottom: 0.8rem;
+    letter-spacing: -1px;
+    line-height: 1.1;
 }
 
-.hero-buttons { display: flex; gap: 15px; justify-content: center; }
+/* Phông vintage nhẹ hơn cho năm học */
+.hero-year {
+    font-size: 1.4rem;
+    font-family: 'EB Garamond', serif;
+    font-weight: 400;
+    margin-bottom: 1.2rem;
+    opacity: 0.9;
+    letter-spacing: 1px;
+}
+
+/* Phông sans-serif cho slogan để cân bằng */
+.hero-slogan {
+    font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 3rem;
+    opacity: 0.85;
+}
+
+/* --- ĐỊNH NGHĨA HIỆU ỨNG POPUP (KEYFRAMES) --- */
+@keyframes popupAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Lớp CSS cho các mục cần popup */
+.popup-item {
+    opacity: 0; /* Bắt đầu ẩn */
+    animation: popupAnimation 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards; /* Cubic-bezier cho mượt */
+}
+
+/* Các khoảng delay khác nhau cho từng mục (tạo hiệu ứng tuần tự) */
+.popup-delay-1 { animation-delay: 0.2s; }
+.popup-delay-2 { animation-delay: 0.4s; }
+.popup-delay-3 { animation-delay: 0.6s; }
+.popup-delay-4 { animation-delay: 0.8s; }
+
+/* --- NÚT BẤM --- */
+.hero-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
 
 .btn {
-    padding: 12px 35px;
+    padding: 0.8rem 2.5rem;
     border-radius: 50px;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
     transition: 0.4s;
     text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    min-width: 180px;
 }
 
-.btn-primary { background: var(--white); color: var(--primary); }
-.btn-secondary { border: 2px solid var(--white); color: var(--white); }
-.btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-
-/* 5. TRANG THÀNH VIÊN (CARD DESIGN) */
-.members-section {
-    padding: 140px 20px 60px;
+.btn-primary { 
+    background: var(--white); 
+    color: #333; /* Chữ tối trên nền trắng */
+    border: 2px solid var(--white);
 }
 
-.section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    color: var(--secondary);
-    text-align: center;
-    margin-bottom: 40px;
+.btn-secondary { 
+    background: transparent;
+    border: 2px solid var(--white); 
+    color: var(--white); 
 }
 
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 25px;
-    max-width: 1200px;
-    margin: 0 auto;
+/* Hiệu ứng hover nút */
+.btn:hover { 
+    transform: translateY(-5px) scale(1.05); /* Popup nhẹ khi hover */
+    box-shadow: 0 8px 25px rgba(255,255,255,0.25);
 }
 
-.gallery-item {
+.btn-primary:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--white);
+}
+
+.btn-secondary:hover {
     background: var(--white);
-    padding: 40px 20px;
-    border-radius: 25px;
-    text-align: center;
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    color: #333;
 }
 
-.gallery-item:hover {
-    transform: translateY(-15px) scale(1.03);
-    box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
-}
-
-.gallery-img-container {
-    font-size: 55px;
-    background: #f8f9fa;
-    width: 110px;
-    height: 110px;
-    line-height: 110px;
-    margin: 0 auto 20px;
-    border-radius: 50%;
-    border: 3px solid var(--bg-light);
-}
-
-.gallery-title {
-    font-weight: 700;
-    font-size: 1.3rem;
-    color: var(--secondary);
-    margin-bottom: 8px;
-}
-
-.gallery-role {
-    color: #888;
-    font-size: 0.95rem;
-}
-
-/* 6. RESPONSIVE */
+/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
-    .nav-menu { display: none; } /* Có thể làm menu hamburger sau */
-    .hero h1 { font-size: 3rem; }
-    .section-title { font-size: 2.2rem; }
+    .nav-menu { display: none; }
+    .hero h1 { font-size: 3.5rem; }
+    .hero-buttons { flex-direction: column; align-items: center; gap: 1rem; }
+    .btn { width: 100%; max-width: 250px; }
 }
