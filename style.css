@@ -251,61 +251,77 @@ body {
     .hero-buttons { flex-direction: column; align-items: center; gap: 1rem; }
     .btn { width: 100%; max-width: 280px; }
 }
-/* --- PHẦN CHÂN TRANG (FOOTER) --- */
+/* --- PHẦN CHÂN TRANG (FOOTER) - ĐÃ TỐI ƯU --- */
 .footer {
-    background: #1a252f; /* Nền tối sang trọng */
+    background: #0f171e; /* Nền tối sâu hơn để làm nổi bật chữ white và accent */
     color: var(--white);
-    padding: 80px 20px 20px 20px;
+    padding: 100px 20px 30px 20px; /* Tăng padding top để tách biệt với nội dung trên */
     position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Chia đôi 2 bên */
-    gap: 50px;
+    grid-template-columns: 1.2fr 0.8fr; /* Điều chỉnh tỉ lệ để phần chữ rộng hơn một chút */
+    gap: 60px;
     align-items: center;
 }
 
 .footer-title {
     font-family: 'EB Garamond', serif;
-    font-size: 2.5rem;
+    font-size: 2.8rem; /* Tăng size một chút cho sang trọng */
     color: var(--accent);
     margin-bottom: 15px;
+    letter-spacing: -1px;
 }
 
 .footer-divider {
-    width: 60px;
+    width: 80px; /* Dài hơn chút cho cân đối */
     height: 3px;
     background: var(--accent);
-    margin-bottom: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 10px rgba(255, 174, 0, 0.3); /* Hiệu ứng phát sáng nhẹ */
 }
 
 .footer-message {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     line-height: 1.8;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
     font-style: italic;
-    opacity: 0.9;
+    opacity: 0.85;
+    color: var(--text-color);
+}
+
+.footer-contact {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 20px;
+    border-left: 3px solid var(--primary);
+    border-radius: 0 10px 10px 0;
 }
 
 .footer-contact p {
-    margin-bottom: 8px;
-    font-size: 0.95rem;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .footer-contact strong {
-    color: var(--primary);
+    color: var(--accent); /* Đổi sang accent để đồng bộ với tiêu đề */
+    font-weight: 600;
 }
 
-/* Khung ảnh bên phải */
+/* Khung ảnh bên phải - Hiệu ứng Vintage */
 .footer-image-wrapper {
     position: relative;
-    border-radius: 15px;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
     aspect-ratio: 16 / 9;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-img {
@@ -313,18 +329,19 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: 0.5s;
+    filter: grayscale(20%); /* Hơi vintage một chút */
+    transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .img-overlay {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.3);
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.7));
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: 0.5s;
+    transition: 0.5s ease;
 }
 
 .footer-image-wrapper:hover .img-overlay {
@@ -333,35 +350,56 @@ body {
 
 .footer-image-wrapper:hover .footer-img {
     transform: scale(1.1);
+    filter: grayscale(0%);
 }
 
 .img-overlay span {
-    border: 2px solid var(--white);
-    padding: 10px 20px;
-    font-weight: bold;
+    border: 1px solid var(--white);
+    padding: 12px 25px;
+    font-weight: 600;
     text-transform: uppercase;
+    letter-spacing: 2px;
+    background: rgba(0,0,0,0.2);
+    backdrop-filter: blur(5px);
 }
 
 /* Bản quyền dưới cùng */
 .footer-bottom {
-    margin-top: 60px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 80px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255,255,255,0.05);
     text-align: center;
-    font-size: 0.8rem;
-    opacity: 0.6;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    opacity: 0.5;
+    transition: 0.3s;
 }
 
-/* Responsive cho điện thoại */
+.footer-bottom:hover {
+    opacity: 1;
+}
+
+/* Responsive cho máy tính bảng & điện thoại */
 @media (max-width: 992px) {
+    .footer {
+        padding-top: 60px;
+    }
     .footer-container {
-        grid-template-columns: 1fr; /* Chuyển thành 1 cột trên mobile */
+        grid-template-columns: 1fr; /* Chuyển thành 1 cột */
         text-align: center;
+        gap: 40px;
     }
     .footer-divider {
-        margin: 0 auto 25px auto;
+        margin: 0 auto 30px auto;
     }
     .footer-title {
-        font-size: 2rem;
+        font-size: 2.2rem;
+    }
+    .footer-contact {
+        border-left: none;
+        border-top: 3px solid var(--primary);
+        border-radius: 0 0 10px 10px;
+        display: inline-block;
+        text-align: left;
     }
 }
