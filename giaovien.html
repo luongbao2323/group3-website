@@ -44,7 +44,7 @@
         /* Các trang */
         .page {
             display: none;
-            padding: 100px 20px 40px;
+            padding: 120px 20px 40px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -63,7 +63,7 @@
         /* Lưới hiển thị */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             gap: 25px;
         }
 
@@ -175,12 +175,12 @@
         <a onclick="showPage('teachers')">Giáo viên</a>
     </nav>
 
-    <div id="members" class="page active">
+    <div id="members" class="page">
         <h2 class="section-title">Thành viên Lớp 12A2</h2>
         <div class="gallery-grid" id="membersGrid"></div>
     </div>
 
-    <div id="teachers" class="page">
+    <div id="teachers" class="page active">
         <h2 class="section-title">Hội đồng Sư phạm</h2>
         <div class="gallery-grid" id="teachersGrid"></div>
     </div>
@@ -201,7 +201,13 @@
     </div>
 
     <script>
-      // DỮ LIỆU GIÁO VIÊN
+        // --- QUAN TRỌNG: PHẢI CÓ BIẾN MEMBERS NÀY ĐỂ TRANG KHÔNG BỊ LỖI ---
+        const members = [
+            { id: 1, name: 'Nguyễn Văn A', birthDate: '10/05/2008', emoji: '👦', bio: 'Học sinh năng động.' },
+            { id: 2, name: 'Trần Thị B', birthDate: '22/09/2008', emoji: '👧', bio: 'Lớp phó học tập.' }
+        ];
+
+        // DỮ LIỆU GIÁO VIÊN
         const teachers = [
             { 
                 id: 101, 
@@ -219,7 +225,6 @@
             }
         ];
 
-        // HÀM HIỂN THỊ HỌC SINH
         function renderMembers() {
             document.getElementById('membersGrid').innerHTML = members.map(m => `
                 <div class="gallery-item" onclick="showDetail(${m.id}, 'member')">
@@ -232,7 +237,6 @@
                 </div>`).join('');
         }
 
-        // HÀM HIỂN THỊ GIÁO VIÊN
         function renderTeachers() {
             document.getElementById('teachersGrid').innerHTML = teachers.map(t => `
                 <div class="gallery-item" onclick="showDetail(${t.id}, 'teacher')">
@@ -245,13 +249,11 @@
                 </div>`).join('');
         }
 
-        // HÀM HIỂN THỊ CHI TIẾT
         function showDetail(id, type) {
             const data = type === 'member' ? members.find(x => x.id === id) : teachers.find(x => x.id === id);
             if (!data) return;
 
             const avatarDiv = document.getElementById('detailAvatar');
-            
             if (data.image) {
                 avatarDiv.innerHTML = `<img src="${data.image}">`;
             } else {
@@ -264,13 +266,10 @@
             document.getElementById('birthDate').textContent = type === 'member' ? '📅 Ngày sinh: ' + data.birthDate : '🏫 Đơn vị: Trường THPT';
             document.getElementById('memberBio').innerHTML = `<p>${data.bio}</p>`;
             
-            // Cập nhật nút quay lại
             document.getElementById('backBtn').onclick = () => showPage(type === 'member' ? 'members' : 'teachers');
-            
             showPage('detail');
         }
 
-        // HÀM CHUYỂN TRANG
         function showPage(pageName) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             const targetPage = document.getElementById(pageName);
@@ -278,7 +277,6 @@
             window.scrollTo(0, 0);
         }
 
-        // KHỞI TẠO
         document.addEventListener('DOMContentLoaded', () => {
             renderMembers();
             renderTeachers();
