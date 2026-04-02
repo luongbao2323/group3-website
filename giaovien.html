@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kỷ yếu Lớp 12A2</title>
+    <title>Giáo viên - Lớp 12A2</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -21,266 +21,173 @@
             color: var(--dark);
         }
 
-        /* Menu điều hướng */
+        /* Menu điều hướng đơn giản */
         nav {
             background: var(--gradient);
-            padding: 1rem;
+            padding: 1.2rem;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            font-weight: 600;
-            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Các trang */
-        .page {
-            display: none;
+        .container {
             padding: 120px 20px 40px;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
-        }
-
-        .page.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             color: var(--primary);
+            font-size: 2.2rem;
         }
 
-        /* Lưới hiển thị */
-        .gallery-grid {
+        /* Lưới hiển thị Giáo viên */
+        .teacher-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            justify-content: center;
         }
 
-        .gallery-item {
+        .teacher-item {
             background: var(--white);
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .gallery-img-container {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 15px;
-            background: #eee;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            overflow: hidden;
-            position: relative;
-            border: 3px solid var(--primary);
-        }
-
-        .member-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            background: rgba(52, 152, 219, 0.7);
-            top: 0; left: 0; right: 0; bottom: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: 0.3s;
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-
-        .gallery-title {
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        /* Trang chi tiết */
-        .detail-card {
-            background: white;
-            max-width: 600px;
-            margin: 0 auto;
             border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        #detailHeader {
-            background: var(--gradient);
-            color: white;
             padding: 40px 20px;
             text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.03);
+            overflow: hidden; /* Giữ ảnh gọn trong khung */
         }
 
-        .detail-avatar {
-            width: 120px;
-            height: 120px;
+        .teacher-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(52, 152, 219, 0.15);
+        }
+
+        /* -- CẬP NHẬT PHẦN AVATAR ĐỂ CHỨA ẢNH -- */
+        .avatar-container {
+            width: 140px; /* Tăng kích thước một chút */
+            height: 140px;
+            margin: 0 auto 20px;
             border-radius: 50%;
-            background: white;
-            margin: 0 auto 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 4px solid rgba(255,255,255,0.3);
-            overflow: hidden;
+            font-size: 3.5rem; /* Cần cho trường hợp ảnh lỗi, hiện emoji dự phòng */
+            border: 5px solid var(--primary); /* Tăng độ dày viền cho đẹp */
+            overflow: hidden; /* Giữ ảnh luôn hình tròn */
+            background-color: #eee; /* Màu nền dự phòng */
         }
 
-        .detail-avatar img { width: 100%; height: 100%; object-fit: cover; }
-
-        .btn-back {
-            display: inline-block;
-            margin-bottom: 20px;
-            padding: 8px 20px;
-            background: var(--dark);
-            color: white;
-            border-radius: 50px;
-            cursor: pointer;
-            border: none;
+        .teacher-avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Giúp ảnh không bị méo, tự căn giữa */
         }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .teacher-name {
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .teacher-role {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .teacher-bio {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #666;
+            padding: 0 10px;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .teacher-item { animation: fadeIn 0.6s ease forwards; }
     </style>
 </head>
 <body>
 
     <nav>
-        <a onclick="showPage('members')">Thành viên</a>
-        <a onclick="showPage('teachers')">Giáo viên</a>
+        <a href="#">Hội đồng Sư phạm</a>
     </nav>
 
-    <div id="members" class="page">
-        <h2 class="section-title">Thành viên Lớp 12A2</h2>
-        <div class="gallery-grid" id="membersGrid"></div>
-    </div>
-
-    <div id="teachers" class="page active">
-        <h2 class="section-title">Hội đồng Sư phạm</h2>
-        <div class="gallery-grid" id="teachersGrid"></div>
-    </div>
-
-    <div id="detail" class="page">
-        <button class="btn-back" id="backBtn">← Quay lại</button>
-        <div class="detail-card">
-            <div id="detailHeader">
-                <div class="detail-avatar" id="detailAvatar"></div>
-                <h2 id="detailName"></h2>
-                <p id="detailRole"></p>
-            </div>
-            <div style="padding: 30px;">
-                <p id="birthDate" style="color: var(--primary); font-weight: 600;"></p>
-                <div id="memberBio" style="margin-top: 15px; line-height: 1.8;"></div>
-            </div>
+    <div class="container">
+        <h2 class="section-title">Thông tin Giáo viên</h2>
+        
+        <div class="teacher-grid" id="teacherGrid">
         </div>
     </div>
 
     <script>
-        // --- QUAN TRỌNG: PHẢI CÓ BIẾN MEMBERS NÀY ĐỂ TRANG KHÔNG BỊ LỖI ---
-        const members = [
-            { id: 1, name: 'Nguyễn Văn A', birthDate: '10/05/2008', emoji: '👦', bio: 'Học sinh năng động.' },
-            { id: 2, name: 'Trần Thị B', birthDate: '22/09/2008', emoji: '👧', bio: 'Lớp phó học tập.' }
-        ];
+        // --- HƯỚNG DẪN CẬP NHẬT ẢNH ---
+        // 1. Hãy đặt 2 tấm ảnh của thầy vào cùng thư mục với file giaovien.html này.
+        // 2. Sửa tên file ảnh ở mục imagePath bên dưới (ví dụ: 'thaysang.jpg').
 
-        // DỮ LIỆU GIÁO VIÊN
         const teachers = [
             { 
-                id: 101, 
                 name: 'Nguyễn Trọng Sang', 
                 role: 'Giáo viên Chủ nhiệm', 
-                emoji: '👨‍🏫', 
+                // --- THÊM ĐƯỜNG DẪN ẢNH VÀO ĐÂY ---
+                // Mặc định tôi để trống, nếu bạn để trống nó sẽ hiện emoji như cũ
+                imagePath: '', 
+                emojiFallback: '👨‍🏫', // Emoji dự phòng nếu không có ảnh
                 bio: 'Người thầy tận tâm, luôn dìu dắt và định hướng cho tập thể 12A2 trên con đường học vấn.' 
             },
             { 
-                id: 102, 
                 name: 'Nguyễn Văn Trọng', 
                 role: 'Giáo viên Bộ môn', 
-                emoji: '👨‍🏫', 
+                // --- THÊM ĐƯỜNG DẪN ẢNH VÀO ĐÂY (ví dụ: 'thaytrong.png') ---
+                imagePath: '', 
+                emojiFallback: '👨‍🏫', 
                 bio: 'Thầy mang đến kiến thức sâu rộng và những giờ học đầy hứng khởi cho các thành viên trong lớp.' 
             }
         ];
 
-        function renderMembers() {
-            document.getElementById('membersGrid').innerHTML = members.map(m => `
-                <div class="gallery-item" onclick="showDetail(${m.id}, 'member')">
-                    <div class="gallery-img-container">
-                        ${m.image ? `<img src="${m.image}" class="member-img">` : `<div>${m.emoji}</div>`}
-                        <div class="gallery-overlay"><span class="gallery-icon">👁️</span></div>
-                    </div>
-                    <div class="gallery-title">${m.name}</div>
-                    <div style="color: var(--primary); font-size: 0.8rem;">${m.birthDate}</div>
-                </div>`).join('');
-        }
-
+        // HÀM HIỂN THỊ (Đã được sửa để hiện ảnh)
         function renderTeachers() {
-            document.getElementById('teachersGrid').innerHTML = teachers.map(t => `
-                <div class="gallery-item" onclick="showDetail(${t.id}, 'teacher')">
-                    <div class="gallery-img-container">
-                        ${t.image ? `<img src="${t.image}" class="member-img">` : `<div>${t.emoji}</div>`}
-                        <div class="gallery-overlay"><span class="gallery-icon">👁️</span></div>
+            const grid = document.getElementById('teacherGrid');
+            grid.innerHTML = teachers.map(t => {
+                // Kiểm tra xem có đường dẫn ảnh không
+                const avatarHTML = t.imagePath 
+                    ? `<img src="${t.imagePath}" alt="Chân dung ${t.name}" class="teacher-avatar-img">`
+                    : t.emojiFallback;
+
+                return `
+                <div class="teacher-item">
+                    <div class="avatar-container">
+                        ${avatarHTML}
                     </div>
-                    <div class="gallery-title">${t.name}</div>
-                    <div style="color: var(--primary); font-size: 0.9rem; font-weight: 600;">${t.role}</div>
-                </div>`).join('');
+                    <div class="teacher-name">${t.name}</div>
+                    <div class="teacher-role">${t.role}</div>
+                    <div class="teacher-bio">${t.bio}</div>
+                </div>
+                `;
+            }).join('');
         }
 
-        function showDetail(id, type) {
-            const data = type === 'member' ? members.find(x => x.id === id) : teachers.find(x => x.id === id);
-            if (!data) return;
-
-            const avatarDiv = document.getElementById('detailAvatar');
-            if (data.image) {
-                avatarDiv.innerHTML = `<img src="${data.image}">`;
-            } else {
-                avatarDiv.innerHTML = data.emoji || '👤';
-                avatarDiv.style.fontSize = '4rem';
-            }
-
-            document.getElementById('detailName').textContent = data.name;
-            document.getElementById('detailRole').textContent = type === 'member' ? 'Học sinh lớp 12A2' : data.role;
-            document.getElementById('birthDate').textContent = type === 'member' ? '📅 Ngày sinh: ' + data.birthDate : '🏫 Đơn vị: Trường THPT';
-            document.getElementById('memberBio').innerHTML = `<p>${data.bio}</p>`;
-            
-            document.getElementById('backBtn').onclick = () => showPage(type === 'member' ? 'members' : 'teachers');
-            showPage('detail');
-        }
-
-        function showPage(pageName) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            const targetPage = document.getElementById(pageName);
-            if (targetPage) targetPage.classList.add('active');
-            window.scrollTo(0, 0);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            renderMembers();
-            renderTeachers();
-        });
+        // Chạy hàm ngay khi trang web tải xong
+        document.addEventListener('DOMContentLoaded', renderTeachers);
     </script>
 </body>
 </html>
