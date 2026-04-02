@@ -44,7 +44,7 @@
         /* Các trang */
         .page {
             display: none;
-            padding: 120px 20px 40px;
+            padding: 100px 20px 40px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -63,15 +63,14 @@
         /* Lưới hiển thị */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 25px;
-            justify-content: center;
         }
 
         .gallery-item {
             background: var(--white);
             border-radius: 15px;
-            padding: 30px;
+            padding: 20px;
             text-align: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             transition: transform 0.3s ease;
@@ -83,18 +82,18 @@
         }
 
         .gallery-img-container {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             margin: 0 auto 15px;
             background: #eee;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 2.5rem;
             overflow: hidden;
             position: relative;
-            border: 4px solid var(--primary);
+            border: 3px solid var(--primary);
         }
 
         .member-img {
@@ -120,7 +119,6 @@
 
         .gallery-title {
             font-weight: 700;
-            font-size: 1.2rem;
             margin-bottom: 5px;
         }
 
@@ -177,12 +175,12 @@
         <a onclick="showPage('teachers')">Giáo viên</a>
     </nav>
 
-    <div id="members" class="page">
+    <div id="members" class="page active">
         <h2 class="section-title">Thành viên Lớp 12A2</h2>
         <div class="gallery-grid" id="membersGrid"></div>
     </div>
 
-    <div id="teachers" class="page active">
+    <div id="teachers" class="page">
         <h2 class="section-title">Hội đồng Sư phạm</h2>
         <div class="gallery-grid" id="teachersGrid"></div>
     </div>
@@ -203,34 +201,29 @@
     </div>
 
     <script>
-        // PHẢI CÓ BIẾN MEMBERS NÀY ĐỂ KHÔNG BỊ LỖI
-        const members = []; 
-
-        // DỮ LIỆU GIÁO VIÊN
+      // DỮ LIỆU GIÁO VIÊN
         const teachers = [
             { 
                 id: 101, 
                 name: 'Nguyễn Trọng Sang', 
                 role: 'Giáo viên Chủ nhiệm', 
                 emoji: '👨‍🏫', 
-                bio: 'Người thầy tận tâm, luôn dìu dắt và định hướng cho tập thể 12A2 trên con đường học vấn.'
+                image: 'anhsang.jpg',
+                bio: 'Người thầy tận tâm, luôn dìu dắt và định hướng cho tập thể 12A2 trên con đường học vấn.' 
             },
             { 
                 id: 102, 
                 name: 'Nguyễn Văn Trọng', 
                 role: 'Giáo viên Bộ môn', 
                 emoji: '👨‍🏫', 
-                bio: 'Thầy mang đến kiến thức sâu rộng và những giờ học đầy hứng khởi cho các thành viên trong lớp.'
+                image: 'anhtrong.jpg'
+                bio: 'Thầy mang đến kiến thức sâu rộng và những giờ học đầy hứng khởi cho các thành viên trong lớp.' 
             }
         ];
 
+        // HÀM HIỂN THỊ HỌC SINH
         function renderMembers() {
-            const grid = document.getElementById('membersGrid');
-            if (members.length === 0) {
-                grid.innerHTML = "<p style='text-align:center'>Đang cập nhật danh sách học sinh...</p>";
-                return;
-            }
-            grid.innerHTML = members.map(m => `
+            document.getElementById('membersGrid').innerHTML = members.map(m => `
                 <div class="gallery-item" onclick="showDetail(${m.id}, 'member')">
                     <div class="gallery-img-container">
                         ${m.image ? `<img src="${m.image}" class="member-img">` : `<div>${m.emoji}</div>`}
@@ -241,6 +234,7 @@
                 </div>`).join('');
         }
 
+        // HÀM HIỂN THỊ GIÁO VIÊN
         function renderTeachers() {
             document.getElementById('teachersGrid').innerHTML = teachers.map(t => `
                 <div class="gallery-item" onclick="showDetail(${t.id}, 'teacher')">
@@ -249,15 +243,17 @@
                         <div class="gallery-overlay"><span class="gallery-icon">👁️</span></div>
                     </div>
                     <div class="gallery-title">${t.name}</div>
-                    <div style="color: var(--primary); font-size: 1rem; font-weight: 600;">${t.role}</div>
+                    <div style="color: var(--primary); font-size: 0.9rem; font-weight: 600;">${t.role}</div>
                 </div>`).join('');
         }
 
+        // HÀM HIỂN THỊ CHI TIẾT
         function showDetail(id, type) {
             const data = type === 'member' ? members.find(x => x.id === id) : teachers.find(x => x.id === id);
             if (!data) return;
 
             const avatarDiv = document.getElementById('detailAvatar');
+            
             if (data.image) {
                 avatarDiv.innerHTML = `<img src="${data.image}">`;
             } else {
@@ -270,10 +266,13 @@
             document.getElementById('birthDate').textContent = type === 'member' ? '📅 Ngày sinh: ' + data.birthDate : '🏫 Đơn vị: Trường THPT';
             document.getElementById('memberBio').innerHTML = `<p>${data.bio}</p>`;
             
+            // Cập nhật nút quay lại
             document.getElementById('backBtn').onclick = () => showPage(type === 'member' ? 'members' : 'teachers');
+            
             showPage('detail');
         }
 
+        // HÀM CHUYỂN TRANG
         function showPage(pageName) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             const targetPage = document.getElementById(pageName);
@@ -281,6 +280,7 @@
             window.scrollTo(0, 0);
         }
 
+        // KHỞI TẠO
         document.addEventListener('DOMContentLoaded', () => {
             renderMembers();
             renderTeachers();
