@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ - Lớp 12A2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- TỔNG THỂ --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+
+        body {
+            /* Nền xanh dương nhạt giống các trang con khác của bạn */
+            background-color: #e3f2fd !important; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* --- THANH CHẠY CHỮ (TOP BAR) --- */
+        .top-bar {
+            background: #ffffff;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            border-bottom: 1px solid #eee;
+        }
+
+        .marquee {
+            display: flex;
+            white-space: nowrap;
+            animation: moveLeft 15s linear infinite;
+        }
+
+        .marquee span {
+            padding-right: 50px;
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 14px;
+        }
+
+        @keyframes moveLeft {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* --- MENU (NAVBAR) --- */
+        header {
+            background-color: #3498db;
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid white;
+            object-fit: cover;
+        }
+
+        .class-name {
+            color: white;
+            font-weight: 700;
+            font-size: 1.4rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #ffae00;
+        }
+
+        /* --- VÙNG CHỨA FORM (CHÍNH GIỮA MÀN HÌNH) --- */
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+        }
+
+        .contact-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 550px;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            border-top: 8px solid #3498db;
+            text-align: center;
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .underline {
+            width: 60px;
+            height: 4px;
+            background: #ffae00;
+            margin: 0 auto 20px;
+            border-radius: 10px;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            margin-bottom: 35px;
+        }
+
+        /* --- FORM NHẬP LIỆU --- */
+        .form-group {
+            text-align: left;
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            color: #34495e;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #eaeeef;
+            border-radius: 10px;
+            font-size: 1rem;
+            color: #333;
+            background-color: #fcfcfc;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.1);
+        }
+
+        /* --- NÚT BẤM (STYLE 12A2) --- */
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #2c3e50;
+            color: #bdc3c7;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.85rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            header { flex-direction: column; gap: 15px; }
+            .nav-links a { margin: 0 10px; }
+            .contact-card { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="marquee">
+            <span>12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH</span>
+            <span>12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH</span>
+        </div>
+    </div>
+
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="anhlogomenu.jpg" alt="Logo" class="logo-img">
+            <span class="class-name">Lớp 12A2</span>
+        </a>
+        <nav class="nav-links">
+            <a href="index.html">Trang chủ</a>
+            <a href="thanhvien.html">Thành viên</a>
+            <a href="lienhe.html" class="active">Liên hệ</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="contact-card">
+            <h2>Gửi Liên Hệ</h2>
+            <div class="underline"></div>
+            <p class="subtitle">Kết nối với thành viên lớp 12A2 - Niên khóa 2023-2026</p>
+            
+            <form action="#">
+                <div class="form-group">
+                    <label>Họ và Tên của bạn</label>
+                    <input type="text" placeholder="Nhập tên..." required>
+                </div>
+
+                <div class="form-group">
+                    <label>Số điện thoại</label>
+                    <input type="tel" placeholder="Nhập số điện thoại..." required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email liên hệ</label>
+                    <input type="email" placeholder="example@gmail.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Nguyện vọng của bạn</label>
+                    <textarea rows="4" placeholder="Chia sẻ tâm tư, nguyện vọng..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Gửi thông tin</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Lớp 12A2 - Niên khóa 2023-2026</p>
+        <p style="margin-top: 5px; opacity: 0.7;">Thiết kế bởi Tập thể lớp 12A2</p>
+    </footer>
+
+</body>
+</html>
