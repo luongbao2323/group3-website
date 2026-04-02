@@ -48,8 +48,8 @@
             position: relative; cursor: pointer; box-shadow: 0 15px 35px rgba(0,0,0,0.1); transition: 0.4s; 
         }
         .card img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; }
-		
-				  /* 1. Trạng thái chữ nằm ẩn ở dưới đáy hình */
+        
+        /* 1. Trạng thái chữ nằm ẩn ở dưới đáy hình */
 .info-click { 
     width: 100%; 
     position: absolute; 
@@ -103,7 +103,8 @@
         .other-info { display: flex; justify-content: center; gap: 30px; padding: 60px 10%; background: #fff; border-top: 1px solid #eee; }
         .card-standard { background: #f8f9fa; padding: 40px; border-radius: 20px; text-align: center; flex: 1; border: 1px solid #eee; cursor: pointer; transition: 0.3s; }
         .card-standard:hover { transform: translateY(-5px); border-color: #4ea8de; }
-		@media (max-width: 768px) { .card-group { flex-direction: column; } .nav-btn { display: none; } .other-info { flex-direction: column; } }
+
+        @media (max-width: 768px) { .card-group { flex-direction: column; } .nav-btn { display: none; } .other-info { flex-direction: column; } }
     </style>
 </head>
 <body>
@@ -165,7 +166,7 @@
         <h2 id="thuoc-anh" style="text-align: left; margin: 40px 0 20px 0; color: #4ea8de;">🎞️ Thước ảnh kỉ niệm</h2>
         <div class="book-wrapper">
             <button class="nav-btn prev-btn" onclick="prevPage()">❮</button>
-			<div class="book-container" id="bookContainer">
+            <div class="book-container" id="bookContainer">
                 <div class="book-page"><img src="IMG_20260321_161453.jpg"></div>
                 <div class="book-page"><img src="IMG_1774077029424_1774083044722.jpg"></div>
 				<div class="book-page"><img src="IMG_20260321_16091
@@ -212,7 +213,7 @@
         <h2 id="thanh-tuu" style="text-align: left; margin: 40px 0 20px 0; color: #4ea8de;">🏆 Thành tựu nho nhỏ</h2>
         <div class="other-info" style="padding: 20px 0; background: transparent; border: none;">
             <div class="card-standard" onclick="openModal('album-thanh-tuu')">
-				<h3>🏅 Xem bảng vàng thành tích</h3><p>Một chút nỗ lực của cả tập thể 12A2 ✨</p>
+                <h3>🏅 Xem bảng vàng thành tích</h3><p>Một chút nỗ lực của cả tập thể 12A2 ✨</p>
             </div>
             <div class="card-standard">
                 <p>Mãi là gia đình! 💙</p>
@@ -268,7 +269,7 @@
 			 <img src="z7684315613894_b496fc8dcffd2d01fa58bcdcad46b2ef.jpg">
             <img src="z7684315626450_37dbf8284914cf3c6cafb0df78e77dd2.jpg">
 			<img src="z7684315625371_1ccc068db1f850a3a9ad976a94c39b96.jpg">
-			<img src="z7684315630883_266847b36e9bdd3c2c0721419f801734.jpg">
+			 <img src="z7684315630883_266847b36e9bdd3c2c0721419f801734.jpg">
             <img src="z7684315635359_e94a2c33b0f8e61f703d3786120f5231.jpg">
 			<img src="z7684315735089_253d23812140e117c01b854cda7683fa.jpg">
 			 <img src="z7684316609234_11a0faddfb62c328233dbce8219cf79d.jpg">
@@ -328,7 +329,7 @@
             if (!viewers[id]) {
                 const gallery = modal.querySelector('.modal-content');
                 viewers[id] = new Viewer(gallery, { navbar: true, title: false, toolbar: true });
-				}
+            }
         }
         function closeModal(id) {
             const modal = document.getElementById(id);
