@@ -48,7 +48,8 @@
             position: relative; cursor: pointer; box-shadow: 0 15px 35px rgba(0,0,0,0.1); transition: 0.4s; 
         }
         .card img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; }
-		/* 1. Trạng thái chữ nằm ẩn ở dưới đáy hình */
+		
+				  /* 1. Trạng thái chữ nằm ẩn ở dưới đáy hình */
 .info-click { 
     width: 100%; 
     position: absolute; 
@@ -163,11 +164,19 @@
 
         <h2 id="thuoc-anh" style="text-align: left; margin: 40px 0 20px 0; color: #4ea8de;">🎞️ Thước ảnh kỉ niệm</h2>
         <div class="book-wrapper">
-			<button class="nav-btn prev-btn" onclick="prevPage()">❮</button>
-            <div class="book-container" id="bookContainer">
-                <div class="book-page"><img src="z7667308936761_b7af7e1b323a2d44bc8ade38f54932e4.jpg"></div>
+            <button class="nav-btn prev-btn" onclick="prevPage()">❮</button>
+			<div class="book-container" id="bookContainer">
+                <div class="book-page"><img src="IMG_20260321_161453.jpg"></div>
                 <div class="book-page"><img src="IMG_1774077029424_1774083044722.jpg"></div>
-                <div class="book-page"><img src="đà lạt 01.jpg"></div>
+				<div class="book-page"><img src="IMG_20260321_16091
+				1.jpg"></div>
+				<div class="book-page"><img src="IMG_1774081458369_1774082731049.jpg"></div>
+				<div class="book-page"><img src="IMG_20260321_161520.jpg"></div>
+				<div class="book-page"><img src="IMG_0843.jpg"></div>
+				<div class="book-page"><img src="z7643433262896_94643ecd145c39a6057f37c0188d17f6.jpg"></div>
+                <div class="book-page"><img src="z7643433305096_23b4a0a6730d9a8e81fc2d8e9a674b37.jpg"></div>
+				<div class="book-page"><img src="z7643433387248_ab4e9e91ca7adf62a654bfa41c17d3ca.jpg"></div>
+				<div class="book-page"><img src="z7643433426292_dd3da457677427498da82fcde66dcbc4.jpg"></div>
             </div>
             <button class="nav-btn next-btn" onclick="nextPage()">❯</button>
         </div>
@@ -182,14 +191,17 @@
                 </div>
             </div>
             <div class="card" onclick="openModal('modal2011')">
-                <img src="Bản sao của IMG_3722.jpg">
+                <img src="IMG_3721.jpg">
+				
+				
                 <div style="background: rgba(0,0,0,0.3); position: absolute; top:0; left:0; width:100%; height:100%;"></div>
-                <div style="position: absolute; bottom: 25px; width: 100%; color: white; z-index: 10;">
+                <div style="position: 
+				absolute; bottom: 25px; width: 100%; color: white; z-index: 10;">
                     <h1>Tri Ân 20/11</h1><p>Bấm để xem tri ân thầy cô 💐</p>
                 </div>
             </div>
-            <div class="card">
-                <img src="da-lat-01.jpg">
+            <div class="card" onclick="openModal('modalDaLat')">
+                <img src="z7684315604490_cca9d5cdf82a6e43f091cbb826e494a5.jpg">
                 <div style="background: rgba(0,0,0,0.3); position: absolute; top:0; left:0; width:100%; height:100%;"></div>
                 <div style="position: absolute; bottom: 25px; width: 100%; color: white; z-index: 10;">
                     <h1>Vi vu Đà Lạt</h1><p>Thanh xuân rực rỡ 💙</p>
@@ -200,7 +212,7 @@
         <h2 id="thanh-tuu" style="text-align: left; margin: 40px 0 20px 0; color: #4ea8de;">🏆 Thành tựu nho nhỏ</h2>
         <div class="other-info" style="padding: 20px 0; background: transparent; border: none;">
             <div class="card-standard" onclick="openModal('album-thanh-tuu')">
-                <h3>🏅 Xem bảng vàng thành tích</h3><p>Một chút nỗ lực của cả tập thể 12A2 ✨</p>
+				<h3>🏅 Xem bảng vàng thành tích</h3><p>Một chút nỗ lực của cả tập thể 12A2 ✨</p>
             </div>
             <div class="card-standard">
                 <p>Mãi là gia đình! 💙</p>
@@ -213,7 +225,12 @@
         <div class="modal-content">
             <h2 class="featured-caption">Kỉ niệm 20/10 💙</h2>
             <img src="IMG_20-10-01.jpg"> <img src="IMG_20-10-02.jpg">
-			<video controls><source src="VIDEO_DOWNLOAD_1760696753202_1774093986695 - Copy (2).mp4" type="video/mp4"></video>
+            <video controls><source src="VIDEO_DOWNLOAD_1760696753202_1774093986695 - Copy (2).mp4" type="video/mp4"></video>
+			<img src="IMG_20-10-08.jpg">
+			<img src="IMG_201003.jpg">
+			<img src="IMG_201007.jpg">
+			<img src="IMG_20-10-04.jpg">
+			<img src="IMG-20-10-9.jpg">
         </div>
     </div>
 
@@ -221,16 +238,56 @@
         <span class="close-btn" onclick="closeModal('modal2011')">&times;</span>
         <div class="modal-content">
             <h2 class="featured-caption">Tri Ân 20/11 💐</h2>
-            <img src="IMG_20-11-01.jpg"> <img src="IMG_20-11-02.jpg"> <img src="IMG_20-11-03.jpg">
+            
+			<img src="IMG_3698.jpg"> 
+			<img src="z7643433426292_dd3da457677427498da82fcde66dcbc4.jpg">
+			<img src="z7643433387248_ab4e9e91ca7adf62a654bfa41c17d3ca.jpg">
+			<img src="IMG_3735.jpg">
+			<img src="IMG_3742.jpg">
+			<img src="IMG_3726.jpg">
+			<img src="z7684194782150_1c3dde7e09ffa46cac643d6704e3a8c3.jpg"> 
+			<img src="z7684189616556_c3a56120ad21f36ccb2f0e7f45d5abc4.jpg"> 
+			<img src="z7684182965897_9db1f9e99e0567d97c738b251afba9f9.jpg"> 
+			<video controls><source src="1JAFTA3D2_91EIDS.mp4" type="video/mp4"></video>
+			<video controls><source src="1JA8LRVB8_9OH0MA.mp4" type="video/mp4"></video>
+			<video controls><source src="VIDEO_DOWNLOAD_1768659136847_1774084452112.mp4" type="video/mp4"></video>
+			<video controls><source src="7684182075024.mp4" type="video/mp4"></video>
+			<video controls><source src="7684189348740.mp4" type="video/mp4"></video>
         </div>
     </div>
-
+	<div id="modalDaLat" class="modal" onclick="closeModalOnOut(event, 'modalDaLat')">
+        <span class="close-btn" onclick="closeModal('modalDaLat')">&times;</span>
+        <div class="modal-content">
+            <h2 class="featured-caption">Vi vu Đà Lạt vs 12A2 💙</h2>
+            <img src="z7643433262896_94643ecd145c39a6057f37c0188d17f6.jpg">
+            <img src="IMG_1774081458369_1774082731049.jpg">
+			 <img src="IMG_1774081457930_1774082743750.jpg">
+            <img src="7684316011218.jpg">
+			 <img src="z7684315602282_04253771cff291d2acf60e0f4b9e6dda.jpg">
+            <img src="z7684315604490_cca9d5cdf82a6e43f091cbb826e494a5.jpg">
+			 <img src="z7684315613894_b496fc8dcffd2d01fa58bcdcad46b2ef.jpg">
+            <img src="z7684315626450_37dbf8284914cf3c6cafb0df78e77dd2.jpg">
+			<img src="z7684315625371_1ccc068db1f850a3a9ad976a94c39b96.jpg">
+			<img src="z7684315630883_266847b36e9bdd3c2c0721419f801734.jpg">
+            <img src="z7684315635359_e94a2c33b0f8e61f703d3786120f5231.jpg">
+			<img src="z7684315735089_253d23812140e117c01b854cda7683fa.jpg">
+			 <img src="z7684316609234_11a0faddfb62c328233dbce8219cf79d.jpg">
+            <img src="z7684316698516_177858b1f3145f96b764999ae8fc9777.jpg">
+			<video controls><source src="7684315591405.mp4" type="video/mp4"></video>
+			<video controls><source src="7684315596582.mp4" type="video/mp4"></video>
+			<video controls><source src="7684315709052.mp4" type="video/mp4"></video>
+			<video controls><source src="7684315874228.mp4" type="video/mp4"></video>
+			<video controls><source src="7684316319460.mp4" type="video/mp4"></video>
+        </div>
+    </div>
     <div id="album-thanh-tuu" class="modal" onclick="closeModalOnOut(event, 'album-thanh-tuu')">
         <span class="close-btn" onclick="closeModal('album-thanh-tuu')">&times;</span>
         <div class="modal-content">
             <p class="featured-caption">Một chút nỗ lực vs hôm nay tụi mình đã có kết quả 🏆</p>
-            <img src="image_3.png"><img src="image_12.png"><img src="image_4.png"><img src="image_5.png">
-            <img src="image_6.png"><img src="image_7.png"><img src="image_8.png"><img src="image_9.png">
+           
+			<img src="IMG_0821 (1).jpg">
+            <img src="IMG_0824 (1).jpg">
+			<img src="IMG_1774077544055_1774082491109.jpg">
         </div>
     </div>
 
@@ -271,12 +328,12 @@
             if (!viewers[id]) {
                 const gallery = modal.querySelector('.modal-content');
                 viewers[id] = new Viewer(gallery, { navbar: true, title: false, toolbar: true });
-            }
+				}
         }
         function closeModal(id) {
             const modal = document.getElementById(id);
             if(modal) {
-				modal.style.display = "none";
+                modal.style.display = "none";
                 document.body.style.overflow = "auto";
                 const video = modal.querySelector('video');
                 if(video) video.pause();
