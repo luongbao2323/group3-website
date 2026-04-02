@@ -32,6 +32,7 @@
             display: flex;
             justify-content: center;
             gap: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         nav a {
@@ -44,7 +45,7 @@
         /* Các trang */
         .page {
             display: none;
-            padding: 100px 20px 40px;
+            padding: 120px 20px 40px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -201,7 +202,7 @@
     </div>
 
     <script>
-      // DỮ LIỆU GIÁO VIÊN
+        // DỮ LIỆU GIÁO VIÊN (Đã cập nhật theo yêu cầu của bạn)
         const teachers = [
             { 
                 id: 101, 
@@ -217,6 +218,12 @@
                 emoji: '👨‍🏫', 
                 bio: 'Thầy mang đến kiến thức sâu rộng và những giờ học đầy hứng khởi cho các thành viên trong lớp.' 
             }
+        ];
+
+        // DỮ LIỆU HỌC SINH (Mẫu để tránh lỗi hiển thị)
+        const members = [
+            { id: 1, name: 'Học sinh Mẫu 1', birthDate: '01/01/2008', emoji: '👦', bio: 'Thông tin học sinh đang cập nhật...' },
+            { id: 2, name: 'Học sinh Mẫu 2', birthDate: '02/02/2008', emoji: '👧', bio: 'Thông tin học sinh đang cập nhật...' }
         ];
 
         // HÀM HIỂN THỊ HỌC SINH
@@ -264,9 +271,7 @@
             document.getElementById('birthDate').textContent = type === 'member' ? '📅 Ngày sinh: ' + data.birthDate : '🏫 Đơn vị: Trường THPT';
             document.getElementById('memberBio').innerHTML = `<p>${data.bio}</p>`;
             
-            // Cập nhật nút quay lại
             document.getElementById('backBtn').onclick = () => showPage(type === 'member' ? 'members' : 'teachers');
-            
             showPage('detail');
         }
 
