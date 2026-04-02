@@ -4,67 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thành viên - 12A2</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <div class="top-bar">
+        <div class="marquee">
+            <span>12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH</span>
+            <span>12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH</span>
+        </div>
+    </div>
+
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="nav-brand"><img src="logo_gen.png" alt="Logo"></a>
+            <a href="index.html" class="nav-brand">
+                <img src="anhlogomenu.jpg" alt="Logo 12A2" class="logo-img"> 
+                <span class="brand-text">Lớp 12A2</span>
+            </a>
+            
             <ul class="nav-menu">
                 <li><a class="nav-link" href="index.html">Trang chủ</a></li>
                 <li><a class="nav-link active" href="thanhvien.html">Thành viên</a></li>
                 <li><a class="nav-link" href="giaovien.html">Giáo viên</a></li>
                 <li><a class="nav-link" href="anh.html">Ảnh</a></li>
-                <li><a class="nav-link" href="lien-he.html">Liên hệ</a></li>
+                <li><a class="nav-link" href="lienhe.html">Liên hệ</a></li>
             </ul>
         </div>
     </nav>
 
-    <section style="padding-top: 120px; background: #f0f9ff; min-height: 100vh;">
-        <h2 class="section-title">Đại gia đình 12A2</h2>
-        <div class="gallery-grid" id="membersGrid"></div>
+    <section class="members-section">
+        <div class="container">
+            <h2 class="section-title">Đại gia đình 12A2</h2>
+            <p class="section-subtitle">Nơi lưu giữ những gương mặt thanh xuân rực rỡ nhất</p>
+            
+            <div class="gallery-grid" id="membersGrid">
+                </div>
+        </div>
     </section>
 
     <script>
-        // Danh sách 36 thành viên
         const members = [
-            { name: 'Đỗ Quỳnh Anh', birth: '17/11/2008', emoji: '👩' },
-            { name: 'Đỗ Ngọc Ánh', birth: '04/05/2008', emoji: '👩' },
-            { name: 'Lương Gia Bảo', birth: '05/05/2008', emoji: '👦' },
-            { name: 'Đoàn Thị Bảo Châu', birth: '25/06/2008', emoji: '👩' },
-            { name: 'Phạm Trí Dũng', birth: '04/04/2008', emoji: '👦' },
-            { name: 'Trần Thanh Duy', birth: '22/08/2008', emoji: '👦' },
-            { name: 'Nguyễn Thị Duyên', birth: '07/06/2008', emoji: '👩' },
-            { name: 'Nguyễn Tiến Đạt', birth: '28/04/2007', emoji: '👦' },
-            { name: 'Võ Thiên Đông', birth: '04/09/2008', emoji: '👦' },
-            { name: 'Hướng Trường Giang', birth: '20/02/2008', emoji: '👦' },
-            { name: 'Đào Hữu Trung Hiếu', birth: '24/11/2008', emoji: '👦' },
-            { name: 'Lê Sỹ Hoàng', birth: '22/05/2008', emoji: '👦' },
-            { name: 'Nguyễn Minh Hoàng', birth: '27/07/2008', emoji: '👦' },
-            { name: 'Lê Văn Huy', birth: '26/04/2008', emoji: '👦' },
-            { name: 'Nguyễn Tuấn Hưng', birth: '26/09/2008', emoji: '👦' },
-            { name: 'Nguyễn Duy Luân', birth: '04/04/2008', emoji: '👦' },
-            { name: 'Nguyễn Xuân Mai', birth: '09/01/2008', emoji: '👩' },
-            { name: 'Nguyễn Trọng Đức Minh', birth: '15/10/2008', emoji: '👦' },
-            { name: 'Bùi Nguyễn Khánh Ngọc', birth: '15/03/2008', emoji: '👩' },
-            { name: 'Trần Nguyễn', birth: '28/12/2008', emoji: '👦' },
-            { name: 'Đỗ Nguyễn Thiện Nhân', birth: '22/05/2007', emoji: '👦' },
-            { name: 'Ngô Thị Yến Nhi', birth: '28/02/2007', emoji: '👩' },
-            { name: 'Nguyễn Thị Bảo Nhi', birth: '08/10/2008', emoji: '👩' },
-            { name: 'Hà Thị Huỳnh Như', birth: '13/12/2008', emoji: '👩' },
-            { name: 'Nguyễn Thạch Huỳnh Như', birth: '17/12/2008', emoji: '👩' },
-            { name: 'Trần Hồng Sơn', birth: '28/09/2008', emoji: '👦' },
-            { name: 'Mạch Lê Minh Tâm', birth: '22/10/2008', emoji: '👩' },
-            { name: 'Đỗ Thị Thanh', birth: '11/01/2008', emoji: '👩' },
-            { name: 'Mai Thùy Huyền Thanh', birth: '05/09/2008', emoji: '👩' },
-            { name: 'Phạm Hoàng Mai Thanh', birth: '04/12/2007', emoji: '👩' },
-            { name: 'Lê Ngọc Phương Thảo', birth: '17/02/2008', emoji: '👩' },
-            { name: 'Lê Thị Thùy Trang', birth: '17/01/2008', emoji: '👩' },
-            { name: 'Trịnh Minh Trâm', birth: '12/02/2008', emoji: '👩' },
-            { name: 'Nguyễn Xuân Tuyền', birth: '26/10/2008', emoji: '👩' },
-            { name: 'Đinh Nguyễn Ánh Tuyết', birth: '13/04/2008', emoji: '👩' },
-            { name: 'Lê Thị Thanh Vy', birth: '24/09/2008', emoji: '👩' }
+            { name: 'Đỗ Quỳnh Anh', birth: '17/11/2008', emoji: '👩‍🎓' },
+            { name: 'Đỗ Ngọc Ánh', birth: '04/05/2008', emoji: '👩‍🎓' },
+            { name: 'Lương Gia Bảo', birth: '05/05/2008', emoji: '👨‍🎓' },
+            { name: 'Đoàn Thị Bảo Châu', birth: '25/06/2008', emoji: '👩‍🎓' },
+            { name: 'Phạm Trí Dũng', birth: '04/04/2008', emoji: '👨‍🎓' },
+            { name: 'Trần Thanh Duy', birth: '22/08/2008', emoji: '👨‍🎓' },
+            { name: 'Nguyễn Thị Duyên', birth: '07/06/2008', emoji: '👩‍🎓' },
+            { name: 'Nguyễn Tiến Đạt', birth: '28/04/2007', emoji: '👨‍🎓' },
+            { name: 'Võ Thiên Đông', birth: '04/09/2008', emoji: '👨‍🎓' },
+            { name: 'Hướng Trường Giang', birth: '20/02/2008', emoji: '👨‍🎓' },
+            { name: 'Đào Hữu Trung Hiếu', birth: '24/11/2008', emoji: '👨‍🎓' },
+            { name: 'Lê Sỹ Hoàng', birth: '22/05/2008', emoji: '👨‍🎓' },
+            { name: 'Nguyễn Minh Hoàng', birth: '27/07/2008', emoji: '👨‍🎓' },
+            { name: 'Lê Văn Huy', birth: '26/04/2008', emoji: '👨‍🎓' },
+            { name: 'Nguyễn Tuấn Hưng', birth: '26/09/2008', emoji: '👨‍🎓' },
+            { name: 'Nguyễn Duy Luân', birth: '04/04/2008', emoji: '👨‍🎓' },
+            { name: 'Nguyễn Xuân Mai', birth: '09/01/2008', emoji: '👩‍🎓' },
+            { name: 'Nguyễn Trọng Đức Minh', birth: '15/10/2008', emoji: '👨‍🎓' },
+            { name: 'Bùi Nguyễn Khánh Ngọc', birth: '15/03/2008', emoji: '👩‍🎓' },
+            { name: 'Trần Nguyễn', birth: '28/12/2008', emoji: '👨‍🎓' },
+            { name: 'Đỗ Nguyễn Thiện Nhân', birth: '22/05/2007', emoji: '👨‍🎓' },
+            { name: 'Ngô Thị Yến Nhi', birth: '28/02/2007', emoji: '👩‍🎓' },
+            { name: 'Nguyễn Thị Bảo Nhi', birth: '08/10/2008', emoji: '👩‍🎓' },
+            { name: 'Hà Thị Huỳnh Như', birth: '13/12/2008', emoji: '👩‍🎓' },
+            { name: 'Nguyễn Thạch Huỳnh Như', birth: '17/12/2008', emoji: '👩‍🎓' },
+            { name: 'Trần Hồng Sơn', birth: '28/09/2008', emoji: '👨‍🎓' },
+            { name: 'Mạch Lê Minh Tâm', birth: '22/10/2008', emoji: '👩‍🎓' },
+            { name: 'Đỗ Thị Thanh', birth: '11/01/2008', emoji: '👩‍🎓' },
+            { name: 'Mai Thùy Huyền Thanh', birth: '05/09/2008', emoji: '👩‍🎓' },
+            { name: 'Phạm Hoàng Mai Thanh', birth: '04/12/2007', emoji: '👩‍🎓' },
+            { name: 'Lê Ngọc Phương Thảo', birth: '17/02/2008', emoji: '👩‍🎓' },
+            { name: 'Lê Thị Thùy Trang', birth: '17/01/2008', emoji: '👩‍🎓' },
+            { name: 'Trịnh Minh Trâm', birth: '12/02/2008', emoji: '👩‍🎓' },
+            { name: 'Nguyễn Xuân Tuyền', birth: '26/10/2008', emoji: '👩‍🎓' },
+            { name: 'Đinh Nguyễn Ánh Tuyết', birth: '13/04/2008', emoji: '👩‍🎓' },
+            { name: 'Lê Thị Thanh Vy', birth: '24/09/2008', emoji: '👩‍🎓' }
         ];
 
         const grid = document.getElementById('membersGrid');
@@ -72,7 +88,7 @@
             <div class="gallery-item">
                 <div class="gallery-img-container">${m.emoji}</div>
                 <div class="gallery-title">${m.name}</div>
-                <div class="gallery-role">${m.birth}</div>
+                <div class="gallery-role">Ngày sinh: ${m.birth}</div>
             </div>
         `).join('');
     </script>
