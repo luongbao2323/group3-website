@@ -1,20 +1,34 @@
-/* RESET CHUNG */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* 1. RESET & BIẾN (VARIABLES) */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
 :root {
     --primary: #3498db; 
-    --secondary: #2980b9; 
+    --secondary: #2c3e50; /* Màu xám xanh đậm chuyên nghiệp */
+    --accent: #ffae00;    /* Màu vàng cam nhấn nhá */
     --white: #ffffff;
+    --bg-light: #f0f9ff;
+    --fire-shadow: 0 0 20px #ff4d00, 0 0 40px #ffae00;
 }
-body { font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
-/* DÒNG CHỮ CHẠY (TOP BAR) */
+body { 
+    font-family: 'Poppins', sans-serif; 
+    overflow-x: hidden; 
+    line-height: 1.6;
+    background-color: var(--bg-light);
+}
+
+/* 2. DÒNG CHỮ CHẠY (TOP BAR) */
 .top-bar {
     background: #ffffff; 
     height: 35px; 
     display: flex; 
     align-items: center;
     overflow: hidden; 
-    position: fixed; /* Giữ cố định trên cùng */
+    position: fixed; 
     top: 0; 
     left: 0; 
     width: 100%;
@@ -33,6 +47,7 @@ body { font-family: 'Poppins', sans-serif; overflow-x: hidden; }
     font-weight: bold; 
     color: var(--secondary); 
     font-size: 14px;
+    text-transform: uppercase;
 }
 
 @keyframes moveLeft { 
@@ -40,10 +55,10 @@ body { font-family: 'Poppins', sans-serif; overflow-x: hidden; }
     100% { transform: translateX(-50%); } 
 }
 
-/* THANH MENU (NAVBAR) */
+/* 3. THANH MENU (NAVBAR) */
 .navbar { 
     position: fixed; 
-    top: 35px; /* Nằm ngay dưới dòng chữ chạy */
+    top: 35px; 
     left: 0; 
     width: 100%; 
     background: var(--primary) !important; 
@@ -52,6 +67,7 @@ body { font-family: 'Poppins', sans-serif; overflow-x: hidden; }
     height: 75px; 
     display: flex; 
     align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .nav-container { 
@@ -63,19 +79,31 @@ body { font-family: 'Poppins', sans-serif; overflow-x: hidden; }
     align-items: center; 
 }
 
-.nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-brand { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    text-decoration: none; 
+}
 
 .logo-img {
     height: 55px !important; 
     width: 55px !important;
     object-fit: cover; 
     border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.8);
-    background-color: #fff;
+    border: 2px solid var(--white);
+    background-color: var(--white);
+    transition: 0.5s;
+}
+
+/* Hiệu ứng rực cháy khi hover vào logo */
+.nav-brand:hover .logo-img {
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: var(--fire-shadow);
 }
 
 .brand-text { 
-    color: white; 
+    color: var(--white); 
     font-size: 1.6rem; 
     font-weight: 700; 
     font-family: 'Playfair Display', serif; 
@@ -83,14 +111,18 @@ body { font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
 .nav-menu { display: flex; list-style: none; gap: 2rem; }
 .nav-link { 
-    color: white; 
+    color: var(--white); 
     text-decoration: none; 
     font-weight: 600; 
-    transition: 0.3s; 
+    transition: 0.3s;
+    font-size: 0.95rem;
 }
-.nav-link:hover { color: #ffae00; }
 
-/* HIỆU ỨNG NỀN TRANG CHỦ (Chỉ dành cho trang index) */
+.nav-link:hover, .nav-link.active { 
+    color: var(--accent); 
+}
+
+/* 4. TRANG CHỦ (HERO SECTION) */
 .hero { 
     position: relative; 
     min-height: 100vh; 
@@ -100,13 +132,102 @@ body { font-family: 'Poppins', sans-serif; overflow-x: hidden; }
     justify-content: center; 
     text-align: center; 
     color: var(--white); 
-    padding: 110px 20px 20px 20px;
+    padding-top: 110px;
 }
+
 .hero-overlay {
     position: absolute; 
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(44, 62, 80, 0.7); 
-    backdrop-filter: blur(8px) grayscale(60%); 
+    background: rgba(44, 62, 80, 0.75); /* Tông xám xanh đậm */
+    backdrop-filter: blur(6px) grayscale(50%); /* Mờ ảo và bớt rực màu */
     z-index: 1;
 }
+
 .hero-content { position: relative; z-index: 2; }
+
+.hero h1 { 
+    font-size: clamp(3rem, 10vw, 5rem); 
+    font-family: 'Playfair Display', serif;
+    text-shadow: 3px 3px 20px rgba(0,0,0,0.4);
+    margin-bottom: 1rem;
+}
+
+.hero-buttons { display: flex; gap: 15px; justify-content: center; }
+
+.btn {
+    padding: 12px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.4s;
+    text-transform: uppercase;
+}
+
+.btn-primary { background: var(--white); color: var(--primary); }
+.btn-secondary { border: 2px solid var(--white); color: var(--white); }
+.btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+/* 5. TRANG THÀNH VIÊN (CARD DESIGN) */
+.members-section {
+    padding: 140px 20px 60px;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--secondary);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    background: var(--white);
+    padding: 40px 20px;
+    border-radius: 25px;
+    text-align: center;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.gallery-item:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+}
+
+.gallery-img-container {
+    font-size: 55px;
+    background: #f8f9fa;
+    width: 110px;
+    height: 110px;
+    line-height: 110px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    border: 3px solid var(--bg-light);
+}
+
+.gallery-title {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--secondary);
+    margin-bottom: 8px;
+}
+
+.gallery-role {
+    color: #888;
+    font-size: 0.95rem;
+}
+
+/* 6. RESPONSIVE */
+@media (max-width: 768px) {
+    .nav-menu { display: none; } /* Có thể làm menu hamburger sau */
+    .hero h1 { font-size: 3rem; }
+    .section-title { font-size: 2.2rem; }
+}
