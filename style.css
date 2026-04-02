@@ -1,78 +1,112 @@
-/* 1. RESET & CẤU HÌNH CHUNG */
+/* RESET CHUNG */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
     --primary: #3498db; 
     --secondary: #2980b9; 
     --white: #ffffff;
-    --fire-color: #ff4d00;
-    --fire-light: #ffae00;
 }
-body { font-family: 'Poppins', sans-serif; overflow-x: hidden; line-height: 1.6; }
+body { font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
-/* 2. DÒNG CHỮ CHẠY (TOP BAR) */
+/* DÒNG CHỮ CHẠY (TOP BAR) */
 .top-bar {
-    background: #ffffff; height: 35px; display: flex; align-items: center;
-    overflow: hidden; position: fixed; top: 0; left: 0; width: 100%;
-    z-index: 2000; border-bottom: 1px solid #eee;
+    background: #ffffff; 
+    height: 35px; 
+    display: flex; 
+    align-items: center;
+    overflow: hidden; 
+    position: fixed; /* Giữ cố định trên cùng */
+    top: 0; 
+    left: 0; 
+    width: 100%;
+    z-index: 2000; 
+    border-bottom: 1px solid #eee;
 }
-.marquee { display: flex; white-space: nowrap; animation: moveLeft 15s linear infinite; }
-.marquee span { padding-right: 2rem; font-weight: bold; color: var(--secondary); }
-@keyframes moveLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-/* 3. THANH MENU (NAVBAR) */
+.marquee { 
+    display: flex; 
+    white-space: nowrap; 
+    animation: moveLeft 15s linear infinite; 
+}
+
+.marquee span { 
+    padding-right: 2rem; 
+    font-weight: bold; 
+    color: var(--secondary); 
+    font-size: 14px;
+}
+
+@keyframes moveLeft { 
+    0% { transform: translateX(0); } 
+    100% { transform: translateX(-50%); } 
+}
+
+/* THANH MENU (NAVBAR) */
 .navbar { 
-    position: fixed; top: 35px; left: 0; width: 100%; 
-    background: var(--primary) !important; padding: 0 2rem; 
-    z-index: 1000; height: 75px; display: flex; align-items: center;
+    position: fixed; 
+    top: 35px; /* Nằm ngay dưới dòng chữ chạy */
+    left: 0; 
+    width: 100%; 
+    background: var(--primary) !important; 
+    padding: 0 2rem; 
+    z-index: 1000; 
+    height: 75px; 
+    display: flex; 
+    align-items: center;
 }
-.nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; }
 
-/* 4. SỬA LỖI LOGO HIỂN THỊ */
+.nav-container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    width: 100%; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
 .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+
 .logo-img {
-    height: 55px !important; width: 55px !important;
-    object-fit: cover; border-radius: 50%;
+    height: 55px !important; 
+    width: 55px !important;
+    object-fit: cover; 
+    border-radius: 50%;
     border: 2px solid rgba(255,255,255,0.8);
-    background-color: #fff; /* Hiện nền trắng nếu ảnh lỗi */
+    background-color: #fff;
 }
-.brand-text { color: white; font-size: 1.6rem; font-weight: 700; font-family: 'Playfair Display', serif; }
 
-/* 5. MENU ĐIỀU HƯỚNG */
+.brand-text { 
+    color: white; 
+    font-size: 1.6rem; 
+    font-weight: 700; 
+    font-family: 'Playfair Display', serif; 
+}
+
 .nav-menu { display: flex; list-style: none; gap: 2rem; }
-.nav-link { color: white; text-decoration: none; font-weight: 600; transition: 0.3s; }
-.nav-link:hover { color: var(--fire-light); }
+.nav-link { 
+    color: white; 
+    text-decoration: none; 
+    font-weight: 600; 
+    transition: 0.3s; 
+}
+.nav-link:hover { color: #ffae00; }
 
-/* 6. HERO SECTION - HIỆU ỨNG NỀN XÁM MỜ */
+/* HIỆU ỨNG NỀN TRANG CHỦ (Chỉ dành cho trang index) */
 .hero { 
-    position: relative; min-height: 100vh; 
+    position: relative; 
+    min-height: 100vh; 
     background: url('anhlop.jpg') no-repeat center center/cover; 
-    display: flex; align-items: center; justify-content: center; 
-    text-align: center; color: var(--white); padding: 110px 20px 20px 20px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    color: var(--white); 
+    padding: 110px 20px 20px 20px;
 }
 .hero-overlay {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(44, 62, 80, 0.7); /* Tông xám xanh */
-    backdrop-filter: blur(8px) grayscale(60%); /* Hiệu ứng mờ ảo */
+    position: absolute; 
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(44, 62, 80, 0.7); 
+    backdrop-filter: blur(8px) grayscale(60%); 
     z-index: 1;
 }
-.hero-content { position: relative; z-index: 2; width: 100%; max-width: 900px; }
-.hero h1 { 
-    font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 1.5rem; 
-    font-family: 'Playfair Display', serif; text-shadow: 3px 3px 15px rgba(0,0,0,0.3);
-}
-
-/* 7. NÚT BẤM */
-.hero-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
-.btn {
-    padding: 0.8rem 2.5rem; border-radius: 50px; text-decoration: none;
-    font-weight: 700; transition: 0.4s; text-transform: uppercase; min-width: 180px;
-}
-.btn-primary { background: white; color: var(--primary); }
-.btn-secondary { border: 2px solid white; color: white; }
-.btn:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .nav-menu { display: none; }
-    .hero-buttons { flex-direction: column; align-items: center; }
-}
+.hero-content { position: relative; z-index: 2; }
