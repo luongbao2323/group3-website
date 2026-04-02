@@ -17,6 +17,7 @@ body {
     font-family: 'Poppins', sans-serif; 
     overflow-x: hidden;
     background-color: #f4f4f4;
+    line-height: 1.6;
 }
 
 /* 2. DÒNG CHỮ CHẠY (TOP BAR) */
@@ -57,14 +58,13 @@ body {
     top: 35px;
     left: 0;
     width: 100%; 
-    background: var(--primary) !important; /* Cố định màu xanh */
+    background: var(--primary) !important;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     padding: 0 2rem; 
     z-index: 1000; 
     height: 75px;
     display: flex;
     align-items: center;
-    transition: all 0.3s ease;
 }
 
 .nav-container { 
@@ -82,7 +82,6 @@ body {
     align-items: center;
     gap: 12px;
     text-decoration: none;
-    cursor: pointer;
 }
 
 .logo-img {
@@ -90,35 +89,27 @@ body {
     width: 55px !important;
     object-fit: cover;
     border-radius: 50%;
-    display: block !important;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 2px solid rgba(255,255,255,0.5);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Khi di chuột vào Logo */
 .nav-brand:hover .logo-img {
     transform: scale(1.25) rotate(-5deg);
-    filter: brightness(1.2) contrast(1.1);
-    /* Tạo quầng lửa bao quanh */
-    box-shadow: 
-        0 0 15px var(--fire-color), 
-        0 0 30px var(--fire-light), 
-        0 -10px 20px var(--fire-color);
+    box-shadow: 0 0 15px var(--fire-color), 0 0 30px var(--fire-light);
     animation: flame-vibrate 0.1s infinite;
 }
 
 @keyframes flame-vibrate {
-    0% { transform: scale(1.25) rotate(-5deg) translate(0, 0); }
-    50% { transform: scale(1.26) rotate(-4deg) translate(-1px, 1px); }
-    100% { transform: scale(1.25) rotate(-5deg) translate(1px, -0.5px); }
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(-1px, 1px); }
+    100% { transform: translate(1px, -0.5px); }
 }
 
 .brand-text {
     color: white;
     font-size: 1.6rem;
     font-weight: 700;
-    font-family: 'Playfair Display', serif;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+    font-family: 'Playfair Display', serif; /* Đồng bộ font chữ lớp */
 }
 
 /* 5. MENU ĐIỀU HƯỚNG */
@@ -127,61 +118,66 @@ body {
     color: white; 
     text-decoration: none; 
     font-weight: 600; 
-    transition: 0.3s;
     position: relative;
-}
-
-/* Hiệu ứng gạch chân khi hover menu */
-.nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: var(--fire-light);
     transition: 0.3s;
 }
 
 .nav-link:hover { color: var(--fire-light); }
+.nav-link::after {
+    content: ''; position: absolute; width: 0; height: 2px;
+    bottom: -5px; left: 0; background: var(--fire-light); transition: 0.3s;
+}
 .nav-link:hover::after { width: 100%; }
 
-/* 6. HERO SECTION */
+/* 6. HERO SECTION - SỬA LỖI LỆCH NÚT */
 .hero { 
     min-height: 100vh; 
     background: linear-gradient(135deg, #3498db 0%, #1e6091 100%); 
     display: flex; 
+    flex-direction: column;
     align-items: center; 
     justify-content: center; 
     text-align: center; 
     color: var(--white); 
-    padding-top: 110px;
+    padding: 110px 20px 20px 20px; /* Thêm padding để không bị dính lề */
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 900px;
 }
 
 .hero h1 { 
-    font-size: 4.5rem; 
-    margin-bottom: 1rem; 
+    font-size: clamp(2.5rem, 8vw, 4.5rem); /* Chữ tự co giãn đều nhau */
+    margin-bottom: 1.5rem; 
+    font-family: 'Playfair Display', serif;
     text-shadow: 3px 3px 15px rgba(0,0,0,0.3);
-    animation: fadeInUp 1s ease;
 }
 
-/* 7. NÚT BẤM (BUTTONS) */
-.hero-buttons { display: flex; gap: 1.5rem; justify-content: center; }
+/* 7. NÚT BẤM - CĂN GIỮA CHUẨN */
+.hero-buttons { 
+    display: flex; 
+    gap: 1.5rem; 
+    justify-content: center; 
+    flex-wrap: wrap; /* Tự xuống dòng khi màn hình nhỏ */
+}
+
 .btn {
-    padding: 0.8rem 2rem;
+    padding: 0.8rem 2.5rem;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 700;
     transition: 0.4s;
     text-transform: uppercase;
     font-size: 0.9rem;
+    min-width: 180px; /* Đảm bảo 2 nút bằng kích thước nhau */
 }
 
-.btn-primary { background: white; color: var(--primary); }
+.btn-primary { background: white; color: var(--primary); border: 2px solid white; }
 .btn-primary:hover { 
     transform: translateY(-5px); 
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     background: var(--fire-light);
+    border-color: var(--fire-light);
     color: white;
 }
 
@@ -190,8 +186,8 @@ body {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    .nav-menu { display: none; }
-    .hero h1 { font-size: 3rem; }
+    .nav-menu { display: none; } /* Có thể thay bằng menu burger sau */
     .navbar { height: 65px; padding: 0 1rem; }
-    .logo-img { height: 45px !important; width: 45px !important; }
+    .hero-buttons { flex-direction: column; align-items: center; }
+    .btn { width: 100%; max-width: 250px; }
 }
