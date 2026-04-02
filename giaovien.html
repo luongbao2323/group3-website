@@ -72,6 +72,7 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
             border: 1px solid rgba(0,0,0,0.03);
+            overflow: hidden; /* Giữ ảnh gọn trong khung */
         }
 
         .teacher-item:hover {
@@ -79,17 +80,25 @@
             box-shadow: 0 15px 30px rgba(52, 152, 219, 0.15);
         }
 
+        /* -- CẬP NHẬT PHẦN AVATAR ĐỂ CHỨA ẢNH -- */
         .avatar-container {
-            width: 130px;
-            height: 130px;
+            width: 140px; /* Tăng kích thước một chút */
+            height: 140px;
             margin: 0 auto 20px;
-            background: var(--light);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3.5rem;
-            border: 4px solid var(--primary);
+            font-size: 3.5rem; /* Cần cho trường hợp ảnh lỗi, hiện emoji dự phòng */
+            border: 5px solid var(--primary); /* Tăng độ dày viền cho đẹp */
+            overflow: hidden; /* Giữ ảnh luôn hình tròn */
+            background-color: #eee; /* Màu nền dự phòng */
+        }
+
+        .teacher-avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Giúp ảnh không bị méo, tự căn giữa */
         }
 
         .teacher-name {
@@ -127,39 +136,54 @@
         <h2 class="section-title">Thông tin Giáo viên</h2>
         
         <div class="teacher-grid" id="teacherGrid">
-            </div>
+        </div>
     </div>
 
     <script>
-        // DỮ LIỆU GIÁO VIÊN
+        // --- HƯỚNG DẪN CẬP NHẬT ẢNH ---
+        // 1. Hãy đặt 2 tấm ảnh của thầy vào cùng thư mục với file giaovien.html này.
+        // 2. Sửa tên file ảnh ở mục imagePath bên dưới (ví dụ: 'thaysang.jpg').
+
         const teachers = [
             { 
                 name: 'Nguyễn Trọng Sang', 
                 role: 'Giáo viên Chủ nhiệm', 
-                emoji: '👨‍🏫', 
+                // --- THÊM ĐƯỜNG DẪN ẢNH VÀO ĐÂY ---
+                // Mặc định tôi để trống, nếu bạn để trống nó sẽ hiện emoji như cũ
+                imagePath: '', 
+                emojiFallback: '👨‍🏫', // Emoji dự phòng nếu không có ảnh
                 bio: 'Người thầy tận tâm, luôn dìu dắt và định hướng cho tập thể 12A2 trên con đường học vấn.' 
             },
             { 
                 name: 'Nguyễn Văn Trọng', 
                 role: 'Giáo viên Bộ môn', 
-                emoji: '👨‍🏫', 
+                // --- THÊM ĐƯỜNG DẪN ẢNH VÀO ĐÂY (ví dụ: 'thaytrong.png') ---
+                imagePath: '', 
+                emojiFallback: '👨‍🏫', 
                 bio: 'Thầy mang đến kiến thức sâu rộng và những giờ học đầy hứng khởi cho các thành viên trong lớp.' 
             }
         ];
 
-        // HÀM HIỂN THỊ
+        // HÀM HIỂN THỊ (Đã được sửa để hiện ảnh)
         function renderTeachers() {
             const grid = document.getElementById('teacherGrid');
-            grid.innerHTML = teachers.map(t => `
+            grid.innerHTML = teachers.map(t => {
+                // Kiểm tra xem có đường dẫn ảnh không
+                const avatarHTML = t.imagePath 
+                    ? `<img src="${t.imagePath}" alt="Chân dung ${t.name}" class="teacher-avatar-img">`
+                    : t.emojiFallback;
+
+                return `
                 <div class="teacher-item">
                     <div class="avatar-container">
-                        ${t.emoji}
+                        ${avatarHTML}
                     </div>
                     <div class="teacher-name">${t.name}</div>
                     <div class="teacher-role">${t.role}</div>
                     <div class="teacher-bio">${t.bio}</div>
                 </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         // Chạy hàm ngay khi trang web tải xong
