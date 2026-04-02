@@ -20,7 +20,6 @@
             color: var(--text-dark);
         }
 
-        /* Thanh tiêu đề xanh trên cùng */
         .top-banner {
             background-color: var(--primary-blue);
             color: white;
@@ -39,7 +38,6 @@
             text-align: center;
         }
 
-        /* Tiêu đề chính */
         .main-title {
             color: var(--primary-blue);
             font-size: 2.2rem;
@@ -47,7 +45,6 @@
             margin-bottom: 50px;
         }
 
-        /* Bố cục lưới cho các thẻ */
         .teacher-grid {
             display: flex;
             justify-content: center;
@@ -55,9 +52,8 @@
             flex-wrap: wrap;
         }
 
-        /* Thẻ giáo viên (Card) */
         .teacher-link {
-            text-decoration: none; /* Bỏ gạch chân link */
+            text-decoration: none;
             color: inherit;
             display: block;
             flex: 1;
@@ -67,7 +63,7 @@
 
         .teacher-card {
             background: white;
-            border-radius: 30px; /* Bo góc lớn giống hình mẫu */
+            border-radius: 30px;
             padding: 50px 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
             transition: all 0.3s ease;
@@ -77,13 +73,11 @@
             align-items: center;
         }
 
-        /* Hiệu ứng khi di chuột vào thẻ */
         .teacher-link:hover .teacher-card {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
         }
 
-        /* Vòng tròn chứa ảnh */
         .image-circle {
             width: 160px;
             height: 160px;
@@ -103,7 +97,6 @@
             object-fit: cover;
         }
 
-        /* Tên giáo viên */
         .name {
             font-size: 1.6rem;
             font-weight: 700;
@@ -111,7 +104,6 @@
             color: #2c3e50;
         }
 
-        /* Chức vụ (Màu xanh) */
         .role {
             color: var(--primary-blue);
             font-weight: 600;
@@ -119,7 +111,6 @@
             margin-bottom: 20px;
         }
 
-        /* Mô tả ngắn */
         .description {
             color: var(--text-gray);
             line-height: 1.6;
@@ -129,152 +120,27 @@
     </style>
 </head>
 <body>
-
-    <div class="top-banner">
-        Hội đồng sư phạm
-    </div>
-
+    <div class="top-banner">Hội đồng sư phạm</div>
     <div class="container">
         <h1 class="main-title">Thông tin Giáo viên</h1>
-
         <div class="teacher-grid">
             <a href="sang-info.html" class="teacher-link">
                 <div class="teacher-card">
-                    <div class="image-circle">
-                        <img src="sangjr.jpg" alt="Nguyễn Trọng Sang">
-                    </div>
+                    <div class="image-circle"><img src="sangjr.jpg" alt="Thầy Sang"></div>
                     <div class="name">Nguyễn Trọng Sang</div>
                     <div class="role">Giáo viên Chủ nhiệm</div>
-                    <p class="description">
-                        Người thầy tận tâm, luôn dìu dắt và định hướng cho tập thể 12A2 trên con đường học vấn.
-                    </p>
+                    <p class="description">Người thầy tận tâm, luôn dìu dắt và định hướng cho tập thể 12A2 trên con đường học vấn.</p>
                 </div>
             </a>
-
             <a href="trong-info.html" class="teacher-link">
                 <div class="teacher-card">
-                    <div class="image-circle">
-                        <img src="trong.jpg" alt="Nguyễn Văn Trọng">
-                    </div>
+                    <div class="image-circle"><img src="trong.jpg" alt="Thầy Trọng"></div>
                     <div class="name">Nguyễn Văn Trọng</div>
                     <div class="role">Giáo viên Bộ môn</div>
-                    <p class="description">
-                        Thầy mang đến kiến thức sâu rộng và những giờ học đầy hứng khởi cho các thành viên trong lớp.
-                    </p>
+                    <p class="description">Thầy mang đến kiến thức sâu rộng và những giờ học đầy hứng khởi cho các thành viên trong lớp.</p>
                 </div>
             </a>
         </div>
     </div>
-
-</body>
-</html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>Tiểu sử Thầy Nguyễn Trọng Sang</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Poppins', sans-serif; background: #f4f7f9; display: flex; justify-content: center; padding: 50px 20px; }
-        .profile-box { background: white; max-width: 700px; width: 100%; padding: 40px; border-radius: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
-        .back-btn { color: #3498db; text-decoration: none; font-weight: 600; display: block; margin-bottom: 20px; }
-        .info-header { display: flex; gap: 30px; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 30px; }
-        .info-header img { width: 180px; height: 180px; border-radius: 15px; object-fit: cover; }
-        h1 { margin: 0; color: #2c3e50; }
-        .role-tag { color: #3498db; font-weight: 600; }
-        .bio-text { margin-top: 30px; line-height: 1.8; color: #555; }
-    </style>
-</head>
-<body>
-    <div class="profile-box">
-        <a href="giaovien.html" class="back-btn">← Quay lại</a>
-        <div class="info-header">
-            <img src="sangjr.jpg" alt="Nguyễn Trọng Sang">
-            <div>
-                <p class="role-tag">Giáo viên Chủ nhiệm lớp 12A2</p>
-                <h1>Nguyễn Trọng Sang</h1>
-            </div>
-        </div>
-        <div class="bio-text">
-            <h3>Quá trình đào tạo</h3>
-            <p>Tốt nghiệp Đại học Sư phạm TP.HCM.</p>
-            <h3>Giới thiệu</h3>
-            <p>Thầy là người dẫn dắt lớp 12A2 với tâm huyết và sự tận tụy. Với phong cách giảng dạy hiện đại, thầy luôn tạo điều kiện tốt nhất để học sinh phát triển năng lực cá nhân.</p>
-        </div>
-    </div>
-	<meta charset="UTF-8">
-    <title>Tiểu sử Thầy Nguyễn Văn Trọng</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { 
-            font-family: 'Poppins', sans-serif; 
-            background: #f4f7f9; 
-            display: flex; 
-            justify-content: center; 
-            padding: 50px 20px; 
-        }
-        .profile-box { 
-            background: white; 
-            max-width: 700px; 
-            width: 100%; 
-            padding: 40px; 
-            border-radius: 25px; 
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05); 
-        }
-        .back-btn { 
-            color: #3498db; 
-            text-decoration: none; 
-            font-weight: 600; 
-            display: block; 
-            margin-bottom: 20px; 
-        }
-        .info-header { 
-            display: flex; 
-            gap: 30px; 
-            align-items: center; 
-            border-bottom: 2px solid #eee; 
-            padding-bottom: 30px; 
-        }
-        .info-header img { 
-            width: 180px; 
-            height: 180px; 
-            border-radius: 15px; 
-            object-fit: cover; 
-        }
-        h1 { 
-            margin: 0; 
-            color: #2c3e50; 
-        }
-        .role-tag { 
-            color: #3498db; 
-            font-weight: 600; 
-        }
-        .bio-text { 
-            margin-top: 30px; 
-            line-height: 1.8; 
-            color: #555; 
-        }
-    </style>
-</head>
-<body>
-    <div class="profile-box">
-        <a href="giaovien.html" class="back-btn">← Quay lại</a>
-        
-        <div class="info-header">
-            <img src="trong.jpg" alt="Nguyễn Văn Trọng">
-            <div>
-                <p class="role-tag">Giáo viên Bộ môn lớp 12A2</p>
-                <h1>Nguyễn Văn Trọng</h1>
-            </div>
-        </div>
-
-        <div class="bio-text">
-            <h3>Quá trình đào tạo</h3>
-            <p>Tốt nghiệp Đại học chuyên ngành Sư phạm chuyên sâu.</p>
-            
-            <h3>Giới thiệu</h3>
-            <p>Thầy mang đến kiến thức sâu rộng và những giờ học đầy hứng khởi cho các thành viên trong lớp. Với phương pháp giảng dạy lôi cuốn, thầy luôn khích lệ tinh thần tự học và sáng tạo của các em học sinh.</p>
-        </div>
-    </div>
-
 </body>
 </html>
