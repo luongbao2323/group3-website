@@ -4,45 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lớp 12A2 - Kỷ Yếu Online</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <div class="top-bar">
+        <div class="marquee">
+            <span>12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • </span>
+            <span>12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • </span>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <img src="anhlogomenu.jpg" alt="Logo Lớp" class="logo-img"> 
+                <span class="brand-text">Lớp 12A2</span>
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a class="nav-link active" href="index.html">Trang chủ</a></li>
+                <li><a class="nav-link" href="thanhvien.html">Thành viên</a></li>
+                <li><a class="nav-link" href="giaovien.html">Giáo viên</a></li>
+                <li><a class="nav-link" href="anh.html">Ảnh</a></li>
+                <li><a class="nav-link" href="lienhe.html">Liên hệ</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <section class="hero">
-        <div class="hero-overlay"></div> <div class="hero-content">
-            <h1>Lớp 12A2</h1>
-            <p class="hero-year">Năm học 2025-2026</p>
-            <p class="hero-slogan">"Cùng nhau tỏa sáng! 🎓"</p>
-            <div class="hero-buttons">
-                <a href="#anh" class="btn btn-primary">XEM THÀNH VIÊN</a>
-                <a href="#lienhe" class="btn btn-secondary">LIÊN HỆ NHÓM</a>
+        <div class="hero-overlay"></div> 
+        <div class="hero-content">
+            <div class="popup-item popup-delay-1">
+                <h1>Lớp 12A2</h1>
+            </div>
+            <div class="popup-item popup-delay-2">
+                <p class="hero-year">Năm học 2025-2026</p>
+            </div>
+            <div class="popup-item popup-delay-3">
+                <p class="hero-slogan">"Cùng nhau tỏa sáng! 🎓"</p>
+            </div>
+            <div class="popup-item popup-delay-4">
+                <div class="hero-buttons">
+                    <a href="thanhvien.html" class="btn btn-primary">XEM THÀNH VIÊN</a>
+                    <a href="lienhe.html" class="btn btn-secondary">LIÊN HỆ NHÓM</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="anh" class="main-content">
-        <nav class="navbar">
-            <div class="nav-container">
-                <a href="index.html" class="nav-brand">
-                    <img src="anhlogomenu.jpg" alt="Logo Lớp" class="logo-img"> 
-                    <span class="brand-text">Lớp 12A2</span>
-                </a>
-                
-                <ul class="nav-menu">
-                    <li><a class="nav-link active" href="index.html">Trang chủ</a></li>
-                    <li><a class="nav-link" href="thanhvien.html">Thành viên</a></li>
-                    <li><a class="nav-link" href="giaovien.html">Giáo viên</a></li>
-                    <li><a class="nav-link" href="anh.html">Ảnh</a></li>
-                    <li><a class="nav-link" href="lienhe.html">Liên hệ</a></li>
-                </ul>
+    <section id="anh" class="main-content" style="background: #000; padding: 50px 0;">
+        <div class="nav-container">
+             <div class="main-image-wrapper" style="border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                <img src="anhlop.jpg" alt="Ảnh tập thể lớp 12A2" class="main-image" style="width: 100%; display: block;">
             </div>
-        </nav>
-
-        <div class="main-image-wrapper">
-            <img src="anhlop.jpg" alt="Ảnh tập thể lớp 12A2" class="main-image">
         </div>
     </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h2 class="footer-title">Kỷ Niệm 12A2</h2>
+                <div class="footer-divider"></div>
+                <p class="footer-message">"Thanh xuân như một tách trà, 12A2 cùng nhau đi hết quãng đường hoa."</p>
+                <div class="footer-contact">
+                    <p><strong>Địa chỉ:</strong> Trường THPT Lê Lợi</p>
+                    <p><strong>Niên khóa:</strong> 2023 - 2026</p>
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="footer-image-wrapper">
+                    <img src="anhlop.jpg" alt="Kỷ niệm lớp" class="footer-img">
+                    <div class="img-overlay">
+                        <span>Mãi là anh em</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Lớp 12A2 - Thiết kế bởi Thành viên lớp.
+        </div>
+    </footer>
 
 </body>
 </html>

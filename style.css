@@ -11,17 +11,18 @@
     --accent: #ffae00;
     --white: #ffffff;
     --text-color: #f1f1f1;
-    --fire-shadow: 0 0 15px #ff4d00, 0 0 30px #ffae00; /* Hiệu ứng ngọn lửa */
+    --fire-shadow: 0 0 15px #ff4d00, 0 0 30px #ffae00;
 }
 
 body { 
     font-family: 'Poppins', sans-serif; 
     overflow-x: hidden; 
     line-height: 1.6;
-    background-color: #000; /* Nền tối để tránh bị lộ khi ảnh chưa load */
+    background-color: #000;
+    color: var(--text-color);
 }
 
-/* --- 2. DÒNG CHỮ CHẠY (TOP BAR) - CHẠY LIÊN TỤC VÔ TẬN --- */
+/* --- 2. DÒNG CHỮ CHẠY (TOP BAR) --- */
 .top-bar {
     background: #ffffff; 
     height: 35px; 
@@ -38,14 +39,14 @@ body {
 
 .marquee { 
     display: flex; 
-    width: max-content; /* Đảm bảo khung chứa giãn theo nội dung chữ */
+    width: max-content; 
     white-space: nowrap; 
     animation: moveLeft 12s linear infinite; 
 }
 
 .marquee span { 
     display: inline-block;
-    padding-right: 15px; /* Khoảng cách giữa các cụm chữ */
+    padding-right: 30px; /* Tăng khoảng cách để chữ không bị dính */
     font-weight: bold; 
     color: var(--secondary); 
     font-size: 14px;
@@ -54,7 +55,7 @@ body {
 
 @keyframes moveLeft { 
     0% { transform: translateX(0); } 
-    100% { transform: translateX(-50%); } /* Nối đuôi hoàn hảo tại điểm 50% */
+    100% { transform: translateX(-50%); } 
 }
 
 /* --- 3. THANH MENU (NAVBAR) --- */
@@ -84,13 +85,13 @@ body {
 .nav-brand { 
     display: flex; 
     align-items: center; 
-    gap: 12px; 
+    gap: 15px; 
     text-decoration: none; 
 }
 
 .logo-img {
-    height: 55px; 
-    width: 55px;
+    height: 55px !important; 
+    width: 55px !important;
     object-fit: cover; 
     border-radius: 50%;
     border: 2px solid var(--white);
@@ -98,16 +99,15 @@ body {
     transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Hiệu ứng ngọn lửa khi hover vào logo */
 .nav-brand:hover .logo-img {
-    transform: scale(1.1) rotate(-5deg);
+    transform: scale(1.1) rotate(-8deg); /* Tăng góc xoay cho cá tính */
     box-shadow: var(--fire-shadow);
     border-color: var(--accent);
 }
 
 .brand-text { 
     color: var(--white); 
-    font-size: 1.7rem; 
+    font-size: 1.8rem; 
     font-weight: 700; 
     font-family: 'EB Garamond', serif; 
 }
@@ -119,14 +119,26 @@ body {
     font-weight: 600; 
     transition: 0.3s;
     font-size: 0.95rem;
+    position: relative;
 }
 
-.nav-link:hover, .nav-link.active { 
-    color: var(--accent); 
-    text-shadow: 0 0 8px rgba(255,174,0,0.5);
+/* Thêm hiệu ứng gạch chân khi hover cho menu */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent);
+    transition: 0.3s;
 }
 
-/* --- 4. HERO SECTION - VINTAGE & POPUP --- */
+.nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+}
+
+/* --- 4. HERO SECTION --- */
 .hero { 
     position: relative; 
     min-height: 100vh; 
@@ -135,128 +147,57 @@ body {
     align-items: center; 
     justify-content: center; 
     text-align: center; 
-    color: var(--text-color); 
-    padding-top: 110px;
+    padding-top: 110px; 
     overflow: hidden; 
 }
 
 .hero-overlay {
     position: absolute; 
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.6); 
-    backdrop-filter: blur(5px) grayscale(30%); /* Hiệu ứng mờ ảo cổ điển */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)); /* Overlay chuyển màu cho sâu hơn */
+    backdrop-filter: blur(2px);
     z-index: 1;
 }
 
-.hero-content { position: relative; z-index: 2; width: 100%; max-width: 800px; }
+.hero-content { position: relative; z-index: 2; width: 100%; max-width: 800px; padding: 0 20px; }
 
 .hero h1 { 
     font-size: clamp(3.5rem, 10vw, 6rem); 
     font-family: 'EB Garamond', serif; 
     font-weight: 700;
-    text-shadow: 3px 3px 20px rgba(0,0,0,0.7);
-    margin-bottom: 0.5rem;
-    letter-spacing: -1px;
-}
-
-.hero-year {
-    font-size: 1.5rem;
-    font-family: 'EB Garamond', serif;
-    font-weight: 400;
+    color: var(--white);
+    text-shadow: 2px 4px 15px rgba(0,0,0,0.8);
     margin-bottom: 1rem;
-    letter-spacing: 3px;
-    opacity: 0.9;
 }
 
-.hero-slogan {
-    font-size: 1.1rem;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    font-style: italic;
-    margin-bottom: 3rem;
-    opacity: 0.8;
-}
-
-/* --- 5. HỆ THỐNG HIỆU ỨNG POPUP --- */
-@keyframes popupAnimation {
-    0% {
-        opacity: 0;
-        transform: scale(0.85) translateY(40px);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
-
-.popup-item {
-    opacity: 0; 
-    animation: popupAnimation 1s cubic-bezier(0.19, 1, 0.22, 1) forwards; 
-}
-
-.popup-delay-1 { animation-delay: 0.2s; }
-.popup-delay-2 { animation-delay: 0.4s; }
-.popup-delay-3 { animation-delay: 0.6s; }
-.popup-delay-4 { animation-delay: 0.8s; }
-
-/* --- 6. NÚT BẤM --- */
-.hero-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+.hero-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
 
 .btn {
-    padding: 0.9rem 2.8rem;
+    padding: 1rem 2.5rem;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 700;
-    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: 0.4s ease;
     text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 1.5px;
-    min-width: 190px;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
 }
 
-.btn-primary { 
-    background: var(--white); 
-    color: #222;
-    border: 2px solid var(--white);
+.btn-primary { background: var(--white); color: #222; border: 2px solid var(--white); }
+.btn-secondary { background: transparent; border: 2px solid var(--white); color: var(--white); }
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
 }
 
-.btn-secondary { 
-    background: transparent;
-    border: 2px solid var(--white); 
-    color: var(--white); 
-}
+.btn-primary:hover { background: var(--accent); border-color: var(--accent); color: var(--white); }
 
-.btn:hover { 
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-}
-
-.btn-primary:hover {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: var(--white);
-}
-
-.btn-secondary:hover {
-    background: var(--white);
-    color: #222;
-}
-
-/* --- 7. ĐÁP ỨNG MÀN HÌNH (RESPONSIVE) --- */
-@media (max-width: 768px) {
-    .nav-menu { display: none; }
-    .navbar { padding: 0 1rem; }
-    .hero h1 { font-size: 3.2rem; }
-    .hero-year { font-size: 1.2rem; }
-    .hero-buttons { flex-direction: column; align-items: center; gap: 1rem; }
-    .btn { width: 100%; max-width: 280px; }
-}
-/* --- PHẦN CHÂN TRANG (FOOTER) - ĐÃ TỐI ƯU --- */
+/* --- 5. FOOTER --- */
 .footer {
-    background: #0f171e; /* Nền tối sâu hơn để làm nổi bật chữ white và accent */
+    background: #0f171e;
     color: var(--white);
-    padding: 100px 20px 30px 20px; /* Tăng padding top để tách biệt với nội dung trên */
-    position: relative;
+    padding: 80px 20px 40px;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -264,142 +205,45 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr; /* Điều chỉnh tỉ lệ để phần chữ rộng hơn một chút */
-    gap: 60px;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 50px;
     align-items: center;
 }
 
 .footer-title {
     font-family: 'EB Garamond', serif;
-    font-size: 2.8rem; /* Tăng size một chút cho sang trọng */
+    font-size: 2.5rem;
     color: var(--accent);
-    margin-bottom: 15px;
-    letter-spacing: -1px;
-}
-
-.footer-divider {
-    width: 80px; /* Dài hơn chút cho cân đối */
-    height: 3px;
-    background: var(--accent);
-    margin-bottom: 30px;
-    box-shadow: 0 0 10px rgba(255, 174, 0, 0.3); /* Hiệu ứng phát sáng nhẹ */
-}
-
-.footer-message {
-    font-size: 1.15rem;
-    line-height: 1.8;
-    margin-bottom: 35px;
-    font-style: italic;
-    opacity: 0.85;
-    color: var(--text-color);
+    margin-bottom: 20px;
 }
 
 .footer-contact {
     background: rgba(255, 255, 255, 0.03);
-    padding: 20px;
-    border-left: 3px solid var(--primary);
-    border-radius: 0 10px 10px 0;
+    padding: 25px;
+    border-left: 4px solid var(--primary);
+    border-radius: 0 15px 15px 0;
 }
 
-.footer-contact p {
-    margin-bottom: 10px;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.footer-contact strong {
-    color: var(--accent); /* Đổi sang accent để đồng bộ với tiêu đề */
-    font-weight: 600;
-}
-
-/* Khung ảnh bên phải - Hiệu ứng Vintage */
 .footer-image-wrapper {
     position: relative;
-    border-radius: 20px;
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
     aspect-ratio: 16 / 9;
-    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
-    filter: grayscale(20%); /* Hơi vintage một chút */
-    transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: 0.8s;
 }
 
-.img-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.7));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: 0.5s ease;
-}
+.footer-image-wrapper:hover .footer-img { transform: scale(1.15); }
 
-.footer-image-wrapper:hover .img-overlay {
-    opacity: 1;
-}
-
-.footer-image-wrapper:hover .footer-img {
-    transform: scale(1.1);
-    filter: grayscale(0%);
-}
-
-.img-overlay span {
-    border: 1px solid var(--white);
-    padding: 12px 25px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    background: rgba(0,0,0,0.2);
-    backdrop-filter: blur(5px);
-}
-
-/* Bản quyền dưới cùng */
-.footer-bottom {
-    margin-top: 80px;
-    padding-top: 25px;
-    border-top: 1px solid rgba(255,255,255,0.05);
-    text-align: center;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-    opacity: 0.5;
-    transition: 0.3s;
-}
-
-.footer-bottom:hover {
-    opacity: 1;
-}
-
-/* Responsive cho máy tính bảng & điện thoại */
+/* --- 6. RESPONSIVE --- */
 @media (max-width: 992px) {
-    .footer {
-        padding-top: 60px;
-    }
-    .footer-container {
-        grid-template-columns: 1fr; /* Chuyển thành 1 cột */
-        text-align: center;
-        gap: 40px;
-    }
-    .footer-divider {
-        margin: 0 auto 30px auto;
-    }
-    .footer-title {
-        font-size: 2.2rem;
-    }
-    .footer-contact {
-        border-left: none;
-        border-top: 3px solid var(--primary);
-        border-radius: 0 0 10px 10px;
-        display: inline-block;
-        text-align: left;
-    }
+    .footer-container { grid-template-columns: 1fr; gap: 40px; }
+    .nav-menu { display: none; } /* Có thể thêm menu hamburger ở đây sau */
+    .hero h1 { font-size: 3.5rem; }
 }
