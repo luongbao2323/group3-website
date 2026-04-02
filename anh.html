@@ -3,267 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kỉ niệm 12A2 - Full Version</title>
+    <title>Kỉ niệm 12A2 - Album Hoàn Chỉnh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.min.css">
     <style>
-        /* --- CSS GIAO DIỆN CHUNG --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* --- CSS CHUNG --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f8f9fa; color: #2c3e50; scroll-behavior: smooth; overflow-x: hidden; line-height: 1.6; }
+        
+        nav { 
+            background-color: #4ea8de; padding: 15px 8%; 
+            display: flex; justify-content: space-between; align-items: center; 
+            color: white; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-
-        body {
-            background-color: #f0f8ff;
-            color: #2c3e50;
-            scroll-behavior: smooth; /* Cuộn mượt toàn trang */
-        }
-
-        nav {
-            background-color: #4ea8de;
-            padding: 15px 10%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo { font-weight: bold; font-size: 1.2rem; }
         nav ul { display: flex; list-style: none; }
-        nav ul li { margin-left: 25px; cursor: pointer; font-size: 0.9rem; }
-        nav ul li.active { border-bottom: 2px solid white; padding-bottom: 2px; }
+        nav ul li { margin-left: 25px; cursor: pointer; font-size: 1rem; font-weight: 500; transition: 0.3s; }
+        nav ul li:hover { color: #1d3557; }
 
-        .container {
-            text-align: center;
-            padding: 50px 5% 0 5%;
-            max-width: 1200px;
-            margin: 0 auto;
+        .container { text-align: center; padding: 40px 5%; max-width: 1200px; margin: 0 auto; }
+        .main-title { font-size: 2.8rem; margin-bottom: 10px; color: #1d3557; text-transform: uppercase; }
+
+        .gallery-menu { margin: 40px 0; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .gallery-menu a { 
+            text-decoration: none; padding: 12px 28px; background: #4ea8de; color: white; 
+            border-radius: 50px; font-weight: bold; transition: 0.4s; box-shadow: 0 4px 15px rgba(78, 168, 222, 0.3); 
         }
+        .gallery-menu a:hover { background: #1d3557; transform: translateY(-5px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
 
-        h1.main-title {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: #1d3557;
+        /* --- NÚT CUỘN LÊN (THEO MẪU CỦA M) --- */
+        .scroll-up-btn {
+            position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+            background-color: #4ea8de; color: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); cursor: pointer; border: none;
+            outline: none; transition: all 0.3s ease; z-index: 2000;
+            opacity: 0; visibility: hidden;
         }
+        .scroll-up-btn.show { opacity: 1; visibility: visible; }
+        .scroll-up-btn:hover { background-color: #1d3557; transform: translateY(-5px); }
 
-        /* --- PHẦN 1: HỘI THAO TRƯỜNG (CARD EFFECT) --- */
-        .card-group {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 80px;
+        /* --- CSS CARDS (PHẦN HỘI THAO) --- */
+        .card-group { display: flex; justify-content: space-between; gap: 20px; margin-bottom: 60px; }
+        .card { 
+            flex: 1; height: 450px; border-radius: 25px; overflow: hidden; 
+            position: relative; cursor: pointer; box-shadow: 0 15px 35px rgba(0,0,0,0.1); transition: 0.4s; 
         }
+        .card img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; }
+		/* 1. Trạng thái chữ nằm ẩn ở dưới đáy hình */
+.info-click { 
+    width: 100%; 
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    padding: 25px; 
+    color: white; 
+    text-align: center; 
+    background: rgba(0, 0, 0, 0.8);
+    transform: translateY(101%); /* Giấu chữ xuống dưới */
+    transition: transform 0.4s ease-out; /* Hiệu ứng trượt hiện chữ */
+    z-index: 5;
+}
 
-        .card {
-            height: 400px;
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
+/* 2. HIỆU ỨNG DI CHUỘT (Chỉ hiện chữ, KHÔNG phóng to ảnh) */
+@media (hover: hover) {
+    .card:hover .info-click {
+        transform: translateY(0); /* Đẩy chữ lên vị trí cũ để hiện ra */
+    }
+    
+    .card:hover .overlay-fade {
+        background: rgba(0, 0, 0, 0.4); /* Chỉ làm tối nền cho dễ đọc chữ */
+    }
 
-        .card img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transition: 0.6s ease;
-        }
+    /* Đảm bảo ảnh đứng yên, ko nhảy hay phóng to */
+    .card:hover img {
+        transform: none !important; 
+    }
+}
 
-        .layer {
-            background: transparent;
-            height: 100%; width: 100%;
-            position: absolute; top: 0; left: 0;
-            transition: 0.5s;
-        }
+/* 3. HIỆU ỨNG KHI CLICK (Dành cho điện thoại) */
+.card.active .info-click {
+    transform: translateY(0);
+}
+        /* --- SLIDER --- */
+        .book-wrapper { position: relative; max-width: 950px; margin: 40px auto; padding: 0 20px; }
+        .book-container { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; border-radius: 25px; }
+        .book-container::-webkit-scrollbar { display: none; }
+        .book-page { flex: 0 0 100%; scroll-snap-align: center; height: 65vh; }
+        .book-page img { width: 100%; height: 100%; object-fit: cover; }
+        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: white; color: #4ea8de; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 10; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .prev-btn { left: -10px; } .next-btn { right: -10px; }
 
-        .card:hover .layer { background: rgba(0, 0, 0, 0.7); }
-        .card:hover img { transform: scale(1.1); }
+        /* --- MODAL --- */
+        .modal { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); overflow-y: auto; padding: 60px 5%; }
+        .modal-content { max-width: 1200px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .modal-content img, .modal-content video { width: 100%; border-radius: 15px; cursor: pointer; }
+        .close-btn { position: fixed; top: 20px; right: 40px; color: #fff; font-size: 50px; cursor: pointer; z-index: 10001; }
+        .featured-caption { grid-column: 1 / -1; color: white; text-align: center; margin-bottom: 20px; font-size: 1.2rem; }
 
-        .info {
-            width: 100%;
-            position: absolute; bottom: 0; left: 0;
-            padding: 20px; color: white;
-            opacity: 0; transition: 0.5s;
-            text-align: center;
-        }
-
-        .card:hover .info { opacity: 1; transform: translateY(-20px); }
-
-        /* --- PHẦN 2: THƯỚC ẢNH KỈ NIỆM (STICKY EFFECT) --- */
-        .sticky-section {
-            padding: 0 10%;
-            background: #fff;
-            border-radius: 40px 40px 0 0;
-            margin-top: 50px;
-            box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
-        }
-
-        .sticky-section h2 {
-            padding: 40px 0;
-            font-size: 2rem;
-            color: #4ea8de;
-        }
-
-        .sticky-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Tích hợp hiệu ứng Sticky của bạn */
-        .sticky-container img {
-            position: sticky;
-            top: 20px; /* Cách đỉnh 20px khi dính */
-            width: 100%;
-            height: 90vh; /* Tăng chiều cao để nhìn rõ hơn */
-            margin-bottom: 50px; /* Tạo khoảng cách giữa các tấm ảnh khi cuộn */
-            object-fit: cover;
-            object-position: center;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        /* --- THIẾT KẾ NÚT CUỘN XUỐNG (THEO MẪU CỦA BẠN) --- */
-        .scroll-down-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background-color: #ffffff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            cursor: pointer;
-            border: none;
-            outline: none;
-            transition: transform 0.2s ease, opacity 0.3s;
-            z-index: 2000;
-        }
-
-        .scroll-down-btn:hover { transform: scale(1.15); }
-
-        .chevron {
-            display: inline-block;
-            border-right: 3px solid #4ea8de;
-            border-bottom: 3px solid #4ea8de;
-            width: 12px;
-            height: 12px;
-            transform: rotate(45deg);
-            margin-top: -6px;
-            position: relative;
-        }
-
-        /* --- CÁC MỤC KHÁC --- */
-        .other-info {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            padding: 80px 0;
-            background: #fff;
-        }
-
-        .card-standard {
-            background: #f8f9fa;
-            padding: 30px 50px;
-            border-radius: 15px;
-            text-align: center;
-        }
-
+        .other-info { display: flex; justify-content: center; gap: 30px; padding: 60px 10%; background: #fff; border-top: 1px solid #eee; }
+        .card-standard { background: #f8f9fa; padding: 40px; border-radius: 20px; text-align: center; flex: 1; border: 1px solid #eee; cursor: pointer; transition: 0.3s; }
+        .card-standard:hover { transform: translateY(-5px); border-color: #4ea8de; }
+		@media (max-width: 768px) { .card-group { flex-direction: column; } .nav-btn { display: none; } .other-info { flex-direction: column; } }
     </style>
 </head>
 <body>
 
+    <button class="scroll-up-btn" id="scrollUpBtn" onclick="scrollToTop()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
     <nav>
         <div class="logo">KỈ NIỆM 12A2</div>
         <ul>
-            <li>Trang chủ</li>
-            <li>Thành viên</li>
-            <li class="active">Ảnh</li>
-            <li>Liên hệ</li>
+            <li onclick="scrollToTop()">Trang chủ</li><li>Thành viên</li><li style="border-bottom: 2px solid white;">Ảnh</li><li>Liên hệ</li>
         </ul>
     </nav>
 
     <div class="container">
         <h1 class="main-title">Khoảnh khắc đáng nhớ</h1>
+        <p style="color: #666;">Lưu giữ những năm tháng rực rỡ nhất vs tụi mik ✨</p>
 
-        <h2 style="text-align: left; margin-bottom: 20px; color: #4ea8de;">Hội thao trường</h2>
+        <div class="gallery-menu">
+            <a href="#hoi-thao">🏅 Hội thao trường</a>
+            <a href="#thuoc-anh">🎞️ Thước ảnh kỉ niệm</a>
+            <a href="#ki-uc-vui">🎉 Kí ức những ngày vui</a>
+            <a href="#thanh-tuu">🏆 Thành tựu nho nhỏ</a>
+        </div>
+
+        <h2 id="hoi-thao" style="text-align: left; margin: 40px 0 10px 0; color: #4ea8de;">🏅 Hội thao trường</h2>
+        <p style="text-align: left; margin-bottom: 25px; color: #888; font-style: italic; font-size: 0.9rem;">(Bấm vào ảnh để xem thông tin chi tiết nhé!)</p>
+        
         <div class="card-group">
-            <div class="card">
+            <div class="card" onclick="toggleCardInfo(this)">
                 <img src="z7667308936761_b7af7e1b323a2d44bc8ade38f54932e4.jpg">
-                <div class="layer"></div>
-                <div class="info">
+                <div class="overlay-fade"></div>
+                <div class="info-click">
                     <h1>Đội nữ 12A2</h1>
                     <p>Dùng ngoại hình lẫn sức mạnh và sự kiên cường để giành về chiến thắng to lớn.</p>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" onclick="toggleCardInfo(this)">
                 <img src="IMG_1774077029424_1774083044722.jpg">
-                <div class="layer"></div>
-                <div class="info">
+                <div class="overlay-fade"></div>
+                <div class="info-click">
                     <h1>Đội nam 12A2</h1>
                     <p>Năm người đã cùng nhau chiến đấu giành huy chương về cho lớp.</p>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" onclick="toggleCardInfo(this)">
                 <img src="IMG_1774077029506_1774083046709.jpg">
-                <div class="layer"></div>
-                <div class="info">
+                <div class="overlay-fade"></div>
+                <div class="info-click">
                     <h1>Đoàn kết 12A2</h1>
                     <p>Sức mạnh tập thể là chìa khóa của mọi thành công.</p>
                 </div>
             </div>
         </div>
-    </div>
 
-    <section class="sticky-section" id="thuy-anh">
-        <h2>Thước ảnh kỉ niệm</h2>
-        <div class="sticky-container">
-            <img src="IMG_20260321_160902.jpg" alt="Kỉ niệm 1">
-            <img src="z7643433262896_94643ecd145c39a6057f37c0188d17f6.jpg" alt="Kỉ niệm 2">
-            <img src="dalat.jpg" alt="Kỉ niệm 3">
-            <img src="IMG_1774081457832_1774082745722.jpg" alt="Kỉ niệm 4">
-            <img src="IMG_1774077544000_1774082488031.jpg" alt="Kỉ niệm 5">
-            <img src="IMG_1774077544055_1774082491109.jpg" alt="Kỉ niệm 6">
-            <img src="Bản sao của IMG_3722.jpg" alt="Kỉ niệm 7">
-            <img src="IMG_0790.jpg" alt="Kỉ niệm 8">
-            <img src="IMG_0830.jpg" alt="Kỉ niệm 9">
-            <img src="IMG_20260321_183935.jpg" alt="Kỉ niệm 10">
+        <h2 id="thuoc-anh" style="text-align: left; margin: 40px 0 20px 0; color: #4ea8de;">🎞️ Thước ảnh kỉ niệm</h2>
+        <div class="book-wrapper">
+			<button class="nav-btn prev-btn" onclick="prevPage()">❮</button>
+            <div class="book-container" id="bookContainer">
+                <div class="book-page"><img src="z7667308936761_b7af7e1b323a2d44bc8ade38f54932e4.jpg"></div>
+                <div class="book-page"><img src="IMG_1774077029424_1774083044722.jpg"></div>
+                <div class="book-page"><img src="đà lạt 01.jpg"></div>
+            </div>
+            <button class="nav-btn next-btn" onclick="nextPage()">❯</button>
         </div>
-    </section>
+
         <h2 id="ki-uc-vui" style="text-align: left; margin: 40px 0 20px 0; color: #4ea8de;">🎉 Kí ức những ngày vui</h2>
         <div class="card-group">
             <div class="card" onclick="openModal('photoModal')">
-                <img src="IMG_20260321.jpg">
-                <div class="layer"></div>
-                <div class="info"><h1>20/10 Đáng Nhớ</h1><p>Bấm để xem album ✨</p></div>
+                <img src="IMG_20-10-03.jpg">
+                <div style="background: rgba(0,0,0,0.3); position: absolute; top:0; left:0; width:100%; height:100%;"></div>
+                <div style="position: absolute; bottom: 25px; width: 100%; color: white; z-index: 10;">
+                    <h1>20/10 Đáng Nhớ</h1><p>Bấm để xem album ✨</p>
+                </div>
             </div>
             <div class="card" onclick="openModal('modal2011')">
                 <img src="Bản sao của IMG_3722.jpg">
-                <div class="layer"></div>
-                <div class="info"><h1>Tri Ân 20/11</h1><p>Bấm để xem tri ân thầy cô 💐</p></div>
+                <div style="background: rgba(0,0,0,0.3); position: absolute; top:0; left:0; width:100%; height:100%;"></div>
+                <div style="position: absolute; bottom: 25px; width: 100%; color: white; z-index: 10;">
+                    <h1>Tri Ân 20/11</h1><p>Bấm để xem tri ân thầy cô 💐</p>
+                </div>
             </div>
             <div class="card">
-                <img src="đà lạt 01.jpg">
-                <div class="layer"></div>
-                <div class="info"><h1>Vi vu Đà Lạt</h1><p>Thanh xuân rực rỡ 💙</p></div>
+                <img src="da-lat-01.jpg">
+                <div style="background: rgba(0,0,0,0.3); position: absolute; top:0; left:0; width:100%; height:100%;"></div>
+                <div style="position: absolute; bottom: 25px; width: 100%; color: white; z-index: 10;">
+                    <h1>Vi vu Đà Lạt</h1><p>Thanh xuân rực rỡ 💙</p>
+                </div>
             </div>
         </div>
 
         <h2 id="thanh-tuu" style="text-align: left; margin: 40px 0 20px 0; color: #4ea8de;">🏆 Thành tựu nho nhỏ</h2>
         <div class="other-info" style="padding: 20px 0; background: transparent; border: none;">
             <div class="card-standard" onclick="openModal('album-thanh-tuu')">
-                <h3>🏅 Xem bảng vàng thành tích</h3>
-                <p>Một chút nỗ lực của cả tập thể 12A2 ✨</p>
+                <h3>🏅 Xem bảng vàng thành tích</h3><p>Một chút nỗ lực của cả tập thể 12A2 ✨</p>
             </div>
             <div class="card-standard">
-                
                 <p>Mãi là gia đình! 💙</p>
             </div>
         </div>
@@ -271,63 +210,81 @@
 
     <div id="photoModal" class="modal" onclick="closeModalOnOut(event, 'photoModal')">
         <span class="close-btn" onclick="closeModal('photoModal')">&times;</span>
-        <h2 style="color: white; text-align: center; margin-bottom: 30px;">Kỉ niệm 20/10 💙</h2>
         <div class="modal-content">
+            <h2 class="featured-caption">Kỉ niệm 20/10 💙</h2>
             <img src="IMG_20-10-01.jpg"> <img src="IMG_20-10-02.jpg">
-            <video controls><source src="VIDEO_DOWNLOAD_1760696753202_1774093986695 - Copy (2).mp4" type="video/mp4"></video>
+			<video controls><source src="VIDEO_DOWNLOAD_1760696753202_1774093986695 - Copy (2).mp4" type="video/mp4"></video>
         </div>
     </div>
 
     <div id="modal2011" class="modal" onclick="closeModalOnOut(event, 'modal2011')">
         <span class="close-btn" onclick="closeModal('modal2011')">&times;</span>
-        <h2 style="color: white; text-align: center; margin-bottom: 30px;">Tri Ân 20/11 💐</h2>
         <div class="modal-content">
+            <h2 class="featured-caption">Tri Ân 20/11 💐</h2>
             <img src="IMG_20-11-01.jpg"> <img src="IMG_20-11-02.jpg"> <img src="IMG_20-11-03.jpg">
         </div>
     </div>
 
     <div id="album-thanh-tuu" class="modal" onclick="closeModalOnOut(event, 'album-thanh-tuu')">
         <span class="close-btn" onclick="closeModal('album-thanh-tuu')">&times;</span>
-        <h2 style="color: white; text-align: center; margin-bottom: 20px;">🏆 Thành tựu nho nhỏ</h2>
         <div class="modal-content">
-            <p class="featured-caption">Một chút nỗ lực, một chút cố gắng vs hôm nay tụi mình đã có kết quả 💙</p>
+            <p class="featured-caption">Một chút nỗ lực vs hôm nay tụi mình đã có kết quả 🏆</p>
             <img src="image_3.png"><img src="image_12.png"><img src="image_4.png"><img src="image_5.png">
             <img src="image_6.png"><img src="image_7.png"><img src="image_8.png"><img src="image_9.png">
-            <img src="image_10.png"><img src="image_11.png">
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.min.js"></script>
     <script>
-        // Điều hướng Slider
+        // 1. Xử lý Nút cuộn lên
+        const scrollBtn = document.getElementById("scrollUpBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollBtn.classList.add("show");
+            } else {
+                scrollBtn.classList.remove("show");
+            }
+        };
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+        // 2. Xử lý Click hiện chữ (Hội thao)
+        function toggleCardInfo(card) {
+            // Tắt các card khác nếu đang mở
+            document.querySelectorAll('.card').forEach(c => {
+                if(c !== card) c.classList.remove('active');
+            });
+            // Bật/tắt card hiện tại
+            card.classList.toggle('active');
+        }
+
+        // 3. Slider
         const container = document.getElementById('bookContainer');
         function nextPage() { container.scrollBy({ left: container.offsetWidth, behavior: 'smooth' }); }
         function prevPage() { container.scrollBy({ left: -container.offsetWidth, behavior: 'smooth' }); }
 
-        // Quản lý Modal
+        // 4. Quản lý Modal & ViewerJS (Phóng to ảnh)
         const viewers = {};
         function openModal(id) {
             const modal = document.getElementById(id);
             modal.style.display = "block";
             document.body.style.overflow = "hidden";
-            
-            // Kích hoạt zoom ảnh nếu chưa có
             if (!viewers[id]) {
                 const gallery = modal.querySelector('.modal-content');
                 viewers[id] = new Viewer(gallery, { navbar: true, title: false, toolbar: true });
             }
         }
-
         function closeModal(id) {
             const modal = document.getElementById(id);
-            modal.style.display = "none";
-            document.body.style.overflow = "auto";
-            const video = modal.querySelector('video');
-            if(video) video.pause();
+            if(modal) {
+				modal.style.display = "none";
+                document.body.style.overflow = "auto";
+                const video = modal.querySelector('video');
+                if(video) video.pause();
+            }
         }
-
         function closeModalOnOut(e, id) { if (e.target.id === id) closeModal(id); }
 
+        // Đóng modal bằng phím Esc
         document.addEventListener('keydown', (e) => {
             if (e.key === "Escape") {
                 ['photoModal', 'modal2011', 'album-thanh-tuu'].forEach(closeModal);
@@ -335,3 +292,4 @@
         });
     </script>
 </body>
+</html>
