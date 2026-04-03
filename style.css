@@ -1,72 +1,114 @@
 :root {
-    --bg-color: #f0f4f8;
-    --card-bg: rgba(255, 255, 255, 0.7);
-    --text-color: #333;
+    --bg-color: #0b0b0b; /* Đen sâu thẳm đồng bộ trang chủ */
+    --card-bg: rgba(255, 255, 255, 0.05); /* Hiệu ứng kính mờ glassmorphism */
+    --accent: #d4af37; /* Màu vàng gold cho sự sang trọng */
+    --text-color: #ffffff;
 }
 
 body {
     background-color: var(--bg-color);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    justify-content: center;
-    padding: 40px;
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
 }
 
+/* Container căn giữa và cách lề Top-bar/Navbar */
 .container {
     max-width: 1200px;
-    width: 100%;
+    margin: 120px auto 50px; /* Cách ra để không bị Menu che */
+    padding: 0 20px;
     text-align: center;
 }
 
-h1 { color: #2c3e50; margin-bottom: 40px; }
-
-/* Lưới hiển thị các thẻ */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 25px;
+h1 { 
+    font-family: 'EB Garamond', serif;
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-/* Định dạng thẻ (Card) */
+/* Lưới hiển thị các thẻ - Sửa lỗi minmax để không bị vỡ trên mobile */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+/* Định dạng thẻ (Card) Glassmorphism */
 .card {
     background: var(--card-bg);
+    backdrop-filter: blur(10px); /* Làm mờ hậu cảnh cực trendy */
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    padding: 25px;
+    padding: 30px;
     text-decoration: none;
     color: var(--text-color);
-    transition: 0.3s;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    background: white;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--accent);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
 }
 
-/* Hình tròn chứa Emoji hoặc Ảnh */
+/* Hình tròn chứa Ảnh Thành viên */
 .avatar-circle {
-    width: 100px;
-    height: 100px;
-    background: #c2d6e8;
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(45deg, #222, #444);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 40px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     overflow: hidden;
-    border: 3px solid #fff;
+    border: 2px solid var(--accent);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .avatar-circle img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: 0.5s;
 }
 
-.name { font-weight: bold; font-size: 1.1rem; }
-.sub-info { font-size: 0.8rem; color: #888; margin-top: 5px; }
+.card:hover .avatar-circle img {
+    transform: scale(1.1);
+}
+
+.name { 
+    font-weight: 600; 
+    font-size: 1.2rem; 
+    margin-top: 10px;
+    color: #fff;
+}
+
+.sub-info { 
+    font-size: 0.85rem; 
+    color: var(--accent); 
+    margin-top: 5px;
+    opacity: 0.8;
+}
+
+/* Hiệu ứng trang trí nhỏ cho Gen Z */
+.card::after {
+    content: "✨";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 12px;
+    opacity: 0.5;
+}
