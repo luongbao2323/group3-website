@@ -48,7 +48,8 @@
             position: relative; cursor: pointer; box-shadow: 0 15px 35px rgba(0,0,0,0.1); transition: 0.4s; 
         }
         .card img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; }
-		/* 1. Trạng thái chữ nằm ẩn ở dưới đáy hình */
+        
+        /* 1. Trạng thái chữ nằm ẩn ở dưới đáy hình */
 .info-click { 
     width: 100%; 
     position: absolute; 
@@ -102,7 +103,8 @@
         .other-info { display: flex; justify-content: center; gap: 30px; padding: 60px 10%; background: #fff; border-top: 1px solid #eee; }
         .card-standard { background: #f8f9fa; padding: 40px; border-radius: 20px; text-align: center; flex: 1; border: 1px solid #eee; cursor: pointer; transition: 0.3s; }
         .card-standard:hover { transform: translateY(-5px); border-color: #4ea8de; }
-		@media (max-width: 768px) { .card-group { flex-direction: column; } .nav-btn { display: none; } .other-info { flex-direction: column; } }
+
+        @media (max-width: 768px) { .card-group { flex-direction: column; } .nav-btn { display: none; } .other-info { flex-direction: column; } }
     </style>
 </head>
 <body>
@@ -136,7 +138,7 @@
         
         <div class="card-group">
             <div class="card" onclick="toggleCardInfo(this)">
-                <img src="z7667308936761_b7af7e1b323a2d44bc8ade38f54932e4.jpg">
+                <img src="nu.jpg">
                 <div class="overlay-fade"></div>
                 <div class="info-click">
                     <h1>Đội nữ 12A2</h1>
@@ -144,7 +146,7 @@
                 </div>
             </div>
             <div class="card" onclick="toggleCardInfo(this)">
-                <img src="IMG_1774077029424_1774083044722.jpg">
+                <img src="nam.jpg">
                 <div class="overlay-fade"></div>
                 <div class="info-click">
                     <h1>Đội nam 12A2</h1>
@@ -152,7 +154,7 @@
                 </div>
             </div>
             <div class="card" onclick="toggleCardInfo(this)">
-                <img src="IMG_1774077029506_1774083046709.jpg">
+                <img src="doanket.jpg">
                 <div class="overlay-fade"></div>
                 <div class="info-click">
                     <h1>Đoàn kết 12A2</h1>
@@ -163,11 +165,18 @@
 
         <h2 id="thuoc-anh" style="text-align: left; margin: 40px 0 20px 0; color: #4ea8de;">🎞️ Thước ảnh kỉ niệm</h2>
         <div class="book-wrapper">
-			<button class="nav-btn prev-btn" onclick="prevPage()">❮</button>
+            <button class="nav-btn prev-btn" onclick="prevPage()">❮</button>
             <div class="book-container" id="bookContainer">
-                <div class="book-page"><img src="z7667308936761_b7af7e1b323a2d44bc8ade38f54932e4.jpg"></div>
-                <div class="book-page"><img src="IMG_1774077029424_1774083044722.jpg"></div>
-                <div class="book-page"><img src="đà lạt 01.jpg"></div>
+                <div class="book-page"><img src="1thuocphim.jpg"></div>
+                <div class="book-page"><img src="2thuocphim.jpg"></div>
+				<div class="book-page"><img src="3thuocphim.jpg"></div>
+				<div class="book-page"><img src="4thuocphim.jpg"></div>
+				<div class="book-page"><img src="thuocphim5.jpg"></div>
+				<div class="book-page"><img src="thuocphim6.jpg"></div>
+				<div class="book-page"><img src="thuocphim7.jpg"></div>
+                <div class="book-page"><img src=""></div>
+				<div class="book-page"><img src="z7643433387248_ab4e9e91ca7adf62a654bfa41c17d3ca.jpg"></div>
+				<div class="book-page"><img src="z7643433426292_dd3da457677427498da82fcde66dcbc4.jpg"></div>
             </div>
             <button class="nav-btn next-btn" onclick="nextPage()">❯</button>
         </div>
@@ -175,21 +184,22 @@
         <h2 id="ki-uc-vui" style="text-align: left; margin: 40px 0 20px 0; color: #4ea8de;">🎉 Kí ức những ngày vui</h2>
         <div class="card-group">
             <div class="card" onclick="openModal('photoModal')">
-                <img src="IMG_20-10-03.jpg">
+                <img src="20102.jpg">
                 <div style="background: rgba(0,0,0,0.3); position: absolute; top:0; left:0; width:100%; height:100%;"></div>
                 <div style="position: absolute; bottom: 25px; width: 100%; color: white; z-index: 10;">
                     <h1>20/10 Đáng Nhớ</h1><p>Bấm để xem album ✨</p>
                 </div>
             </div>
             <div class="card" onclick="openModal('modal2011')">
-                <img src="Bản sao của IMG_3722.jpg">
+                <img src="20111.jpg"
                 <div style="background: rgba(0,0,0,0.3); position: absolute; top:0; left:0; width:100%; height:100%;"></div>
-                <div style="position: absolute; bottom: 25px; width: 100%; color: white; z-index: 10;">
+                <div style="position: 
+				absolute; bottom: 25px; width: 100%; color: white; z-index: 10;">
                     <h1>Tri Ân 20/11</h1><p>Bấm để xem tri ân thầy cô 💐</p>
                 </div>
             </div>
-            <div class="card">
-                <img src="da-lat-01.jpg">
+            <div class="card" onclick="openModal('modalDaLat')">
+                <img src="dl1.jpg">
                 <div style="background: rgba(0,0,0,0.3); position: absolute; top:0; left:0; width:100%; height:100%;"></div>
                 <div style="position: absolute; bottom: 25px; width: 100%; color: white; z-index: 10;">
                     <h1>Vi vu Đà Lạt</h1><p>Thanh xuân rực rỡ 💙</p>
@@ -212,8 +222,15 @@
         <span class="close-btn" onclick="closeModal('photoModal')">&times;</span>
         <div class="modal-content">
             <h2 class="featured-caption">Kỉ niệm 20/10 💙</h2>
-            <img src="IMG_20-10-01.jpg"> <img src="IMG_20-10-02.jpg">
-			<video controls><source src="VIDEO_DOWNLOAD_1760696753202_1774093986695 - Copy (2).mp4" type="video/mp4"></video>
+             
+            <img src="20101jpg"> 
+			<img src="20102.jpg">
+           
+			<img src="20104.jpg">
+			<img src="201105.jpg">
+			<img src="20106.jpg">
+			<img src="20103.jpg">
+		
         </div>
     </div>
 
@@ -221,16 +238,49 @@
         <span class="close-btn" onclick="closeModal('modal2011')">&times;</span>
         <div class="modal-content">
             <h2 class="featured-caption">Tri Ân 20/11 💐</h2>
-            <img src="IMG_20-11-01.jpg"> <img src="IMG_20-11-02.jpg"> <img src="IMG_20-11-03.jpg">
+            
+			<img src="20111"> 
+			<img src="20112.jpg">
+			<img src="20113.jpg">
+			<img src="20114.jpg">
+			<img src="20115.jpg">
+			<img src="20116.jpg">
+			<img src="20117.jpg"> 
+			<img src="20118.jpg">
+			<video controls><source src="2011video1" type="video/mp4"></video>
+			<video controls><source src="2011video2.mp4" type="video/mp4"></video>
+			<video controls><source src="2011video3.mp4" type="video/mp4"></video>
+			<video controls><source src="2011video4.mp4" type="video/mp4"></video>
+			<video controls><source src="2011video5.mp4" type="video/mp4"></video>
         </div>
     </div>
-
+	<div id="modalDaLat" class="modal" onclick="closeModalOnOut(event, 'modalDaLat')">
+        <span class="close-btn" onclick="closeModal('modalDaLat')">&times;</span>
+        <div class="modal-content">
+            <h2 class="featured-caption">Vi vu Đà Lạt vs 12A2 💙</h2>
+            <img src="dl1.jpg">
+            <img src="dl2.jpg">
+			 <img src="dl3.jpg">
+            <img src="dl4.jpg">
+			 <img src="dl5.jpg">
+            <img src="dl6.jpg">
+			 <img src="dl7.jpg">
+            <img src="dl8.jpg">
+			<img src="dl9.jpg">
+			 <img src="dl10.jpg"
+			<video controls><source src="dlvd1.mp4" type="video/mp4"></video>
+			<video controls><source src="dlvd2.mp4" type="video/mp4"></video>
+        </div>
+    </div>
     <div id="album-thanh-tuu" class="modal" onclick="closeModalOnOut(event, 'album-thanh-tuu')">
         <span class="close-btn" onclick="closeModal('album-thanh-tuu')">&times;</span>
         <div class="modal-content">
             <p class="featured-caption">Một chút nỗ lực vs hôm nay tụi mình đã có kết quả 🏆</p>
-            <img src="image_3.png"><img src="image_12.png"><img src="image_4.png"><img src="image_5.png">
-            <img src="image_6.png"><img src="image_7.png"><img src="image_8.png"><img src="image_9.png">
+           
+			<img src="1.jpg">
+            <img src="2tt.jpg">
+			<img src="3tt.jpg">
+			<img src="4tt.jpg">
         </div>
     </div>
 
@@ -276,7 +326,7 @@
         function closeModal(id) {
             const modal = document.getElementById(id);
             if(modal) {
-				modal.style.display = "none";
+                modal.style.display = "none";
                 document.body.style.overflow = "auto";
                 const video = modal.querySelector('video');
                 if(video) video.pause();
