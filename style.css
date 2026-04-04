@@ -1,8 +1,8 @@
 :root {
     --bg-color: #0b0b0b; 
-    --accent: #3498db; /* Màu xanh dương chủ đạo */
-    --nav-bg: #3a9bdc; /* Màu xanh thanh menu gốc */
+    --nav-bg: #3a9bdc; 
     --text-color: #ffffff;
+    --accent: #3498db;
 }
 
 body {
@@ -52,6 +52,7 @@ body {
     top: 40px; 
     width: 100%;
     z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .nav-container {
@@ -63,23 +64,9 @@ body {
     align-items: center;
 }
 
-.nav-brand {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    gap: 15px;
-}
-
-.logo-img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: 2px solid #fff;
-}
-
 .brand-text {
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: bold;
     font-family: 'EB Garamond', serif;
 }
@@ -93,9 +80,10 @@ body {
 .nav-link {
     color: #fff;
     text-decoration: none;
+    font-weight: 500;
 }
 
-/* --- PHẦN NỀN TRANG CHỦ (HERO) - SỬA LẠI Ở ĐÂY --- */
+/* --- PHẦN NỀN TRANG CHỦ (HERO) --- */
 .hero {
     height: 100vh;
     display: flex;
@@ -103,76 +91,91 @@ body {
     justify-content: center;
     position: relative;
     overflow: hidden;
-    /* KHÔNG đặt ảnh nền ở đây nữa */
 }
 
-/* Tạo một lớp giả chứa ảnh nền để làm mờ CHỈ NÓ */
+/* Làm mờ và tối ảnh nền */
 .hero::before {
     content: '';
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    
-    /* Đặt ảnh nền tập thể ở đây */
     background: url('z7489812981364_9193ab8e964a3af7e752847455a3eb03.jpg') center/cover no-repeat;
-    
-    /* ĐÂY LÀ PHẦN LÀM MỜ VÀ TỐI ẢNH NỀN */
-    filter: blur(10px) brightness(60%); /* Làm mờ 10px và giảm độ sáng xuống 60% */
-    
-    transform: scale(1.1); /* Phóng lớn một chút để che viền mờ */
-    z-index: 1; /* Nằm dưới cùng */
+    filter: blur(8px) brightness(50%); /* Làm mờ ảnh nền */
+    transform: scale(1.05);
+    z-index: 1;
 }
 
 .hero-content {
     position: relative;
-    z-index: 2; /* Nằm TRÊN lớp nền mờ */
+    z-index: 2;
     text-align: center;
+    width: 90%;
+    max-width: 900px;
 }
 
-/* Cái khung chữ bây giờ sẽ SẮC NÉT, không còn mờ nữa */
-.glass-card {
-    background: rgba(0, 0, 0, 0.5); /* Nền đen mờ nhẹ để nổi bật chữ */
-    backdrop-filter: none; /* XÓA BỎ LÀM MỜ CỦA CÁI KHUNG */
-    padding: 40px;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.2);
-    max-width: 800px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-h1.glitch-text {
-    font-size: 5rem;
-    margin: 0;
+/* XÓA KHUNG VUÔNG - CHỈ GIỮ CHỮ SẮC NÉT */
+.glitch-text {
     font-family: 'EB Garamond', serif;
-    color: #fff;
+    font-size: 6rem; /* Làm chữ to và ấn tượng hơn */
+    margin: 0;
+    color: #ffffff;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.8); /* Đổ bóng để chữ nổi trên nền ảnh */
+    letter-spacing: 3px;
 }
 
-.hero-year, .hero-slogan {
-    color: #eee;
+.hero-year {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    font-weight: 300;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.hero-slogan {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin: 20px auto;
+    max-width: 700px;
+    line-height: 1.6;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.divider-heart {
+    font-size: 1.5rem;
+    margin: 15px 0;
+    color: #ff4757;
 }
 
 /* --- NÚT BẤM (BUTTONS) --- */
 .hero-buttons {
-    margin-top: 30px;
+    margin-top: 40px;
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
 }
 
 .btn {
-    padding: 12px 30px;
-    border-radius: 30px;
-    font-weight: bold;
+    padding: 14px 35px;
+    border-radius: 50px; /* Bo tròn hẳn cho hiện đại */
+    font-weight: 600;
     text-decoration: none;
-    display: inline-block;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
 }
 
 .btn-primary {
-    background-color: #fff;
+    background-color: #ffffff;
     color: #333;
+    box-shadow: 0 4px 15px rgba(255,255,255,0.2);
 }
 
 .btn-secondary {
     background-color: transparent;
-    color: #fff;
-    border: 2px solid #fff;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
 }
