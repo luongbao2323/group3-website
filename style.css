@@ -276,44 +276,38 @@ body {
     padding-top: 30px;
 }
 
+/* --- ĐIỀU CHỈNH LẠI CỠ ẢNH GỌN HƠN --- */
 .modern-gallery {
     display: grid;
-    grid-template-columns: repeat(repeat(auto-fill, minmax(280px, 1fr));
-    grid-auto-rows: 250px; /* Độ cao cố định cho các hàng để lưới đều */
-    gap: 15px;
+    /* Giảm min-width từ 280px xuống 220px để ảnh nhỏ lại */
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+    /* Giảm chiều cao hàng từ 250px xuống 180px */
+    grid-auto-rows: 180px; 
+    gap: 12px; /* Khoảng cách giữa các ảnh khít hơn chút cho đẹp */
 }
 
-/* Kiểu lưới ảnh có điểm nhấn (ảnh to nhỏ đan xen) */
+/* Giữ cho ảnh nổi bật (featured) không quá khổng lồ */
 @media (min-width: 700px) {
-    .modern-gallery {
-        grid-template-columns: repeat(4, 1fr); /* 4 cột ở màn hình vừa */
-    }
     .gallery-item.featured {
-        grid-column: span 2; /* Ảnh nổi bật chiếm 2 cột */
-        grid-row: span 2; /* Ảnh nổi bật chiếm 2 hàng */
-    }
-}
-
-@media (min-width: 1000px) {
-    .modern-gallery {
-        grid-template-columns: repeat(5, 1fr); /* 5 cột ở màn hình lớn */
+        grid-column: span 2; 
+        grid-row: span 2; 
     }
 }
 
 .gallery-item {
     position: relative;
     overflow: hidden;
-    border-radius: 15px;
+    border-radius: 10px; /* Bo góc nhẹ hơn cho tinh tế */
     cursor: pointer;
-    border: 2px solid transparent;
-    transition: 0.4s ease;
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
+/* Đảm bảo ảnh luôn nằm gọn trong khung, không bị méo */
 .gallery-item img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Không làm méo ảnh */
-    transition: 0.5s ease;
+    object-fit: cover; 
+    transition: transform 0.5s ease;
 }
 
 /* Hiệu ứng Zoom khi rê chuột */
