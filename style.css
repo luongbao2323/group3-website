@@ -336,3 +336,48 @@ body {
 .gallery-item:hover .item-overlay {
     opacity: 1;
 }
+/* --- LƯỚI VIDEO NGĂN NẮP --- */
+.video-grid-uniform {
+    display: grid;
+    /* Tự động chia cột: mỗi video rộng tối thiểu 350px, tối đa là bằng nhau */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.video-grid-uniform .video-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
+
+.video-grid-uniform .video-wrapper {
+    position: relative;
+    padding-top: 56.25%; /* Tỷ lệ 16:9 chuẩn */
+    background: #000;
+}
+
+.video-grid-uniform video {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover;
+}
+
+.video-grid-uniform .card-info {
+    padding: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.video-grid-uniform .card-info h3 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #2ecc71; /* Màu xanh lá đặc trưng của trang học tập */
+}
+
+@media (max-width: 768px) {
+    .video-grid-uniform {
+        grid-template-columns: 1fr; /* Màn hình điện thoại thì xếp dọc 1 cột */
+    }
+}
