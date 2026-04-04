@@ -2,7 +2,6 @@
     --bg-color: #0b0b0b; 
     --nav-bg: #3a9bdc; 
     --text-color: #ffffff;
-    --accent: #3498db;
 }
 
 body {
@@ -21,20 +20,12 @@ body {
     overflow: hidden;
     white-space: nowrap;
     position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1001;
+    top: 0; width: 100%; z-index: 1001;
 }
 
 .marquee {
     display: inline-block;
     animation: marquee 20s linear infinite;
-}
-
-.marquee span {
-    padding-right: 50px;
-    font-weight: bold;
-    text-transform: uppercase;
 }
 
 @keyframes marquee {
@@ -49,10 +40,7 @@ body {
     display: flex;
     align-items: center;
     position: fixed;
-    top: 40px; 
-    width: 100%;
-    z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    top: 40px; width: 100%; z-index: 1000;
 }
 
 .nav-container {
@@ -83,7 +71,7 @@ body {
     font-weight: 500;
 }
 
-/* --- PHẦN NỀN TRANG CHỦ (HERO) --- */
+/* --- PHẦN TRANG CHỦ (HERO) - KHÔNG KHUNG, NỀN MỜ --- */
 .hero {
     height: 100vh;
     display: flex;
@@ -91,16 +79,16 @@ body {
     justify-content: center;
     position: relative;
     overflow: hidden;
+    background-color: #000;
 }
 
-/* Làm mờ và tối ảnh nền */
-.hero::before {
-    content: '';
+/* Lớp nền mờ tối */
+.hero-bg {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     background: url('z7489812981364_9193ab8e964a3af7e752847455a3eb03.jpg') center/cover no-repeat;
-    filter: blur(8px) brightness(50%); /* Làm mờ ảnh nền */
-    transform: scale(1.05);
+    filter: blur(10px) brightness(40%); /* Làm mờ và tối nền */
+    transform: scale(1.1);
     z-index: 1;
 }
 
@@ -108,74 +96,47 @@ body {
     position: relative;
     z-index: 2;
     text-align: center;
-    width: 90%;
-    max-width: 900px;
+    color: #fff;
 }
 
-/* XÓA KHUNG VUÔNG - CHỈ GIỮ CHỮ SẮC NÉT */
 .glitch-text {
     font-family: 'EB Garamond', serif;
-    font-size: 6rem; /* Làm chữ to và ấn tượng hơn */
+    font-size: clamp(3rem, 10vw, 6rem); /* Tự co giãn font chữ */
     margin: 0;
-    color: #ffffff;
-    text-shadow: 0 5px 15px rgba(0,0,0,0.8); /* Đổ bóng để chữ nổi trên nền ảnh */
-    letter-spacing: 3px;
+    text-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 .hero-year {
-    font-size: 1.5rem;
-    margin: 10px 0;
-    font-weight: 300;
     letter-spacing: 5px;
     text-transform: uppercase;
+    font-weight: 300;
+    margin: 10px 0;
 }
 
 .hero-slogan {
-    font-size: 1.2rem;
     font-style: italic;
+    font-weight: 300;
+    opacity: 0.9;
+    max-width: 600px;
     margin: 20px auto;
-    max-width: 700px;
-    line-height: 1.6;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
-.divider-heart {
-    font-size: 1.5rem;
-    margin: 15px 0;
-    color: #ff4757;
-}
-
-/* --- NÚT BẤM (BUTTONS) --- */
+/* --- NÚT BẤM --- */
 .hero-buttons {
-    margin-top: 40px;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
 }
 
 .btn {
-    padding: 14px 35px;
-    border-radius: 50px; /* Bo tròn hẳn cho hiện đại */
-    font-weight: 600;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: bold;
     text-decoration: none;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
+    transition: 0.3s;
 }
 
-.btn-primary {
-    background-color: #ffffff;
-    color: #333;
-    box-shadow: 0 4px 15px rgba(255,255,255,0.2);
-}
-
-.btn-secondary {
-    background-color: transparent;
-    color: #ffffff;
-    border: 2px solid #ffffff;
-}
-
-.btn:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-}
+.btn-primary { background: #fff; color: #333; }
+.btn-secondary { border: 2px solid #fff; color: #fff; }
+.btn:hover { transform: translateY(-3px); }
