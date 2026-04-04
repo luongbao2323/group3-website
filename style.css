@@ -128,3 +128,53 @@ body {
 .btn-primary { background: #fff; color: #333; }
 .btn-secondary { border: 2px solid #fff; color: #fff; margin-left: 15px; }
 .btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
+/* --- STYLE CHO DROPDOWN KỶ NIỆM --- */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none; /* Mặc định ẩn đi */
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.9); /* Nền tối để nổi chữ */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
+    z-index: 1002;
+    border-radius: 8px;
+    padding: 10px 0;
+    top: 100%; /* Hiện ngay dưới chữ Kỷ niệm */
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.dropdown-content li {
+    list-style: none;
+    text-align: left;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--nav-bg); /* Màu xanh khi di chuột vào mục con */
+    color: #fff;
+}
+
+/* Hiển thị menu khi di chuột vào chữ Kỷ niệm */
+.dropdown:hover .dropdown-content {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
