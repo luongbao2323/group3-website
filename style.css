@@ -1,21 +1,11 @@
 :root {
     --bg-color: #0b0b0b; 
-    --card-bg: rgba(255, 255, 255, 0.05); 
     --accent: #3498db; /* Màu xanh dương chủ đạo */
-    --nav-bg: #3a9bdc; /* Màu xanh của thanh menu bản gốc */
+    --nav-bg: #3a9bdc; /* Màu xanh thanh menu gốc */
     --text-color: #ffffff;
 }
 
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-}
-
-/* --- PHẦN HEADER & CHỮ CHẠY (MARQUEE) --- */
+/* --- CHỮ CHẠY ĐẦU TRANG --- */
 .top-bar {
     background: #000;
     color: #fff;
@@ -26,7 +16,6 @@ body {
     top: 0;
     width: 100%;
     z-index: 1001;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .marquee {
@@ -34,21 +23,14 @@ body {
     animation: marquee 20s linear infinite;
 }
 
-.marquee span {
-    padding-right: 50px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
 @keyframes marquee {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
 
-/* --- THANH MENU (NAVBAR) --- */
+/* --- THANH MENU MÀU XANH --- */
 .navbar {
-    background-color: var(--nav-bg); /* Màu xanh đặc trưng */
+    background-color: var(--nav-bg);
     height: 70px;
     display: flex;
     align-items: center;
@@ -68,160 +50,66 @@ body {
     align-items: center;
 }
 
-.nav-brand {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    gap: 15px;
-}
-
 .logo-img {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    object-fit: cover;
     border: 2px solid #fff;
 }
 
-.brand-text {
-    color: #fff;
-    font-size: 1.5rem;
-    font-weight: bold;
-    font-family: 'EB Garamond', serif;
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 25px;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-link {
-    color: rgba(255,255,255,0.9);
-    text-decoration: none;
-    font-weight: 500;
-    transition: 0.3s;
-    font-size: 0.95rem;
-    position: relative;
-}
-
-.nav-link:hover, .nav-link.active {
-    color: #fff;
-}
-
-.nav-link.active::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: #fff;
-}
-
-/* --- NÚT BẤM (BUTTONS) --- */
-.hero-buttons {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-.btn {
-    padding: 12px 30px;
-    border-radius: 30px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: 0.3s;
-    display: inline-block;
-}
-
-.btn-primary {
-    background-color: #ffffff;
-    color: #333;
-}
-
-.btn-secondary {
-    background-color: transparent;
-    color: #ffffff;
-    border: 2px solid #ffffff;
-}
-
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
-/* --- TRANG CHỦ (HERO) --- */
+/* --- PHẦN NỀN TRANG CHỦ (HERO) --- */
 .hero {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('anhlop20-11menu.jpg') center/cover no-repeat;
+    position: relative; /* Quan trọng để lớp mờ hoạt động */
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Độ mờ tối 60% giống bản gốc */
+    z-index: 1;
+}
+
+.hero-content {
     position: relative;
-    padding-top: 110px;
+    z-index: 2; /* Đẩy nội dung chữ lên trên lớp mờ */
+    text-align: center;
 }
 
 .glass-card {
-    position: relative;
-    z-index: 1;
-    background: rgba(0, 0, 0, 0.5); /* Nền mờ tối để nổi bật chữ trắng */
+    background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(10px);
     padding: 40px;
     border-radius: 20px;
     border: 1px solid rgba(255,255,255,0.1);
-    text-align: center;
-    max-width: 800px;
 }
 
-h1.glitch-text {
-    font-size: 5rem;
-    margin: 0;
-    font-family: 'EB Garamond', serif;
-}
-
-/* --- THÀNH VIÊN (CARDS) --- */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 30px;
-    padding: 50px 20px;
-}
-
-.card {
-    background: var(--card-bg);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 30px;
+/* --- NÚT BẤM --- */
+.btn {
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: bold;
     text-decoration: none;
-    color: var(--text-color);
-    transition: 0.4s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: inline-block;
+    transition: 0.3s;
 }
 
-.card:hover {
-    transform: translateY(-10px);
-    background: rgba(255, 255, 255, 0.15);
-    border-color: var(--accent);
+.btn-primary {
+    background-color: #fff;
+    color: #333;
 }
 
-.avatar-circle {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 2px solid var(--accent);
-    margin-bottom: 15px;
+.btn-secondary {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    margin-left: 10px;
 }
 
-.avatar-circle img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.btn:hover {
+    transform: scale(1.05);
 }
