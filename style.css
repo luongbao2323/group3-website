@@ -112,3 +112,127 @@ h1 {
     font-size: 12px;
     opacity: 0.5;
 }
+/* --- PHẦN HEADER & CHỮ CHẠY (MARQUEE) --- */
+.top-bar {
+    background: #000;
+    color: #fff;
+    padding: 10px 0;
+    overflow: hidden; /* Quan trọng để chữ không tràn ra ngoài */
+    white-space: nowrap;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1001;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.marquee {
+    display: inline-block;
+    animation: marquee 20s linear infinite; /* Tạo hiệu ứng chạy ngang */
+}
+
+.marquee span {
+    padding-right: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* --- THANH MENU (NAVBAR) --- */
+.navbar {
+    background: rgba(11, 11, 11, 0.95);
+    backdrop-filter: blur(10px);
+    height: 80px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 40px; /* Nằm dưới thanh chữ chạy */
+    width: 100%;
+    z-index: 1000;
+    transition: 0.3s;
+}
+
+.nav-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* Đẩy Logo sang trái, Menu sang phải */
+    align-items: center;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 15px;
+}
+
+.logo-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent);
+}
+
+.brand-text {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'EB Garamond', serif;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+    font-size: 0.95rem;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--accent);
+}
+
+/* --- PHẦN NỀN TRANG CHỦ (HERO) --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('anhlop20-11menu.jpg') no-content center/cover no-repeat; /* Bạn có thể thay ảnh nền ở đây */
+    position: relative;
+    padding-top: 120px;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+
+.glass-card {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    padding: 50px;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+    max-width: 700px;
+}
