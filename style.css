@@ -16,7 +16,7 @@ body {
 
 /* Container căn giữa và cách lề Top-bar/Navbar */
 .container {
-    max-width: 1200px;
+    max-width: 1200px; 
     margin: 120px auto 50px; /* Cách ra để không bị Menu che */
     padding: 0 20px;
     text-align: center;
