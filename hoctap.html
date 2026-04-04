@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kỷ Niệm Đà Lạt - 12A2</title>
+    <title>Hành Trình Tri Thức - 12A2</title>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
-    <nav class="navbar" style="top:0;"> <div class="nav-container">
+<body class="kyniem-page hoctap-page">
+    
+    <nav class="navbar" style="top:0; position: fixed;"> 
+        <div class="nav-container">
             <a href="index.html" class="nav-brand">
                 <img src="anhlogomenu.jpg" alt="Logo" class="logo-img"> 
                 <span class="brand-text">Lớp 12A2</span>
@@ -16,7 +19,7 @@
             <ul class="nav-menu">
                 <li><a class="nav-link" href="index.html">Trang chủ</a></li>
                 <li class="dropdown">
-                    <a class="nav-link" href="#">Kỷ niệm ▼</a>
+                    <a class="nav-link" href="javascript:void(0)">Kỷ niệm ▼</a>
                     <ul class="dropdown-content">
                         <li><a href="hoithao.html">🏅 Hội thao</a></li>
                         <li><a href="hoctap.html">📚 Học tập</a></li>
@@ -28,35 +31,125 @@
         </div>
     </nav>
 
-    <div class="container" style="margin-top: 100px;">
-        <h1>🌲 Kỷ Niệm Đà Lạt</h1>
-        <p>Những khoảnh khắc không thể quên tại thành phố sương mù.</p>
-
-        <div class="video-section" style="margin-bottom: 50px;">
-            <h2 style="color: var(--nav-bg);">🎥 Video Kỷ Niệm</h2>
-            <div class="video-container" style="max-width: 800px; margin: 0 auto; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-                <video controls style="width: 100%; display: block;">
-                    <source src="video-dalat.mp4" type="video/mp4">
-                    Trình duyệt của bạn không hỗ trợ xem video.
-                </video>
-            </div>
+    <header class="page-header" style="background: linear-gradient(135deg, rgba(46, 204, 113, 0.8), rgba(11, 11, 11, 0.95)), url('bg-hoctap.jpg') center/cover no-repeat;">
+        <div class="header-content">
+            <div class="header-icon"><i class="fas fa-book-open"></i></div>
+            <h1>Hành Trình Tri Thức</h1>
+            <p>Những giờ học miệt mài và những nỗ lực không ngừng nghỉ của tập thể 12A2.</p>
+            <div class="header-divider" style="background-color: #2ecc71;"></div>
         </div>
+    </header>
 
-        <h2 style="color: var(--nav-bg);">📸 Album Ảnh</h2>
-        <div class="gallery-grid">
-            <div class="card">
-                <img src="dalat1.jpg" alt="Đà Lạt 1" style="width: 100%; border-radius: 10px;">
-                <p>Thung lũng tình yêu</p>
+    <div class="container main-content">
+        
+        <section class="video-highlight-section">
+            <div class="section-title-wrapper">
+                <i class="fas fa-play-circle title-icon"></i>
+                <h2>Video Kỷ Niệm Lớp Học</h2>
             </div>
-            <div class="card">
-                <img src="dalat2.jpg" alt="Đà Lạt 2" style="width: 100%; border-radius: 10px;">
-                <p>Check-in cùng nhau</p>
+            
+            <div class="video-grid">
+                <div class="video-card main-video">
+                    <div class="video-wrapper">
+                        <video controls>
+                            <source src="hc1.mp4" type="video/mp4">
+                        </video>
+                    </div>
+					<div class="video-grid">
+                <div class="video-card main-video">
+                    <div class="video-wrapper">
+                        <video controls>
+                            <source src="hc2.mp4" type="video/mp4">
+                        </video>
+                    </div>
+					<div class="video-grid">
+                <div class="video-card main-video">
+                    <div class="video-wrapper">
+                        <video controls>
+                            <source src="hc3.mp4" type="video/mp4">
+                        </video>
+                    </div>
+					<div class="video-grid">
+                <div class="video-card main-video">
+                    <div class="video-wrapper">
+                        <video controls>
+                            <source src="hc3.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="card-info">
+                        <h3>📖 Một tiết học đáng nhớ</h3>
+                        <p>Khoảnh khắc cả lớp cùng nhau thảo luận sôi nổi.</p>
+                    </div>
+                </div>
+
+
             </div>
-            <div class="card">
-                <img src="dalat3.jpg" alt="Đà Lạt 3" style="width: 100%; border-radius: 10px;">
-                <p>Đêm lửa trại</p>
+        </section>
+
+        <section class="photo-album-section">
+            <div class="section-title-wrapper">
+                <i class="fas fa-images title-icon"></i>
+                <h2>Kho Lưu Trữ Hình Ảnh</h2>
             </div>
-        </div>
+
+            <div class="modern-gallery">
+                <div class="gallery-item">
+                    <img src="h1.jpg" alt="Học tập 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="h2.jpg" alt="Học tập 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="h3.jpg" alt="Học tập 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="h4.jpg" alt="Học tập 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="h5.jpg" alt="Học tập 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="h6.jpg" alt="Học tập 6">
+                </div>
+                <div class="gallery-item">
+                    <img src="h7.jpg" alt="Học tập 7">
+                </div>
+                <div class="gallery-item">
+                    <img src="h8.jpg" alt="Học tập 8">
+                </div>
+				<div class="gallery-item">
+                    <img src="h9.jpg" alt="Học tập 9">
+                </div>
+                <div class="gallery-item">
+                    <img src="h10.jpg" alt="Học tập 10">
+                </div>
+                <div class="gallery-item">
+                    <img src="h11.jpg" alt="Học tập 11">
+                </div>
+                <div class="gallery-item">
+                    <img src="h12.jpg" alt="Học tập 12">
+                </div>
+                <div class="gallery-item">
+                    <img src="h13.jpg" alt="Học tập 13">
+                </div>
+                <div class="gallery-item">
+                    <img src="h14.jpg" alt="Học tập 14">
+                </div>
+                <div class="gallery-item">
+                    <img src="h15.jpg" alt="Học tập 15">
+                </div>
+                <div class="gallery-item">
+                    <img src="h16.jpg" alt="Học tập 16">
+                </div>
+            </div>
+        </section>
+
     </div>
+
+    <footer class="footer">
+        <div class="footer-bottom">
+            &copy; 2026 Lớp 12A2 - Kiến thức là sức mạnh.
+        </div>
+    </footer>
 </body>
 </html>
