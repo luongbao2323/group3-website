@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lớp 12A2 - Kỷ Yếu Học Tập</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600;700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* BẢNG MÀU XANH DƯƠNG */
+        :root {
+            --primary: #3498db; 
+            --secondary: #2980b9; 
+            --accent: #00d2d3; 
+            --light1: #ebf5fb; 
+            --light2: #e1f5fe; 
+            --light3: #bbdefb; 
+            --dark: #2c3e50;
+            --text: #34495e;
+            --white: #ffffff;
+            --gradient1: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            --gradient2: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient3: linear-gradient(135deg, #1e3799 0%, #0c2461 100%);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 120px; /* Tăng chiều cao navbar để chứa logo to */
+            background: rgba(52, 152, 219, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Style cho logo hình tròn to hơn */
+        .nav-brand img {
+            height: 100px; /* Phóng to logo */
+            width: 100px;
+            border-radius: 50%; /* Bo tròn logo */
+            border: 3px solid var(--white); /* Thêm viền trắng */
+            object-fit: cover;
+            vertical-align: middle;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .nav-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--white);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* ========== AVATAR MỚI TRONG GRID ========== */
+        .member-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Đảm bảo ảnh lấp đầy vòng tròn */
+            border-radius: 50%;
+        }
+
+        /* ========== PAGE CONTAINER ========== */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 0; /* Đã có height navbar */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ========== GALLERY / MEMBERS SECTION ========== */
+        section {
+            padding: 140px 2rem 6rem; /* Padding top lớn hơn do navbar cao */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 3rem;
+            position: relative;
+            color: var(--dark);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            background: var(--white);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(52, 152, 219, 0.3);
+        }
+
+        .gallery-img-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--gradient1);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            overflow: hidden;
+            position: relative;
+            border: 3px solid var(--light1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(52, 152, 219, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 50%;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-icon {
+            font-size: 2rem;
+            color: var(--white);
+        }
+
+        .gallery-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        /* ========== DETAIL PAGE ========== */
+        .detail-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e1f5fe 0%, #ebf5fb 100%);
+            padding: 140px 2rem 3rem;
+        }
+
+        .detail-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            border: 5px solid var(--white);
+            overflow: hidden;
+        }
+
+        .detail-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ... giữ các style animations cũ ... */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand" onclick="showPage('home')">
+                <img src="logo_gen.png" alt="Logo Lớp 12A2">
+            </div>
+            <ul class="nav-menu">
+                <li><a class="nav-link" onclick="showPage('home')">Trang chủ</a></li>
+                <li><a class="nav-link" onclick="showPage('members')">Thành viên</a></li>
+                <li><a class="nav-link" onclick="showPage('teachers')">Giáo viên</a></li>
+                <li><a class="nav-link" onclick="showPage('gallery')">Ảnh</a></li>
+                <li><a class="nav-link" onclick="showPage('events')">Sự kiện</a></li>
+                <li><a class="nav-link" onclick="showPage('contact')">Liên hệ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="home" class="page active">
+        <section class="hero">
+            <div class="hero-content">
+                <h1 style="font-size: 4rem; font-family: 'Playfair Display', serif;">Lớp 12A2</h1>
+                <p style="font-size: 1.5rem; margin-bottom: 2rem;">Năm học 2025-2026</p>
+                <div id="typing" style="min-height: 2.5rem; font-size: 1.2rem;"></div>
+            </div>
+        </section>
+    </div>
+
+    <div id="members" class="page">
+        <section>
+            <h2 class="section-title">Thành viên lớp</h2>
+            <div class="gallery-grid" id="membersGrid"></div>
+        </section>
+    </div>
+
+    <div id="detail" class="page">
+        <div class="detail-page">
+            <div style="max-width: 900px; margin: 0 auto; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.15);">
+                <button onclick="showPage('members')" style="margin: 20px; padding: 10px 20px; border-radius: 50px; border: none; background: var(--gradient1); color: white; cursor: pointer;">← Quay lại</button>
+                <div id="detailHeader" style="background: var(--gradient1); padding: 3rem 2rem; text-align: center; color: white;">
+                    <div class="detail-avatar" id="detailAvatar"></div>
+                    <h1 id="detailName" style="font-family: 'Playfair Display', serif;"></h1>
+                    <p id="detailRole"></p>
+                </div>
+                <div style="padding: 3rem 2rem;">
+                    <h3 id="birthDate" style="margin-bottom: 1rem; color: var(--primary);"></h3>
+                    <div id="memberBio"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="teachers" class="page">
+        <section>
+            <h2 class="section-title">Giáo viên</h2>
+            <div class="gallery-grid" id="teachersGrid"></div>
+        </section>
+    </div>
+
+    <script>
+        const members = [
+            { id: 1, name: 'Đỗ Quỳnh Anh', birthDate: '17/11/2008', image:'z7672610366821_2ac076d5365a97d43a39aaeb7b430680.jpg',emoji: '👩', bio: 'Học sinh chăm chỉ.' },
+            { id: 2, name: 'Đỗ Ngọc Ánh', birthDate: '04/05/2008', emoji: '👩', bio: 'Thân thiện.' },
+            { id: 3, name: 'Lương Gia Bảo', birthDate: '05/05/2008', image: 'z7664701013325_55624e19afae50ebdbe317f757da65a5.jpg', emoji: '👦', bio: 'Nhanh nhẹn, thích hoạt động ngoài trời.' },
+            { id: 4, name: 'Đoàn Thị Bảo Châu', birthDate: '25/06/2008', emoji: '👩', bio: 'Tích cực trong các hoạt động lớp.' },
+            { id: 5, name: 'Phạm Trí Dũng', birthDate: '04/04/2008', image: 'z7644520490358_25ff0c457f3d58a0f8123ab5fb9fad78.jpg', emoji: '👦', bio: 'Yêu thích Toán và Lý.' },
+            { id: 6, name: 'Trần Thanh Duy', birthDate: '22/08/2008', image: 'z7644336723230_a1f26621b1836cf926768e3d3ab01bb5.jpg', emoji: '👦', bio: 'Có tinh thần thể thao mạnh mẽ.' },
+            { id: 7, name: 'Nguyễn Thị Duyên', birthDate: '07/06/2008', emoji: '👩', bio: 'Học sinh xuất sắc, đạt nhiều giải thưởng.' },
+            { id: 8, name: 'Nguyễn Tiến Đạt', birthDate: '28/04/2007', image: 'z7644426574771_6df08c6348092f615bb202ff6b143653.jpg', emoji: '👦', bio: 'Lãnh đạo, có khả năng tổ chức.' },
+            { id: 9, name: 'Võ Thiên Đông', birthDate: '04/09/2008', image: 'z7644365723730_f9c77317712405681690c56f09f61724.jpg', emoji: '👦', bio: 'Vui vẻ, yêu đời.' },
+            { id: 10, name: 'Hướng Trường Giang', birthDate: '20/02/2008', emoji: '👦', bio: 'Giỏi Văn, sáng tạo trong sáng tác.' },
+            { id: 11, name: 'Đào Hữu Trung Hiếu', birthDate: '24/11/2008', image: 'z7664684486755_337826727f73fdec9a1bc7d9f83032bb.jpg', emoji: '👦', bio: 'Kỹ tính, cẩn thận trong công việc.' },
+            { id: 12, name: 'Lê Sỹ Hoàng', birthDate: '22/05/2008', image: 'z7664297038011_3640e92d4df042923340c49584583a8c.jpg', emoji: '👦', bio: 'Tài năng trong lĩnh vực công nghệ.' },
+            { id: 13, name: 'Nguyễn Minh Hoàng', birthDate: '27/07/2008', image: 'z7664684925754_b909b869fb1b88c151e9e6a3e3d1cf80.jpg', emoji: '👦', bio: 'Năng động, thích thể thao.' },
+            { id: 14, name: 'Lê Văn Huy', birthDate: '26/04/2008', image: 'z7664443721300_d1d840b04ed62b2f7768ec4cb25de609.jpg', emoji: '👦', bio: 'Hòa đồng, dễ gần.' },
+            { id: 15, name: 'Nguyễn Tuấn Hưng', birthDate: '26/09/2008', image: 'z7644439290251_488f0c1aa5b6ca2001f7549c6485fb3b.jpg', emoji: '👦', bio: 'Ngoại hướng, thích giao tiếp.' },
+            { id: 16, name: 'Nguyễn Duy Luân', birthDate: '04/04/2008', emoji: '👦', bio: 'Bí mật, nội tâm sâu sắc.' },
+            { id: 17, name: 'Nguyễn Xuân Mai', birthDate: '09/01/2008', emoji: '👩', bio: 'Yêu thích Tiếng Anh.' },
+            { id: 18, name: 'Nguyễn Trọng Đức Minh', birthDate: '15/10/2008', image: 'z7644334667991_6d51b1af8ea4ca8ebdc3dec8de7c28ff.jpg', bio: 'Học sinh tích cực.' },
+            { id: 19, name: 'Bùi Nguyễn Khánh Ngọc', birthDate: '15/03/2008', emoji: '👩', bio: 'Mạnh mẽ.' },
+            { id: 20, name: 'Trần Nguyễn', birthDate: '28/12/2008', emoji: '👦', bio: 'Vui tính, dễ gần.' },
+            { id: 21, name: 'Đỗ Nguyễn Thiện Nhân', birthDate: '22/05/2007', image: 'z7644493168895_8670977a99e3e4a64eb2a41298e52fbf.jpg', emoji: '👦', bio: 'Trưởng thành, có trách nhiệm.' },
+            { id: 22, name: 'Ngô Thị Yến Nhi', birthDate: '17/04/2007', emoji: '👩', bio: 'Thông minh, nhanh nhạy.' },
+            { id: 23, name: 'Nguyễn Thị Bảo Nhi', birthDate: '08/10/2008', emoji: '👩', bio: 'Yêu thích đọc sách.' },
+            { id: 24, name: 'Hà Thị Huỳnh Như', birthDate: '13/12/2008', image: 'z7672634447403_da40127461ca5de50724ea4aa500528b.jpg', emoji: '👩', bio: 'Trang trí, yêu thích nghệ thuật.' },
+            { id: 25, name: 'Nguyễn Thạch Huỳnh Như', birthDate: '17/12/2008', emoji: '👩', bio: 'Hoạt động, năng lượng cao.' },
+            { id: 26, name: 'Trần Hồng Sơn', birthDate: '28/09/2008', image: 'z7644334667991_038a834e34d74a7b97e937d54bde29fc.jpg', emoji: '👦', bio: 'Yêu thích music, chơi nhạc cụ.' },
+            { id: 27, name: 'Mạch Lê Minh Tâm', birthDate: '22/10/2008', image: 'z7664284821366_d94cf74299c87d88e2737a9ad35efadd.jpg', emoji: '👩', bio: 'Tâm lý, cảm xúc phong phú.' },
+            { id: 28, name: 'Đỗ Thị Thanh', birthDate: '11/01/2008', emoji: '👩', bio: 'Chăm chỉ, kiên trì.' },
+            { id: 29, name: 'Mai Thùy Huyền Thanh', birthDate: '05/09/2008', emoji: '👩', bio: 'Tám muội, không khi tươi vui.' },
+            { id: 30, name: 'Phạm Hoàng Mai Thanh', birthDate: '04/12/2007', image:'z7672610378375_3e8f31ee0be492ad25f4c2c6ae1caf4b.jpg', emoji: '👩', bio: 'Trưởng thành, kỷ luật.' },
+            { id: 31, name: 'Lê Ngọc Phương Thảo', birthDate: '17/02/2008',image:'z7672611448356_bcca4068cd1bc3f637efd277ec0228d3.jpg', emoji: '👩', bio: 'Nhẹ nhàng, nhu mỹ.' },
+            { id: 32, name: 'Lê Thị Thùy Trang', birthDate: '17/01/2008',image:'z7672611443308_03e2191abda9148f2468e712eb9447e0.jpg', emoji: '👩', bio: 'Lãnh đạo, có chỉ huy.' },
+            { id: 33, name: 'Trịnh Minh Trâm', birthDate: '12/02/2008', image:'z7672610378832_6660f90beee4364100ebb469a14c4da0.jpg',emoji: '👩', bio: 'Thơm nó, duyên dáng.' },
+            { id: 34, name: 'Nguyễn Xuân Tuyền', birthDate: '26/10/2008', image:'z7672610373586_360f7c47a6a585464f7890f598835ad7.jpg',emoji: '👩', bio: 'Xuân đoạn, yêu thích mùa xuân.' },
+            { id: 35, name: 'Đinh Nguyễn Ánh Tuyết', birthDate: '13/04/2008', emoji: '👩', bio: 'Tuyết trắng, tinh khôi.' },
+            { id: 36, name: 'Lê Thị Thanh Vy', birthDate: '24/09/2008',image:'z7672611453021_228b80306d538531ee77d1af48052a7d.jpg', emoji: '👩', bio: 'Thanh nhạc, tâm hồn trong sáng.' },
+        ];
+
+        function renderMembers() {
+            document.getElementById('membersGrid').innerHTML = members.map(m => `
+                <div class="gallery-item" onclick="showMemberDetail(${m.id})">
+                    <div class="gallery-img-container">
+                        ${m.image ? `<img src="${m.image}" class="member-img">` : `<div>${m.emoji}</div>`}
+                        <div class="gallery-overlay"><span class="gallery-icon">👁️</span></div>
+                    </div>
+                    <div class="gallery-title">${m.name}</div>
+                    <div style="color: var(--primary); font-size: 0.8rem;">${m.birthDate}</div>
+                </div>`).join('');
+        }
+
+        function showMemberDetail(id) {
+            const m = members.find(x => x.id === id);
+            const avatarDiv = document.getElementById('detailAvatar');
+            if (m.image) {
+                avatarDiv.innerHTML = `<img src="${m.image}">`;
+            } else {
+                avatarDiv.innerHTML = m.emoji;
+                avatarDiv.style.fontSize = '4rem';
+            }
+            document.getElementById('detailName').textContent = m.name;
+            document.getElementById('detailRole').textContent = 'Học sinh lớp 12A2';
+            document.getElementById('birthDate').textContent = '📅 Ngày sinh: ' + m.birthDate;
+            document.getElementById('memberBio').innerHTML = `<p>${m.bio}</p>`;
+            showPage('detail');
+        }
+
+        function showPage(pageName) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageName).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Khởi tạo
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMembers();
+            // render các phần khác tương tự...
+        });
+    </script>
+</body>
+</html>
