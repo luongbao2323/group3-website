@@ -1,130 +1,83 @@
-:root {
-    --bg-color: #0b0b0b; 
-    --nav-bg: #3a9bdc; 
-    --text-color: #ffffff;
-}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12A2 - Những Năm Tháng Rực Rỡ</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: 'Poppins', sans-serif;
-    margin: 0; padding: 0;
-    scroll-behavior: smooth;
-}
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <img src="anhlogomenu.jpg" alt="Logo Lớp" class="logo-img"> 
+                <span class="brand-text">Lớp 12A2</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a class="nav-link active" href="index.html">Trang chủ</a></li>
+                <li><a class="nav-link" href="thanhvien.html">Thành viên</a></li>
+                <li><a class="nav-link" href="giaovien.html">Giáo viên</a></li>
+                <li><a class="nav-link" href="anh.html">Ảnh</a></li>
+                <li><a class="nav-link" href="lienhe.html">Liên hệ</a></li>
+            </ul>
+        </div>
+    </nav>
 
-.top-bar {
-    background: #000;
-    color: #fff;
-    padding: 10px 0;
-    overflow: hidden;
-    white-space: nowrap;
-    position: fixed;
-    top: 0; width: 100%; z-index: 1001;
-}
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="glass-card">
+                <h1 class="glitch-text">Lớp 12A2</h1>
+                <p class="hero-year">Niên khóa 2023-2026</p>
+                <div class="divider-heart">❤️</div>
+                <p class="hero-slogan">"Cùng nhau tỏa sáng! 🎓"</p>
+                <div class="hero-buttons">
+                    <a href="thanhvien.html" class="btn btn-primary">XEM THÀNH VIÊN</a>
+                    <a href="lienhe.html" class="btn btn-secondary">LIÊN HỆ NHÓM</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-.marquee { display: inline-block; animation: marquee 20s linear infinite; }
-@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    <section id="anh" class="main-content">
+        <div class="nav-container">
+            <div class="main-image-wrapper">
+                <img src="anhlop20-11menu.jpg" alt="Ảnh tập thể 12A2" class="main-image">
+            </div>
+        </div>
+    </section>
 
-.navbar {
-    background-color: var(--nav-bg);
-    height: 70px;
-    display: flex;
-    align-items: center;
-    position: fixed;
-    top: 40px; width: 100%; z-index: 1000;
-}
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h2 class="footer-title">Kỷ Niệm 12A2</h2>
+                <div class="footer-divider"></div>
+                <p class="footer-message">"Thanh xuân như một tách trà, 12A2 cùng nhau đi hết quãng đường hoa."</p>
+                <div class="footer-contact">
+                    <p>📍 <strong>Trường:</strong> THPT Lê Lợi</p>
+                    <p>🧪 <strong>Hóa học:</strong> Thầy Sang</p>
+                    <p>💻 <strong>Tin học:</strong> Thầy Trọng</p>
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="footer-image-wrapper">
+                    <img src="anhlopdoan.jpg" alt="Kỷ niệm lớp" class="footer-img">
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Lớp 12A2 - Thiết kế bởi Thành viên lớp.
+        </div>
+    </footer>
 
-.nav-container {
-    width: 95%;
-    max-width: 1400px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+    <div class="bottom-bar">
+        <div class="marquee">
+            <span>🔥 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH 🔥 </span>
+            <span>🔥 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH • 12A2 MÃI ĐỈNH 🔥 </span>
+        </div>
+    </div>
 
-.nav-brand {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    gap: 12px;
-}
-
-.logo-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 2px solid #fff;
-    object-fit: cover;
-}
-
-.brand-text {
-    color: #fff;
-    font-size: 1.6rem;
-    font-weight: bold;
-    font-family: 'EB Garamond', serif;
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-    margin: 0; padding: 0;
-}
-
-.nav-link {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-/* --- PHẦN HERO: NỀN MỜ, CHỮ NỔI --- */
-.hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    background: #000;
-}
-
-.hero-bg {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    /* Sử dụng ảnh tập thể của bạn */
-    background: url('z7489812981364_9193ab8e964a3af7e752847455a3eb03.jpg') center/cover no-repeat;
-    filter: blur(10px) brightness(40%);
-    transform: scale(1.1);
-    z-index: 1;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    width: 90%;
-}
-
-.glitch-text {
-    font-family: 'EB Garamond', serif;
-    font-size: clamp(3.5rem, 12vw, 6.5rem);
-    margin: 0;
-    text-shadow: 0 10px 30px rgba(0,0,0,0.8);
-}
-
-.hero-year { letter-spacing: 6px; text-transform: uppercase; margin: 15px 0; font-weight: 300; }
-.hero-slogan { font-style: italic; max-width: 700px; margin: 20px auto; opacity: 0.9; line-height: 1.6; }
-
-.btn {
-    padding: 14px 35px;
-    border-radius: 50px;
-    font-weight: bold;
-    text-decoration: none;
-    display: inline-block;
-    transition: 0.3s;
-}
-
-.btn-primary { background: #fff; color: #333; }
-.btn-secondary { border: 2px solid #fff; color: #fff; margin-left: 15px; }
-.btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
+</body>
+</html>
