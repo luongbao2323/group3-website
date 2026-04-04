@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thành viên 12A2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand"><img src="logo_gen.png" alt="Logo"></a>
+            <ul class="nav-menu">
+                <li><a class="nav-link" href="index.html">Trang chủ</a></li>
+                <li><a class="nav-link"href="thanh-vien.html">Thành viên</a></li>
+                <li><a class="nav-link" href="giao-vien.html">Giáo viên</a></li>
+                <li><a class="nav-link" href="anh.html">Ảnh</a></li>
+                <li><a class="nav-link" href="lien-he.html">Liên hệ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <h2 class="section-title">Danh sách Thành viên 12A2</h2>
+    <div class="gallery-grid" id="membersGrid"></div>
+
+    <script>
+        const members = [
+            { id: 1, name: 'Vi Đỗ Quỳnh Anh', birth: '17/11/2008', emoji: '🦋', bio: 'Thành viên lớp.' },
+            { id: 2, name: 'Đỗ Ngọc Ánh', birth: '04/05/2008', emoji: '☀️', bio: 'Thành viên lớp.' },
+            { id: 3, name: 'Lương Gia Bảo', birth: '05/05/2008', emoji: '👑', bio: 'Thành viên lớp.' },
+            { id: 4, name: 'Đoàn Thị Bảo Châu', birth: '25/06/2008', emoji: '🔮', bio: 'Thành viên lớp.' },
+            { id: 5, name: 'Phạm Trí Dũng', birth: '04/04/2008', image:'z7644520490358_25ff0c457f3d58a0f8123ab5fb9fad78.jpg', bio: 'Thành viên lớp.' },
+            { id: 6, name: 'Trần Thanh Duy', birth: '22/08/2008', image:'z7644336723230_a1f26621b1836cf926768e3d3ab01bb5.jpg', bio: 'Thành viên lớp.' },
+            { id: 7, name: 'Nguyễn Thị Duyên', birth: '07/06/2008', emoji: '🌷', bio: 'Thành viên lớp.' },
+            { id: 8, name: 'Nguyễn Tiến Đạt', birth: '28/04/2007', image:'z7644426574771_6df08c6348092f615bb202ff6b143653.jpg', bio: 'Thành viên lớp.' },
+            { id: 9, name: 'Võ Thiên Đông', birth: '04/09/2008', image:'z7644365723730_f9c77317712405681690c56f09f61724.jpg', bio: 'Thành viên lớp.' },
+            { id: 10, name: 'Hướng Trường Giang', birth: '20/02/2008', emoji: '🌊', bio: 'Thành viên lớp.' },
+            { id: 11, name: 'Đào Hữu Trung Hiếu', birth: '24/11/2008', emoji: '🎓', bio: 'Thành viên lớp.' },
+            { id: 12, name: 'Lê Sỹ Hoàng', birth: '22/05/2008', image:'z7664297038011_3640e92d4df042923340c49584583a8c.jpg', bio: 'Thành viên lớp.' },
+            { id: 13, name: 'Nguyễn Minh Hoàng', birth: '27/07/2008', emoji: '⚡', bio: 'Thành viên lớp.' },
+            { id: 14, name: 'Lê Văn Huy', birth: '26/04/2008', image:'z7664443721300_d1d840b04ed62b2f7768ec4cb25de609.jpg', bio: 'Thành viên lớp.' },
+            { id: 15, name: 'Nguyễn Tuấn Hưng', birth: '26/09/2008', image:'z7644439290251_488f0c1aa5b6ca2001f7549c6485fb3b.jpg', bio: 'Thành viên lớp.' },
+            { id: 16, name: 'Nguyễn Duy Luân', birth: '04/04/2008', emoji: '☀️', bio: 'Thành viên lớp.' },
+            { id: 17, name: 'Nguyễn Xuân Mai', birth: '09/01/2008', emoji: '🌸', bio: 'Thành viên lớp.' },
+            { id: 18, name: 'Nguyễn Trọng Đức Minh', birth: '15/10/2008', image: 'z7644334667991_6d51b1af8ea4ca8ebdc3dec8de7c28ff.jpg', bio: 'Học sinh tích cực, đam mê công nghệ.' },
+            { id: 19, name: 'Bùi Nguyễn Khánh Ngọc', birth: '15/03/2008', emoji: '👩', bio: 'Tính cách mạnh mẽ.' },
+            { id: 20, name: 'Trần Nguyễn', birth: '28/12/2008', emoji: '🍀', bio: 'Thành viên lớp.' },
+            { id: 21, name: 'Đỗ Nguyễn Thiện Nhân', birth: '22/05/2007', image:'z7644493168895_8670977a99e3e4a64eb2a41298e52fbf.jpg', bio: 'Thành viên lớp.' }
+        ];
+
+        const grid = document.getElementById('membersGrid');
+        grid.innerHTML = members.map(m => `
+            <div class="gallery-item">
+                <div class="gallery-img-container">${m.emoji}</div>
+                <div style="font-weight:bold; font-size: 1.1rem;">${m.name}</div>
+                <div style="color:var(--primary); font-size: 0.9rem;">${m.birth}</div>
+            </div>
+        `).join('');
+    </script>
+</body>
+</html>
